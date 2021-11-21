@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="https://alperderman.github.io/" />
+    <link rel="stylesheet" href="assets/css/grayshift/grayshift-dark.css">
+    <link rel="stylesheet" href="assets/fonts/icons/index.css">
+    <title>Alper Derman | UAS</title>
+  </head>
+  <body dcg-design="layouts/project.html" dcg-base="https://alperderman.github.io/">
+
+    <div class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
+      <noscript>
+        <div class="position-absolute top-50 start-50 translate-middle text-center">
+          <i class="huge icons">
+            <i class="yellow js icon"></i>
+            <i class="big red dont icon" style="opacity:0.7;"></i>
+          </i>
+          <div class="mt-6 card">
+            <h2 class="text-muted">Please enable the JavaScript!</h2>
+          </div>
+        </div>
+      </noscript>
+    </div>
+
+    <div dcg-obj="navbar" dcg-json>
+      <div dcg-src="layouts/templates/navbar.json"></div>
+    </div>
+    
+    <div dcg-obj="project" dcg-json>{"title" : "Unified Account System", "subtitle" : "back-end, solution, concept"}</div>
+    <div dcg-obj="project.desc">
+      <div class="row mb-5">
+        <div class="md:col-8 m-auto">
+          <div class="card">
+            <p>An idea of a 2 step verification system for logging in to an account.</p>
+            <br>
+            <p>If you have an account on a social platform and enabled the 2 step verification, normally you would have to login with your credentials first and then confirm it with a code sent to your e-mail or phone.</p>
+            <br>
+            <p>It's a great solution for account protection and it's widely used on so many places, so I thought about if it could be made safer and I come up with an idea.</p>
+            <br>
+            <p>Rather than logging in first, you have to enable logging in from your phone and only then you can login with your credentials on the website. This approach relatively resolves the brute force and dictionary attacks because they cannot get to know your password even if they manage to get your password right.</p>
+            <br>
+            <p>Additionally in this solution, since your phone is the safest connection to the server, you can manage multiple accounts (for example changing your password, email etc.) on different platforms from your phone with ease. Thats why I called it "unified"</p>
+            <br>
+            <p>Other than that it is just an idea of mine, it looks like it can work on paper but I don't know if this solution is really safe and accessible enough to be used. I'm currently working on it to make it happen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/dcg.js"></script>
+    <script>
+      dcg.config({removeCss: true, cacheRender: true});
+      dcg.render();
+    </script>
+  </body>
+</html>

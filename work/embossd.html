@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="https://alperderman.github.io/" />
+    <link rel="stylesheet" href="assets/css/grayshift/grayshift-dark.css">
+    <link rel="stylesheet" href="assets/fonts/icons/index.css">
+    <title>Alper Derman | Emboss'd</title>
+  </head>
+  <body dcg-design="layouts/project.html" dcg-base="https://alperderman.github.io/">
+
+    <div class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
+      <noscript>
+        <div class="position-absolute top-50 start-50 translate-middle text-center">
+          <i class="huge icons">
+            <i class="yellow js icon"></i>
+            <i class="big red dont icon" style="opacity:0.7;"></i>
+          </i>
+          <div class="mt-6 card">
+            <h2 class="text-muted">Please enable the JavaScript!</h2>
+          </div>
+        </div>
+      </noscript>
+    </div>
+
+    <div dcg-obj="navbar" dcg-json>
+      <div dcg-src="layouts/templates/navbar.json"></div>
+    </div>
+    
+    <div dcg-obj="project"  dcg-json>{"title" : "Emboss'd | Foundation", "subtitle" : "js, css, front-end, design"}</div>
+    <div dcg-obj="project.desc">
+      <div class="row mb-5">
+        <div class="md:col-8 m-auto">
+          <div class="card">
+            <p>Third design of the website made with Foundation framework.</p>
+            <br>
+            <p>At first I didn't want to use any CSS frameworks because they lack customizability and uniqueness, they made every website look the same.</p>
+            <br>
+            <p>But after I struggled to find a new, unique concept, I decided to give CSS frameworks a chance. Tested out various different frameworks, from the most mainstream ones to unheard ones.</p>
+            <br>
+            <p>And I finally decided to stay on <a href="https://get.foundation/">Zurb Foundation <i class="linkify icon"></i></a> It has the best maintainability and stability compared to other frameworks not counting the mindblowing documentation quality.</p>
+            <br>
+            <p>Apart from maintainability part there is not much things to say about this design.</p>
+            <hr>
+            <h3>Screenshot</h3>
+            <br>
+            <img class="w-100" src="assets/media/w-embossd-1.jpg">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/dcg.js"></script>
+    <script>
+      dcg.config({removeCss: true, cacheRender: true});
+      dcg.render();
+    </script>
+  </body>
+</html>

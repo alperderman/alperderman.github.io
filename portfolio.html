@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="https://alperderman.github.io/" />
+    <link rel="stylesheet" href="assets/css/grayshift/grayshift-dark.css">
+    <link rel="stylesheet" href="assets/fonts/icons/index.css">
+    <title>Alper Derman | Portfolio</title>
+  </head>
+  <body dcg-design="layouts/portfolio.html" dcg-base="https://alperderman.github.io/">
+
+    <div class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
+      <noscript>
+        <div class="position-absolute top-50 start-50 translate-middle text-center">
+          <i class="huge icons">
+            <i class="yellow js icon"></i>
+            <i class="big red dont icon" style="opacity:0.7;"></i>
+          </i>
+          <div class="mt-6 card">
+            <h2 class="text-muted">Please enable the JavaScript!</h2>
+          </div>
+        </div>
+      </noscript>
+    </div>
+
+    <div dcg-obj="navbar" dcg-json>
+      <div dcg-src="layouts/templates/navbar.json"></div>
+    </div>
+    <div dcg-obj="navbar.menus.portfolio.class">active</div>
+
+    <div dcg-obj="portfolio" dcg-json>
+      {
+        "title" : "Portfolio", "subtitle" : "Projects, Works, Concepts",
+        "projects":[
+          {"title":"Statix", "desc":"An ongoing project to replace the Google's Analytics.",
+           "tags":["PHP", "Back-end"], "source":"https://github.com/alperderman/statix", "details":"work/statix.html"},
+          {"title":"Dynamic Content Generation", "desc":"Dynamic Content Generation (DCG) is a front-end solution for content management.",
+           "tags":["JS", "Front-end", "Solution"], "source":"https://github.com/alperderman/dcg", "details":"work/dcg.html"},
+          {"title":"Unified Account System", "desc":"An idea of a 2 step verification system for logging in to an account.",
+           "tags":["Back-end", "Solution", "Concept"], "details":"work/uas.html"},
+          {"title":"Chat Room", "desc":"A basic chat room made with long polling technique.",
+           "tags":["PHP", "Back-end"], "source":"https://github.com/alperderman/chatroom", "details":"work/chatroom.html"},
+          {"title":"Stock Management System", "desc":"Stock management software made with C#", "img":"assets/media/w-stock.jpg",
+           "tags":["C#", "Application", "School Project"], "source":"https://github.com/alperderman/stock-management", "details":"work/stock.html"},
+          {"title":"Hotel Reservation System", "desc":"Hotel reservation system made with B4X", "img":"assets/media/w-hotel.jpg",
+           "tags":["B4X", "Application", "School Project"], "source":"https://github.com/alperderman/hotel-reservation", "details":"work/hotel.html"},
+          {"title":"Beneath the Mountains", "desc":"The initial design of the website.", "img":"assets/media/w-btm.jpg",
+           "tags":["JS", "CSS", "Front-end", "Design"], "details":"work/btm.html"},
+          {"title":"Endless Whirlpool", "desc":"The unreleased second design of the website.", "img":"assets/media/w-ew.jpg",
+           "tags":["JS", "CSS", "Front-end", "Design"], "details":"work/ew.html"},
+          {"title":"Emboss'd | Foundation", "desc":"Website design made with Foundation framework", "img":"assets/media/w-embossd.jpg",
+           "tags":["JS", "CSS", "Front-end", "Design"], "details":"work/embossd.html"},
+          {"title":"Cloudy | Grayshift", "desc":"The latest design of the website that I made with Grayshift framework.", "img":"assets/media/w-cloudy.jpg",
+           "tags":["JS", "CSS", "Front-end", "Design"], "details":"work/cloudy.html"}
+        ],
+        "btn":{"source":"Source", "details":"Details"}
+      }
+    </div>
+
+    <script src="assets/js/dcg.js"></script>
+    <script>
+      dcg.config({removeCss: true, cacheRender: true});
+      dcg.render();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="https://alperderman.github.io/" />
+    <link rel="stylesheet" href="assets/css/grayshift/grayshift-dark.css">
+    <link rel="stylesheet" href="assets/fonts/icons/index.css">
+    <title>Alper Derman | Beneath the Mountains</title>
+  </head>
+  <body dcg-design="layouts/project.html" dcg-base="https://alperderman.github.io/">
+
+    <div class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
+      <noscript>
+        <div class="position-absolute top-50 start-50 translate-middle text-center">
+          <i class="huge icons">
+            <i class="yellow js icon"></i>
+            <i class="big red dont icon" style="opacity:0.7;"></i>
+          </i>
+          <div class="mt-6 card">
+            <h2 class="text-muted">Please enable the JavaScript!</h2>
+          </div>
+        </div>
+      </noscript>
+    </div>
+
+    <div dcg-obj="navbar" dcg-json>
+      <div dcg-src="layouts/templates/navbar.json"></div>
+    </div>
+    
+    <div dcg-obj="project" dcg-json>{"title" : "Beneath the Mountains", "subtitle" : "js, css, front-end, design"}</div>
+    <div dcg-obj="project.desc">
+      <div class="row mb-5">
+        <div class="md:col-8 m-auto">
+          <div class="card">
+            <p>The initial design of the website, It may looks great but It had many problems that I hid under a fancy rug.</p>
+            <br>
+            <p>The design itself based from this <a href="https://codepen.io/quinlo/pen/XPVmVj">creation <i class="linkify icon"></i></a>. Saw it on CodePen, loved it and made a landing page out of it.</p>
+            <br>
+            <p>The key feature of the design is the day and night cycle, it changes the color scheme based on the time of the day.</p>
+            <hr>
+            <h3>Screenshots</h3>
+            <br>
+            <div class="row px-3">
+              <div class="col-12 md:col-6 p-0"><img class="w-100" src="assets/media/w-btm-1.jpg"></div>
+              <div class="col-12 md:col-6 p-0"><img class="w-100" src="assets/media/w-btm-2.jpg"></div>
+              <div class="col-12 md:col-6 p-0"><img class="w-100" src="assets/media/w-btm-3.jpg"></div>
+              <div class="col-12 md:col-6 p-0"><img class="w-100" src="assets/media/w-btm-4.jpg"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/dcg.js"></script>
+    <script>
+      dcg.config({removeCss: true, cacheRender: true});
+      dcg.render();
+    </script>
+  </body>
+</html>

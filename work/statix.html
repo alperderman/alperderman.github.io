@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="https://alperderman.github.io/" />
+    <link rel="stylesheet" href="assets/css/grayshift/grayshift-dark.css">
+    <link rel="stylesheet" href="assets/fonts/icons/index.css">
+    <title>Alper Derman | Statix</title>
+  </head>
+  <body dcg-design="layouts/project.html" dcg-base="https://alperderman.github.io/">
+
+    <div class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
+      <noscript>
+        <div class="position-absolute top-50 start-50 translate-middle text-center">
+          <i class="huge icons">
+            <i class="yellow js icon"></i>
+            <i class="big red dont icon" style="opacity:0.7;"></i>
+          </i>
+          <div class="mt-6 card">
+            <h2 class="text-muted">Please enable the JavaScript!</h2>
+          </div>
+        </div>
+      </noscript>
+    </div>
+
+    <div dcg-obj="navbar" dcg-json>
+      <div dcg-src="layouts/templates/navbar.json"></div>
+    </div>
+    
+    <div dcg-obj="project" dcg-json>{"title" : "Statix", "subtitle" : "php, back-end"}</div>
+    <div dcg-obj="project.desc">
+      <div class="row mb-5">
+        <div class="md:col-8 m-auto">
+          <div class="card">
+            <p>An ongoing project to replace the Google's Analytics.</p>
+            <br>
+            <p>GitHub: <a href="https://github.com/alperderman/statix">Source <i class="linkify icon"></i></a></p>
+            <br>
+            <p>Point of this project is not just reporting web traffic but also using this visitor's data on various different internal projects that needs visitor's data for example contact form.</p>
+            <hr>
+            <h3>How does it going to work?</h3>
+            <br>
+            <p>The project is going to be AJAX based so on the client-side of every page there will be AJAX request to a page called "Tracker". Tracker will gather visitor's credentials and generate a visitor ID based on the integrity of the credentials and save it to the database.</p>
+            <br>
+            <p>And after that we can use this visitor ID on places where we need visitor's credentials. It is easy as it is sounds like but the hard part is making a full fledged dashboard that procceses this data and visualizes it.</p>
+            <hr>
+            <h3>Future Goals</h3>
+            <br>
+            <ul>
+              <li>Make a dashboard</li>
+              <li>Make a real-time tracking system</li>
+              <li>Make an API handler to retrieve the data externally</li>
+              <li>Make a mobile app of the dashboard using the API handler</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/dcg.js"></script>
+    <script>
+      dcg.config({removeCss: true, cacheRender: true});
+      dcg.render();
+    </script>
+  </body>
+</html>
