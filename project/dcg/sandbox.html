@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="https://alperderman.github.io/" />
+    <title>DCG | Sandbox</title>
+  </head>
+  <body dcg-design="layouts/project/dcg/sandbox.html" dcg-base="https://alperderman.github.io/">
+
+    <div dcg-obj="header" dcg-json>
+      {
+        "title": "Dynamic Content Generation",
+        "sub": "sandbox"
+      }
+    </div>
+    <div dcg-obj="content">
+      &lt;div dcg-obj="foobar" dcg-json>
+        {"foo": "bars"}
+      &lt;/div>
+    </div>
+    <div dcg-obj="design">
+      &lt;body>
+        &lt;h1>{{foobar.foo}}&lt;/h1>
+      &lt;/body>
+    </div>
+    <div dcg-obj="presets">
+      {
+        baseAttrs: ["src", "href"],
+        removeCss: false,
+        cacheRender: false
+      }
+    </div>
+
+    <script src="assets/js/dcg.js"></script>
+    <script>
+      dcg.render();
+    </script>
+  </body>
+</html>
