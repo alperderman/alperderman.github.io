@@ -1,0 +1,19 @@
+<nav class="navbar lg:navbar-expand" style="border-bottom-left-radius: .75rem;border-bottom-right-radius: .75rem;">
+  <div class="container lg:px-4">
+    <a class="link-body me-4 float-start" dcg:href="{{navbar.icon}}">
+      <i class="code icon fs-5"></i>
+    </a>
+    <button class="navbar-toggler float-end" data-gs-toggle="collapse" data-gs-target="#navbarSupportedContent" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
+      <i class="bars icon fs-4"></i>
+    </button>
+    <div class="collapse navbar-collapse lg:flex-grow-1" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-5 text-center lg:me-auto lg:mb-0">
+        <dcg dcg-repeat="navbar.menus as menu">
+          <li class="nav-item">
+            <a dcg:class="nav-link {{menu.class}}" href="{{menu.href}}">{{menu.name}}</a>
+          </li>
+        </dcg>
+      </ul>
+    </div>
+  </div>
+</nav>

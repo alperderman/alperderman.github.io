@@ -1,0 +1,27 @@
+<div class="row">
+  <dcg dcg-repeat="portfolio.projects as card">
+    <div class="md:col-6 xl:col-4 m-auto">
+      <div class="card mb-5 p-0">
+        <dcg dcg-if="'{{card.img}}'.indexOf('{{') === -1">
+          <div class="w-100 rounded-top card-bg" dcg:style="background-image:url('{{card.img}}')"></div>
+        </dcg>
+        <div class="p-5">
+          <dcg dcg-repeat="card.tags as tag">
+            <span class="d-inline-block px-2 py-1 mb-3 fw-semi-bold text-uppercase bg-auto" style="font-size: .75rem; border-radius: .25rem;">{{tag}}</span>
+          </dcg>
+          <h2 class="mb-3 fs-1 lh-relaxed">
+            <a class="link-headings" href="{{card.details}}">{{card.title}}</a>
+          </h2>
+          <p>{{card.desc}}</p>
+          <hr class="my-4">
+          <div class="d-flex">
+            <dcg dcg-if="'{{card.source}}'.indexOf('{{') === -1">
+              <a class="btn btn-primary ms-auto" href="{{card.source}}">{{portfolio.btn.source}}</a>
+            </dcg>
+            <a class="btn btn-success ms-auto" href="{{card.details}}">{{portfolio.btn.details}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dcg>
+</div>

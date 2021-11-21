@@ -1,0 +1,18 @@
+<div class="modal" dcg:data-modal="{{id}}">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="fs-2">{{header}}</h1>
+        <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 rounded-circle" dcg:onclick="modalClose('{{id}}')" style="width: 2.5rem; height: 2.5rem;" type="button">
+          <i class="times icon"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{body}}</p>
+      </div>
+      <div class="modal-footer d-flex">
+        <button class="btn btn-lg btn-primary ms-auto" dcg:onclick="modalClose('{{id}}')" type="button">{{close}}</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <title>Alper Derman | Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/grayshift/grayshift-dark.css">
+  <link rel="stylesheet" href="assets/fonts/icons/index.css">
+  <link rel="stylesheet" href="assets/fonts/avenirnextroundedpro/index.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div id="loading" class="w-100 h-100 position-fixed bg-dark" style="z-index:20;"></div>
+
+  <dcg dcg-temp="navbar" dcg-tref>
+    <dcg dcg-src="layouts/templates/navbar.html"></dcg>
+  </dcg>
+
+  <dcg dcg-temp="navbar" dcg-tren></dcg>
+
+  <div class="py-5"></div>
+  <div class="py-5"></div>
+
+  <div class="container py-5">
+    <section>
+      <div class="text-center mb-3">
+        <h3>{{project.title}}</h3>
+        <h6 class="text-muted text-uppercase">{{project.subtitle}}</h6>
+      </div>
+      {{project.desc}}
+    </section>
+  </div>
+
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/js/jquery-ui.js"></script>
+  <script src="assets/js/jquery-validate.js"></script>
+  <script src="assets/js/jquery-visibility.js"></script>
+  <script src="assets/js/grayshift-babel.js"></script>
+
+  <script>
+    $(function() {
+      $("#loading").fadeOut("normal", function() {
+        $(this).remove();
+      });
+      
+      $('nav').visibility({
+        continuous: true,
+        onTopPassed: function(calculations) {
+          $("nav").addClass("fixed-top");
+        },
+        onTopPassedReverse: function(calculations) {
+          $("nav").removeClass("fixed-top");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

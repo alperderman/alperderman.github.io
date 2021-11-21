@@ -1,0 +1,10 @@
+{
+  "icon": "index",
+  "menus": {
+  "home": {"name": "Home", "class": "", "href": "index"},
+  "about": {"name": "About", "class": "", "href": "index#about"},
+  "services": {"name": "Services", "class": "", "href": "index#services"},
+  "portfolio": {"name": "Portfolio", "class": "", "href": "portfolio"},
+  "contact": {"name": "Contact", "class": "", "href": "index#contact"}
+  }
+}
