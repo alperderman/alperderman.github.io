@@ -1,7 +1,99 @@
-<!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/grayshift/grayshift-dark.css">
+    <link rel="stylesheet" href="assets/fonts/icons/index.css">
+    <title>Alper Derman | Index</title>
+  </head>
+  <body dcg-design="layouts/index.html">
+    <div class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
+      <noscript>
+        <div class="position-absolute top-50 start-50 translate-middle text-center">
+          <i class="huge icons">
+            <i class="yellow js icon"></i>
+            <i class="big red dont icon" style="opacity:0.7;"></i>
+          </i>
+          <div class="mt-6 card">
+            <h2 class="text-muted">Please enable the JavaScript!</h2>
+          </div>
+        </div>
+      </noscript>
+    </div>
+    <div dcg-obj="landing" dcg-json>{"subtitle" : "Web Developer & Junior Programmer"}</div>
+
+    <div dcg-obj="navbar" dcg-json>
+      <div dcg-src="layouts/templates/navbar.json"></div>
+    </div>
+    <div dcg-obj="navbar.menus.home.class">active</div>
+    
+    <div dcg-obj="about" dcg-json>{"title" : "About Me", "subtitle" : "introduction"}</div>
+    <div dcg-raw="about">
+      <p class="text-muted fs-3 text-center">Hi I'm Alper. I'm a web developer and a junior programmer.</p>
+      <br>
+      <p>This is my personal website. Here, you can find my work, get <span style="font-size: .6rem;">little</span> information about me or contact to me indirectly.</p>
+      <br>
+      <p>I do my work for pure passion but I'm still on a learning phase and trying to get some stuff done, so hope you consider that while looking through my works.</p>
+    </div>
+    <div dcg-obj="services" dcg-json>{"title" : "Services", "subtitle" : "what can i do?"}</div>
+    <div dcg-raw="services1">
+      <h5 class="text-muted">Front End Web Designs</h5>
+      <hr class="my-3">
+      <p>Develop front end using latest standards using <span class="text-muted">HTML</span>, <span class="text-muted">CSS</span> and <span class="text-muted">JavaScript</span> alongside with <span class="text-muted">Vue</span>, <span class="text-muted">JQuery</span> and handful of CSS frameworks.</p>
+    </div>
+    <div dcg-raw="services2">
+      <h5 class="text-muted">Back End Web Projects</h5>
+      <hr class="my-3">
+      <p>Develop back end projects using <span class="text-muted">PHP</span> with <span class="text-muted">CodeIgniter</span>, <span class="text-muted">Fat-Free</span> frameworks and DBMS systems such as <span class="text-muted">MySQL</span> and <span class="text-muted">SQLite</span>.</p>
+    </div>
+    <div dcg-raw="services3">
+      <h5 class="text-muted">Cross Platform GUI Applications</h5>
+      <hr class="my-3">
+      <p>Develop cross platform applications using <span class="text-muted">C#</span>, <span class="text-muted">B4X</span> and <span class="text-muted">Delphi</span></p>
+    </div>
+    <div dcg-obj="portfolio" dcg-json>
+      {
+        "title" : "Portfolio", "subtitle" : "works",
+        "projects":[
+        {"title":"Statix", "desc":"An ongoing project to replace the Google's Analytics.",
+        "tags":["PHP", "Back-end"], "source":"https://github.com/alperderman/statix", "details":"work/statix"},
+       {"title":"Dynamic Content Generation", "desc":"Dynamic Content Generation (DCG) is a front-end solution for content management.",
+        "tags":["JS", "Front-end", "Solution"], "source":"https://github.com/alperderman/dcg", "details":"work/dcg"},
+       {"title":"Unified Account System", "desc":"An idea of a 2 step verification system for logging in to an account.",
+        "tags":["Back-end", "Solution", "Concept"], "details":"work/uas"}
+        ],
+        "btn":{"more":{"href":"portfolio", "title":"See More Works"}, "source":"Source", "details":"Details"}
+      }
+    </div>
+    <div dcg-obj="contact" dcg-json>
+      {
+        "title" : "Contact", "subtitle" : "get in touch",
+        "socialMedia": "Social Media", "contactForm": "Contact Form",
+        "form": {
+          "nameTitle": "Name", "emailTitle": "Email", "subjectTitle": "Subject", "messageTitle": "Message",
+          "nameHolder": "Name", "emailHolder": "Email Address", "subjectHolder": "Subject", "messageHolder": "Write your message...",
+          "btnSubmit": "Send Message"
+        },
+        "modalSuccess": {
+          "id": "modalSuccess",
+          "header": "Success!",
+          "body": "Your message has been sent successfully!",
+          "close": "Close"
+        },
+        "modalFail": {
+          "id": "modalFail",
+          "header": "Fail!",
+          "body": "Something went wrong please try again later!",
+          "close": "Close"
+        }
+      }
+    </div>
+    <script src="assets/js/dcg.js"></script>
+    <script>
+      dcg.config({removeCss: true, cacheRender: true});
+      dcg.render();
+    </script>
+  </body>
 </html>
