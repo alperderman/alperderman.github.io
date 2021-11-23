@@ -4,12 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="http://alperderman.com/" />
     <link rel="stylesheet" href="assets/css/grayshift/grayshift-dark.css">
     <link rel="stylesheet" href="assets/fonts/icons/index.css">
     <title>Alper Derman | Emboss'd</title>
   </head>
-  <body dcg-design="layouts/project.html" dcg-base="http://alperderman.com/">
+  <body dcg-design="layouts/project.html">
 
     <div class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
       <noscript>
@@ -54,7 +53,12 @@
 
     <script src="assets/js/dcg.js"></script>
     <script>
-      dcg.config({removeCss: true, cacheRender: true});
+      dcg.config({
+        removeCss: true,
+        cacheRender: true,
+        base: window.location.protocol + '//' + window.location.host + '/',
+        baseDesign: window.location.protocol + '//' + window.location.host + '/'
+      });
       dcg.render();
     </script>
   </body>

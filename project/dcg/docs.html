@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="http://alperderman.com/" />
     <title>DCG | Documentation</title>
   </head>
-  <body dcg-design="layouts/project/dcg/docs.html" dcg-base="http://alperderman.com/">
+  <body dcg-design="layouts/project/dcg/docs.html">
     
     <div dcg-obj="header" dcg-json>
       {
@@ -472,6 +471,12 @@
 
     <script src="assets/js/dcg.js"></script>
     <script>
+      dcg.config({
+        removeCss: true,
+        cacheRender: true,
+        base: window.location.protocol + '//' + window.location.host + '/',
+        baseDesign: window.location.protocol + '//' + window.location.host + '/'
+      });
       dcg.render();
     </script>
   </body>
