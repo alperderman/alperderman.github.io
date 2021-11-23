@@ -42,7 +42,7 @@
         <p>DCG is a front-end templating framework that aims for content management.</p>
         <p>DCG is vastly different from other templating frameworks. The main difference is, contents and layouts are splitted from each other on DCG and most of the features and objects are defined with simple HTML elements. In addition to that, DCG works like a preprocessing intrepreter, so you can use it with other frameworks but the formation and the structure of your projects, must be coherent with DCG.</p>
         <p>DCG basically stitches the content and the layout together then generates and renders the final result. Since the contents and designs are completely seperate entities, it allows us to re-use the same contents or same designs on a different page thus reduces the code duplication, but as a trade-off it increases the page load time because of the extra XHR calls.</p>
-        <p>DCG is specifically tailored for content management, maintainability and ease of usage. But in order to achieve these goals, it changes the structure of your web project and these changes effect the overall performance considerably (espically since the processing is done on the client-side). So if performance is your top priority then I can recommend you other templating frameworks such as <a href="https://handlebarsjs.com/">Handlebars.js</a> and <a href="https://mustache.github.io/">Moustache.js</a>.</p>
+        <p>DCG is specifically tailored for content management, maintainability and ease of usage. But in order to achieve these goals, it changes the structure of your web project and these changes effect the overall performance considerably (especially since the processing is done on the client-side). So if performance is your top priority then I can recommend you other templating frameworks such as <a href="https://handlebarsjs.com/">Handlebars.js</a> and <a href="https://mustache.github.io/">Moustache.js</a>.</p>
       </section>
     </div>
     <div dcg-obj="content.start.desc" dcg-html>
@@ -94,6 +94,7 @@
             </tr>
           </thead>
           <tbody>
+            <tr><td><b>base</b></td><td>Base option allows us to define base path with JavaScript rather than the <code>dcg-base</code> attribute.</td><td>"images/media/"</td><td>String</td></tr>
             <tr><td><b>baseAttrs</b></td><td>Array of attributes that will be replaced with base path</td><td>["src", "href"]</td><td>Array</td></tr>
             <tr><td><b>removeCss</b></td><td>For removing the styles of the content page, if set to <code>true</code> styles will not be carried over rendered page</td><td>false</td><td>Boolean</td></tr>
             <tr><td><b>cacheRender</b></td><td>For caching the render, changing it <code>true</code> is highly recommended for production</td><td>false</td><td>Boolean</td></tr>
@@ -108,7 +109,8 @@
               &lt;script src="path/to/dcg.js">&lt;/script>
               &lt;script>
                 dcg.config({
-                  showLogs: true
+                  showLogs: true,
+                  cacheRender: false
                 });
                 dcg.render();
                 dcg.reset();
@@ -246,7 +248,7 @@
         <h1>{{_this.title}}</h1>
         <p>Token keywords are used for returning object properties of the specified token.</p>
         <table>
-          <tr><td>_this</td><td>Returns the object itself (espically useful when used inside a template)</td></tr>
+          <tr><td>_this</td><td>Returns the object itself (especially useful when used inside a template)</td></tr>
           <tr><td>_key</td><td>Returns the key of the object</td></tr>
           <tr><td>_index</td><td>Returns the index of the array or object (used inside the iterations)</td></tr>
           <tr><td>_length</td><td>Returns the total length of the object, array or string</td></tr>
