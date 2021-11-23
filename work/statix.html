@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="assets/css/grayshift/grayshift-dark.css">
     <link rel="stylesheet" href="assets/fonts/icons/index.css">
     <title>Alper Derman | Statix</title>
+    <script>
+      document.head.innerHTML = document.head.innerHTML + "<base href='" + window.location.protocol + '//' + window.location.host + "/' />";
+    </script>
   </head>
   <body dcg-design="layouts/project.html">
 
@@ -58,12 +61,11 @@
       </div>
     </div>
 
-    <script src="http://alperderman.com/assets/js/dcg.js"></script>
+    <script src="assets/js/dcg.js"></script>
     <script>
       dcg.config({
         removeCss: true,
         cacheRender: true,
-        base: window.location.protocol + '//' + window.location.host + '/',
         baseDesign: window.location.protocol + '//' + window.location.host + '/'
       });
       dcg.render();
