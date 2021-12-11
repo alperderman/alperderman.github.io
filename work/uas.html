@@ -29,22 +29,26 @@
       <div dcg-src="layouts/templates/navbar.json"></div>
     </div>
     
-    <div dcg-obj="project" dcg-json>{"title" : "Unified Account System", "subtitle" : "back-end, solution, concept"}</div>
+    <div dcg-obj="project" dcg-json>{"title" : "Unified Account System", "subtitle" : "php, back-end"}</div>
     <div dcg-obj="project.desc">
       <div class="row mb-5">
         <div class="md:col-8 m-auto">
           <div class="card">
-            <p>An idea of a 2 step verification system for logging in to an account.</p>
+            <p>Standalone account management and authorization project.</p>
             <br>
-            <p>If you have an account on a social platform and enabled the 2 step verification, normally you would have to login with your credentials first and then confirm it with a code sent to your e-mail or phone.</p>
+            <p>GitHub: <a href="https://github.com/alperderman/uas">Source <i class="linkify icon"></i></a></p>
             <br>
-            <p>It's a great solution for account protection and it's widely used on so many places, so I thought about if it could be made safer and I come up with an idea.</p>
+            <p>I decided to make this project when I realized coding the same login system from scratch wastes so much time and I thought that I need an agnostic user management system that can be applied to any project without too much hassle.</p>
             <br>
-            <p>Rather than logging in first, you have to enable logging in from your phone and only then you can login with your credentials on the website. This approach relatively resolves the brute force and dictionary attacks because they cannot get to know your password even if they manage to get your password right.</p>
+            <p>Authorization is the key element of every back-end web project and if you are a developer, one way or another, your path will come across a project that needs authorization such as dashboards with a login system.</p>
             <br>
-            <p>Additionally in this solution, since your phone is the safest connection to the server, you can manage multiple accounts (for example changing your password, email etc.) on different platforms from your phone with ease. Thats why I called it "unified"</p>
+            <p>Making an authorization system is relatively easy but of course it depends on what features you want and what kind of project you are making. For instance, if you are making a project that needs just a simple password to protect the contents viewed by others, you don't even need a database for that. But if you are making a project like a forum, where multiple users interact with the different parts of the project, then things can get complex very easily.</p>
             <br>
-            <p>Other than that it is just an idea of mine, it looks like it can work on paper but I don't know if this solution is really safe and accessible enough to be used. I'm currently working on it to make it happen.</p>
+            <p>For this reason and for the sake of simplicity, seperating account management from your main project is the best way to assure the safety of your main project.</p>
+            <br>
+            <p>The other benefit of seperating account management is, you can use the same authorization system on a different project. And this project aims just that.</p>
+            <br>
+            <p>The project contains base functions for logging in, creating a new user, deleting the existing user. And aside from the basic authorization, it also has a groups and permissions system. With defining just one function, you can check whether the user has the qualified permission or not.</p>
           </div>
         </div>
       </div>
