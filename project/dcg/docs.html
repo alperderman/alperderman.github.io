@@ -56,7 +56,7 @@
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html (the main page)</h3>
             <pre><code class="language-html">
-              &lt;body dcg-design="path/to/design.html" dcg-base="./">
+              &lt;body dcg-design="path/to/design.html">
 
                 &lt;div dcg-obj="hello">Hello World!&lt;/div>
 
@@ -76,8 +76,7 @@
             </code></pre>
           </div>
         </div>
-        <p>There are two main attributes you have to define on the body; <code>dcg-design</code> and <code>dcg-base</code>.</p>
-        <p><code>dcg-design</code> attribute indicates the path of the <code>design.html</code>, <code>dcg-base</code> attribute specifies the base directory for all the URLs used in the <code>design.html</code>.</p>
+        <p><code>dcg-design</code> attribute on the body, indicates the path of the <code>design.html</code>.</p>
         <p><b>Side Note:</b> Only the pure contents that will be processed should be placed in <code>content.html</code> and all the other elements including scripts should be inside the <code>design.html</code> because all of the elements inside the <code>content.html</code> will be removed and replaced with the elements inside the <code>design.html</code> later.</p>
       </section>
     </div>
@@ -95,7 +94,6 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td><b>base</b></td><td>Base option allows us to define base path with JavaScript instead of the <code>dcg-base</code> attribute.</td><td>""</td><td>String</td></tr>
             <tr><td><b>removeCss</b></td><td>For removing the styles of the content page, if set to <code>true</code> styles will not be carried over rendered page</td><td>false</td><td>Boolean</td></tr>
             <tr><td><b>cacheRender</b></td><td>For caching the render, changing it <code>true</code> is highly recommended for production</td><td>false</td><td>Boolean</td></tr>
             <tr><td><b>showLogs</b></td><td>For showing the render logs</td><td>false</td><td>Boolean</td></tr>
@@ -293,7 +291,6 @@
         <h1>{{_this.title}}</h1>
         <p>Root tokens are special kind of tokens that for returning premade values. Root tokens have both highest priority and lowest priority among other tokens reason for that is they are rendered twice, first render occurs just before the design dependencies are inserted and second render occurs after all of the other normal tokens are rendered.</p>
         <table>
-          <tr><td>$base</td><td>Returns the defined base path</td></tr>
           <tr><td>$host</td><td>Returns the host name with protocol: <b>"http://example.com"</b></td></tr>
           <tr><td>$path</td><td>Returns the full directory path of the current file: <b>"/folder/pics"</b></td></tr>
           <tr><td>$file</td><td>Returns the current file name with extension: <b>"index.html"</b></td></tr>
@@ -490,8 +487,7 @@
     <script>
       dcg.config({
         removeCss: true,
-        cacheRender: true,
-        base: window.location.protocol + '//' + window.location.host + '/'
+        cacheRender: true
       });
       dcg.render();
     </script>
