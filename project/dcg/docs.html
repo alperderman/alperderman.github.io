@@ -28,7 +28,8 @@
         "static": {"title": "Static Contents"},
         "keywords": {"title": "Token Keywords"},
         "roots": {"title": "Root Tokens"},
-        "escape": {"title": "Escaping Elements"},
+        "escapeTokens": {"title": "Escaping Tokens"},
+        "escapeElements": {"title": "Escaping Elements"},
         "templates": {"title": "Templates"},
         "external": {"title": "External Contents"},
         "eval": {"title": "Eval Expressions"},
@@ -302,7 +303,21 @@
         </table>
       </section>
     </div>
-    <div dcg-obj="content.escape.desc" dcg-html>
+    <div dcg-obj="content.escapeTokens.desc" dcg-html>
+      <section id="{{_this._key}}">
+        <h1>{{_this.title}}</h1>
+        <p>In order to escape tokens and eval expressions, add '##' right after the opening delimeter like in the below.</p>
+        <div class="row lg:gutter-2 mb-6">
+          <div class="column col-12 lg:col-6">
+            <h3 class="mt-0">design.html</h3>
+            <pre><code class="language-html">
+              &lt;h3>Welcome, {{####customer}}!&lt;/h3>
+            </code></pre>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div dcg-obj="content.escapeElements.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
         <p>Escape prefix is used for bypassing invalid HTML errors by escaping tags and attributes.</p>
