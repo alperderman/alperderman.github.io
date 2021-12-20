@@ -78,7 +78,7 @@
         </div>
         <p>There are two main attributes you have to define on the body; <code>dcg-design</code> and <code>dcg-base</code>.</p>
         <p><code>dcg-design</code> attribute indicates the path of the <code>design.html</code>, <code>dcg-base</code> attribute specifies the base directory for all the URLs used in the <code>design.html</code>.</p>
-        <p><b>Side Note:</b> Only the pure contents that will be proccessed should be placed in <code>content.html</code> and all the other elements including scripts should be inside the <code>design.html</code> because all of the elements inside the <code>content.html</code> will be removed and replaced with the elements inside the <code>design.html</code> later.</p>
+        <p><b>Side Note:</b> Only the pure contents that will be processed should be placed in <code>content.html</code> and all the other elements including scripts should be inside the <code>design.html</code> because all of the elements inside the <code>content.html</code> will be removed and replaced with the elements inside the <code>design.html</code> later.</p>
       </section>
     </div>
     <div dcg-obj="content.presets.desc" dcg-html>
@@ -321,7 +321,7 @@
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
         <p>Escape prefix is used for bypassing invalid HTML errors by escaping tags and attributes.</p>
-        <p>Browsers, processes and changes couple of special tags and attributes, for example inline <code>style</code> attribute and <code>table</code>, <code>tr</code>, <code>td</code> tags. When you use tokens inside for instance <code>style</code> attribute, since the browsers sees the unproccessed token with its delimeters, it will assume this is a wrong definition and deletes the whole definition with the token.</p>
+        <p>Browsers, processes and changes couple of special tags and attributes, for example inline <code>style</code> attribute and <code>table</code>, <code>tr</code>, <code>td</code> tags. When you use tokens inside for instance <code>style</code> attribute, since the browsers sees the unprocessed token with its delimeters, it will assume this is a wrong definition and deletes the whole definition with the token.</p>
         <p>But with the escape prefix, browsers will assume this is not an element that should be processed and skips it. After the render, we replace the escaped elements to their original state and elements will be processed automatically by the browsers.</p>
         <p>In order to escape an element you can define <code>dcg:</code> in front of the tag or the attribute.</p>
         <div class="row lg:gutter-2 mb-6">
