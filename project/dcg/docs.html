@@ -70,7 +70,7 @@
             <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
               &lt;body>
-                &lt;h1>&#123;&#123;hello}}&lt;/h1>
+                &lt;h1>{{##hello}}&lt;/h1>
               &lt;/body>
             </code></pre>
           </div>
@@ -143,7 +143,7 @@
                 &lt;/div>
 
                 &lt;div dcg-obj="names.description" dcg-html>
-                  &lt;p>Our team; &#123;&#123;names.0}}, &#123;&#123;names.1}}, &#123;&#123;names.2}}&lt;/p>
+                  &lt;p>Our team; {{##names.0}}, {{##names.1}}, {{##names.2}}&lt;/p>
                 &lt;/div>
 
                 &lt;script src="path/to/dcg.js">&lt;/script>
@@ -157,15 +157,15 @@
             <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
               &lt;body>
-                &lt;h3>&#123;&#123;fruits.fruit.0}}&lt;/h3>
-                &lt;h3>&#123;&#123;fruits.fruit.1}}&lt;/h3>
-                &lt;h3>&#123;&#123;fruits.fruit.2}}&lt;/h3>
+                &lt;h3>{{##fruits.fruit.0}}&lt;/h3>
+                &lt;h3>{{##fruits.fruit.1}}&lt;/h3>
+                &lt;h3>{{##fruits.fruit.2}}&lt;/h3>
                 &lt;hr>
-                &lt;h3>&#123;&#123;names.0}}&lt;/h3>
-                &lt;h3>&#123;&#123;names.1}}&lt;/h3>
-                &lt;h3>&#123;&#123;names.2}}&lt;/h3>
+                &lt;h3>{{##names.0}}&lt;/h3>
+                &lt;h3>{{##names.1}}&lt;/h3>
+                &lt;h3>{{##names.2}}&lt;/h3>
                 &lt;hr>
-                &#123;&#123;names.description}}
+                {{##names.description}}
               &lt;/body>
             </code></pre>
           </div>
@@ -184,7 +184,7 @@
             <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
               &lt;dcg dcg-repeat="names as customer">
-                &lt;h3>&#123;&#123;customer}}&lt;/h3>
+                &lt;h3>{{##customer}}&lt;/h3>
               &lt;/dcg>
             </code></pre>
           </div>
@@ -223,7 +223,7 @@
 
               &lt;div dcg-raw="foo">
                 &lt;dcg dcg-repeat="names.name as customer">
-                  &lt;h3>Welcome, &#123;&#123;customer}}!&lt;/h3>
+                  &lt;h3>Welcome, {{##customer}}!&lt;/h3>
                 &lt;/dcg>
               &lt;/div>
             </code></pre>
@@ -276,12 +276,12 @@
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
-              &#123;&#123;book._length}} // Returns 3
-              &#123;&#123;book._this}} // Returns {"name":"The Name of the Wind", "author":"Patrick Rothfuss", "genre": "Fantasy"}
-              &#123;&#123;book.author._key}} // Returns author
+              {{##book._length}} // Returns 3
+              {{##book._this}} // Returns {"name":"The Name of the Wind", "author":"Patrick Rothfuss", "genre": "Fantasy"}
+              {{##book.author._key}} // Returns author
 
               &lt;dcg dcg-repeat="actors as actor">
-                &#123;&#123;actor._index}} // Returns 0 to 2 index values
+                {{##actor._index}} // Returns 0 to 2 index values
               &lt;/dcg>
             </code></pre>
           </div>
@@ -313,7 +313,7 @@
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
-              &lt;dcg:table dcg:style="color:&#123;&#123;color}}">
+              &lt;dcg:table dcg:style="color:{{##color}}">
                 &lt;dcg:tr>
                   &lt;dcg:td>This is an escaped table&lt;/dcg:td>
                 &lt;/dcg:tr>
@@ -350,8 +350,8 @@
                   &lt;dcg dcg-repeat="_this as actor">
 
                     &lt;dcg:tr>
-                      &lt;dcg:td>&#123;&#123;name}}&lt;/dcg:td>
-                      &lt;dcg:td>&#123;&#123;surname}}&lt;/dcg:td>
+                      &lt;dcg:td>{{##name}}&lt;/dcg:td>
+                      &lt;dcg:td>{{##surname}}&lt;/dcg:td>
                     &lt;/dcg:tr>
                     
                   &lt;/dcg>
@@ -381,7 +381,7 @@
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
-              &lt;div>Euro to US Dollar: &#123;&#123;exchange.rates.USD}}&lt;/div>
+              &lt;div>Euro to US Dollar: {{##exchange.rates.USD}}&lt;/div>
             </code></pre>
           </div>
         </div>
@@ -418,7 +418,7 @@
             <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
               &lt;p>
-                Sum: &#123;&#37; &#123;&#123;numbers.n1}} + &#123;&#123;numbers.n2}} %}
+                Sum: {%## {{##numbers.n1}} + {{##numbers.n2}} %}
                 // Returns 108
               &lt;/p>
             </code></pre>
@@ -430,8 +430,8 @@
             <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
               &lt;p>
-                Sum: &#123;&#33;&#37;
-                    var result = &#123;&#123;numbers.n1}} + &#123;&#123;numbers.n2}};
+                Sum: {!%##
+                    var result = {{##numbers.n1}} + {{##numbers.n2}};
                     return result;
                   %!}
                 // Returns 108
@@ -452,10 +452,10 @@
             <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
               &lt;dcg dcg-repeat="students as student">
-                &lt;dcg dcg-if="&#123;&#123;student.grade}} >= 50">
+                &lt;dcg dcg-if="{{##student.grade}} >= 50">
                   &lt;span style="color:green;">PASS&lt;/span>
                 &lt;/dcg>
-                &lt;dcg dcg-if="&#123;&#123;student.grade}} &lt; 50">
+                &lt;dcg dcg-if="{{##student.grade}} &lt; 50">
                   &lt;span style="color:red;">FAIL&lt;/span>
                 &lt;/dcg>
               &lt;/dcg>
