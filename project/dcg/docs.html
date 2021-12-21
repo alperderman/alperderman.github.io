@@ -7,7 +7,7 @@
     <base href="http://alperderman.com/" />
     <title>DCG | Documentation</title>
   </head>
-  <body dcg-design="layouts/project/dcg/docs.html">
+  <body>
     
     <div dcg-obj="header" dcg-json>
       {
@@ -56,13 +56,15 @@
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html (the main page)</h3>
             <pre><code class="language-html">
-              &lt;body dcg-design="path/to/design.html">
+              &lt;body>
 
                 &lt;div dcg-obj="hello">Hello World!&lt;/div>
 
                 &lt;script src="path/to/dcg.js">&lt;/script>
                 &lt;script>
-                  dcg.render();
+                  dcg.render({
+                    designSrc: "path/to/design.html"
+                  });
                 &lt;/script>
               &lt;/body>
             </code></pre>
@@ -76,7 +78,7 @@
             </code></pre>
           </div>
         </div>
-        <p><code>dcg-design</code> attribute on the body, indicates the path of the <code>design.html</code>.</p>
+        <p><code>designSrc</code> indicates the path of the <code>design.html</code>.</p>
         <p><b>Side Note:</b> Only the pure contents that will be processed should be placed in <code>content.html</code> and all the other elements including scripts should be inside the <code>design.html</code> because all of the elements inside the <code>content.html</code> will be removed and replaced with the elements inside the <code>design.html</code> later.</p>
       </section>
     </div>
@@ -99,7 +101,7 @@
             <tr><td><b>showLogs</b></td><td>For showing the render logs</td><td>false</td><td>Boolean</td></tr>
           </tbody>
         </table>
-        <p>Preset options are stored in <code>dcg.profile</code> object. You can use <code>dcg.config()</code> function for changing the options and <code>dcg.reset()</code> function for resetting to their default value.</p>
+        <p>Preset options are stored in <code>dcg.profile</code> object. You can use the <code>dcg.config()</code> function or the 'options' object inside the render function for changing the options and <code>dcg.reset()</code> function for resetting to their default value. (If you use options object inside the render function, options are automatically resetted to their default value after the render)</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
@@ -110,8 +112,20 @@
                   showLogs: true,
                   cacheRender: false
                 });
-                dcg.render();
+                dcg.render({
+                  designSrc: "path/to/design.html"
+                });
                 dcg.reset();
+
+                // OR
+
+                dcg.render({
+                  designSrc: "path/to/design.html",
+                  options: {
+                    showLogs: true,
+                    cacheRender: false
+                  }
+                });
               &lt;/script>
             </code></pre>
           </div>
@@ -128,7 +142,7 @@
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
             <pre><code class="language-html">
-              &lt;body dcg-design="path/to/design.html">
+              &lt;body>
 
                 &lt;div dcg-obj="fruits" dcg-xml>
                   &lt;fruit>Apple&lt;/fruit>
@@ -146,7 +160,9 @@
 
                 &lt;script src="path/to/dcg.js">&lt;/script>
                 &lt;script>
-                  dcg.render();
+                  dcg.render({
+                    designSrc: "path/to/design.html"
+                  });
                 &lt;/script>
               &lt;/body>
             </code></pre>
@@ -485,11 +501,13 @@
 
     <script src="assets/js/dcg.js"></script>
     <script>
-      dcg.config({
-        removeCss: true,
-        cacheRender: true
+      dcg.render({
+        designSrc: "layouts/project/dcg/docs.html",
+        options: {
+          removeCss: true,
+          cacheRender: true
+        }
       });
-      dcg.render();
     </script>
   </body>
 </html>

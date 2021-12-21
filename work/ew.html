@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/fonts/icons/index.css">
     <title>Alper Derman | Endless Whirlpool</title>
   </head>
-  <body dcg-design="layouts/project.html">
+  <body>
 
     <div class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
       <noscript>
@@ -57,11 +57,13 @@
 
     <script src="assets/js/dcg.js"></script>
     <script>
-      dcg.config({
-        removeCss: true,
-        cacheRender: true
+      dcg.render({
+        designSrc: "layouts/project.html",
+        options: {
+          removeCss: true,
+          cacheRender: true
+        }
       });
-      dcg.render();
     </script>
   </body>
 </html>
