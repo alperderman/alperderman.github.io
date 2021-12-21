@@ -62,6 +62,7 @@ dcg.regexEvalDelimiter = new RegExp(dcg.default.evalOpen+"[\\s\\S]*?"+dcg.defaul
 dcg.regexEvalMultiDelimiter = new RegExp(dcg.default.evalMultiOpen+"[\\s\\S]*?"+dcg.default.evalMultiClose, "g"); //regex for multi-line eval expressions
 dcg.regexEscape = new RegExp("(<[^>]*?"+dcg.default.labelEscapePrefix+"[^>]*?>)", "gim"); //regex for escaped elements
 dcg.regexBody = new RegExp("<body[^>]*>((.|[\\n\\r])*)<\\/body>", "im"); //regex for matching body tag
+dcg.regexAttrs = new RegExp('[\\s\\r\\t\\n]*([a-z0-9\\-_]+)[\\s\\r\\t\\n]*=[\\s\\r\\t\\n]*([\'"])((?:\\\\\\2|(?!\\2).)*)\\2', 'gim'); //regex for getting all attributes of an element
 dcg.regexLinks = new RegExp("<link[^>]*>", "gim"); //regex for matching link tags
 dcg.regexStyles = new RegExp("<style[^>]*>([\\s\\S]*?)<\\/style>", "gim"); //regex for style tags
 dcg.regexScripts = new RegExp("<script[^>]*>([\\s\\S]*?)<\\/script>", "gim"); //regex for script tags
@@ -294,7 +295,7 @@ dcg.renderDesign = function (arg) { //main render function, inputs are: arg.cont
         step_dependency();
     }
     function step_dependency() { //add the dependencies
-        var i, fixedDesign, designLinks, designStyles, designScripts;
+        var i, ii, attrs, link, fixedDesign, designLinks, designStyles, designScripts;
         fixedDesign = dcg.replaceRoot(arg.design); //replace the root tokens
         if ((/\<\/body\>/).test(fixedDesign)) { //if the design has body then insert only the body with its attributes
             arg.content.documentElement.innerHTML = arg.content.documentElement.innerHTML.replace("<body", "<body"+fixedDesign.match("<body" + "(.*)" + ">")[1]);
@@ -306,7 +307,15 @@ dcg.renderDesign = function (arg) { //main render function, inputs are: arg.cont
         designLinks = fixedDesign.match(dcg.regexLinks);
         if (designLinks) {
             for (i = 0;i < designLinks.length;i++) {
-                arg.content.head.innerHTML += designLinks[i];
+                attrs = {};
+                while (match = dcg.regexAttrs.exec(designLinks[i])) {
+                    attrs[match[1]] = match[3];
+                }
+                link = document.createElement("link");
+                for (ii = 0;ii < Object.keys(attrs).length;ii++) {
+                    link.setAttribute(Object.keys(attrs)[ii], Object.values(attrs)[ii]);
+                }
+                document.head.appendChild(link);
             }
         }
         //get the style elements from the design and insert them
