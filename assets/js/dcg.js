@@ -273,7 +273,7 @@ dcg.renderDesign = function (arg) { //main render function, inputs are: arg.cont
         for (i = 0; i < staticContents.length; i++) {
             staticContent = staticContents[i];
             contentId = staticContent.getAttribute(dcg.profile.labelRaw);
-            dcg.dataStatic[contentId] = new String(staticContent.innerHTML);
+            dcg.dataStatic[contentId] = staticContent.cloneNode(true).innerHTML;
             staticContent.parentNode.removeChild(staticContent);
         }
         dcg.watchPrintSplit(print);
@@ -292,7 +292,7 @@ dcg.renderDesign = function (arg) { //main render function, inputs are: arg.cont
             } else if (dynamicContent.hasAttribute(dcg.profile.labelHtml)) { //if it has labelHtml attribute, clone the node
                 dynamicContentParse = dynamicContent.cloneNode(true);
             } else { //if it doesn't have labels, store it as it is
-                dynamicContentParse = new String(dynamicContent.innerHTML);
+                dynamicContentParse = dynamicContent.cloneNode(true).innerHTML;
             }
             dynamicContentNested = dcg.normalizeObject(dcg.setNestedPropertyValue({}, contentId, dynamicContentParse)); //create nested object based on labelObj and normalize arrays and objects in order to nest them manually later on
             dcg.dataDynamic = dcg.mergeDeep(dcg.dataDynamic, dynamicContentNested); //merge content with dataDynamic
