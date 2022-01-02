@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="http://alperderman.com/" />
+    <link rel="stylesheet" href="assets/css/grayshift/grayshift-dark.css">
+    <link rel="stylesheet" href="assets/fonts/icons/index.css">
+    <title>Alper Derman | Halfmoon Dashboard</title>
+  </head>
+  <body>
+
+    <div class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
+      <noscript>
+        <div class="position-absolute top-50 start-50 translate-middle text-center">
+          <i class="huge icons">
+            <i class="yellow js icon"></i>
+            <i class="big red dont icon" style="opacity:0.7;"></i>
+          </i>
+          <div class="mt-6 card">
+            <h2 class="text-muted">Please enable the JavaScript!</h2>
+          </div>
+        </div>
+      </noscript>
+    </div>
+
+    <div dcg-obj="navbar" dcg-json>
+      <div dcg-src="layouts/templates/navbar.json"></div>
+    </div>
+    
+    <div dcg-obj="project" dcg-json>{"title" : "Halfmoon Dashboard", "subtitle" : "front-end, back-end, poc"}</div>
+    <div dcg-obj="project.desc">
+      <div class="row mb-5">
+        <div class="md:col-8 m-auto">
+          <div class="card">
+            <p>Proof of concept dashboard made with UAS, DCG and Halfmoon framework.</p>
+            <br>
+            <p>GitHub: <a href="https://github.com/alperderman/halfmoon-dashboard">Source <i class="linkify icon"></i></a></p>
+            <br>
+            <p>After I managed to put UAS and DCG in a stable state, I wanted to test both of them in a project. At the same time there was a front-end framework that I really wanted to use, which was <a href="https://github.com/halfmoonui/halfmoon">Halfmoon <i class="linkify icon"></i></a>.</p>
+            <p>One of the key feature of the Halfmoon that I've mentioned in the past is, that it was made for making dashboards. With that in mind, making a dashboard was the perfect way to test out the capabilities of the projects.</p>
+            <p>In the making of the dashboard, I really liked the agnostic structure of the UAS. I only have to fiddle with a single table for assigning a permission to an user. The only thing that made me hesitate was the <a href="https://github.com/bcosca/fatfree/">Fat-free <i class="linkify icon"></i></a> framework dependency, which I only used for routing for the AJAX requests. I'm planning to remove it from the project as soon as possible.</p>
+            <p>I have also realized that the DCG needs a much more polishing than I've previously thought. I've changed the render priority, removed some useless pieces of codes and changed the way of how templates are stored and rendered.</p>
+            <p>Even though DCG is currently more stable than ever, these changes didn't satisfy me enough so I have come to a conclusion that I need to rewrite the whole DCG in a more concise way. This is my next goal for the 2022.</p>
+            <hr>
+            <h3>Screenshots</h3>
+            <br>
+            <div class="row px-3">
+              <div class="col-12 md:col-6 p-0"><img class="w-100" src="assets/media/w-hmdashboard-1.jpg"></div>
+              <div class="col-12 md:col-6 p-0"><img class="w-100" src="assets/media/w-hmdashboard-2.jpg"></div>
+              <div class="col-12 md:col-6 p-0"><img class="w-100" src="assets/media/w-hmdashboard-3.jpg"></div>
+              <div class="col-12 md:col-6 p-0"><img class="w-100" src="assets/media/w-hmdashboard-4.jpg"></div>
+              <div class="col-12 md:col-6 p-0"><img class="w-100" src="assets/media/w-hmdashboard-5.jpg"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/dcg.js"></script>
+    <script>
+      dcg.render({
+        designSrc: "layouts/project.html",
+        options: {
+          removeCss: true,
+          cacheRender: true
+        }
+      });
+    </script>
+  </body>
+</html>
