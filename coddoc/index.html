@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>coddoc | Başlangıç</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" href="../favicon.png"/>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="opensans/index.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="doc">
+  <nav class="bar">
+    <div class="logo"><img style="height:2.5em;width:auto;" src="logo-nav.png" /></div>
+    <ul>
+      <li><a href="index.html">Anasayfa</a></li>
+      <li><a href="#">Başlangıç</a></li>
+      <li><a href="index.html#diller">Diller</a></li>
+    </ul>
+  </nav>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="index.html">Anasayfa</a></li>
+      <li><a href="#">Başlangıç</a></li>
+      <li><a href="index.html#diller">Diller</a></li>
+    </ul>
+  </nav>
+
+  <nav class="toc">
+  	<ul>
+  		<li><a href="#programNedir">Program / Programlama Nedir?</a></li>
+      <li><a href="#akisSema">Algoritma ve Akış Şemaları</a>
+      <li><a href="#compilerVeIDE">Programın Derlenme Süreci ve IDE'ler</a>
+      <li><a href="#merhabaDunya">Programlamaya Giriş: Merhaba Dünya</a></li>
+      <li><a href="#degiskenler">Değişkenler</a></li>
+      <li><a href="#ifElse">Mantıksal İşlemler</a>
+        <ul>
+          <li><a href="#ifElseOperator">Mantıksal İşlem Operatörleri</a></li>
+        </ul>
+      </li>
+      <li><a href="#veriGirisi">Veri Girişi (İnput)</a></li>
+      <li><a href="#hesapMakinesi">Örnek: Hesap Makinesi</a></li>
+      <li><a href="#donguler">Döngüler</a>
+        <ul>
+          <li><a href="#dongulerFor">For Döngüsü</a></li>
+          <li><a href="#dongulerWhile">While Döngüsü</a></li>
+        </ul>
+      </li>
+      <li><a href="#diziler">Diziler</a>
+        <ul>
+          <li><a href="#dizilerList">List</a></li>
+          <li><a href="#dizilerTuple">Tuple</a></li>
+          <li><a href="#dizilerSet">Set</a></li>
+          <li><a href="#dizilerDictionary">Dictionary</a></li>
+          <li><a href="#dizilerDonguler">Diziler ve Döngüler</a></li>
+          <li><a href="#dizilerIslem">Dizi İşlemleri</a></li>
+          <li><a href="#diziler2Boyut">2 Boyutlu Diziler</a></li>
+        </ul>
+      </li>
+      <li><a href="#fonksiyonlar">Fonksiyonlar, Metodlar, Prosedürler</a>
+        <ul>
+          <li><a href="#fonksiyonlarScope">Değişkenlerin Kapsam Alanı ve Evrensel Değişkenler</a></li>
+        </ul>
+      </li>
+      <li><a href="#classlar">Sınıflar, Nesneler ve Özellikler</a>
+        <ul>
+          <li><a href="#classlarTanim">Sınıfların Tanımı ve Kullanımı</a></li>
+          <li><a href="#classlarErisim">Erişim Belirleyicileri</a></li>
+          <li><a href="#classlarMiras">Miras Alma (İnheritance)</a></li>
+        </ul>
+      </li>
+  	</ul>
+    <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+      <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
+    </svg>
+  </nav>
+
+  <main>
+    <section id="programNedir">
+      <header>Program / Programlama Nedir?</header>
+      <article>
+        <p>
+          <b>Program:</b> Girilen değerlerin bilgisayar tarafından işlenerek çıktılara dönüştürülmesidir.<br/>
+          <b>Programlama:</b> İşlemin nasıl yürütüleceğini bilgisayara belirtmektir.
+        </p>
+        <p>
+          Kısacası programlama, bilgisayara ne yapılacağını söylemektir. <b>Peki bilgisayar hangi dilden anlar?</b> Bilgisayar elektronik bir cihaz olduğu için elektrik akımının geçirilmesi (1) yada geçirilmemesi (0) durumlarını işleyebilir. Bu nedenle ikili sayı sistemini (binary) temel alarak veri işler ve saklarlar. Bildiğiniz gibi <a href="https://tr.wikipedia.org/wiki/Mors_alfabesi" target="_blank">Mors alfabesi</a> de sadece 2 işaretin sıralı tekrarlar ile harfleri belirtmemize yarar. Aynı bu mantık, bilgisayardaki binary için de geçerlidir.
+        </p>
+        <p>
+          <b>Ama bilgisayar ile konuşmak için binary kullanmak zor olmaz mı?</b> Evet, işte programlama dilleri tam burada devreye giriyor. Programlama dilleri bizim yazdığımız kodları bilgisayarın anlayabileceği dile dönüştüren bir tür araçlardır. Programlama dilleri ihtiyaç alanlarına göre değişse bile programlama mantığı değişmez, değişen tek şey yazılış biçimleridir.
+        </p>
+      </article>
+    </section>
+    <section id="akisSema">
+      <header>Algoritma ve Akış Şeması</header>
+      <article>
+        <p>
+          <b>Algoritma:</b> Bir amaca ulaşmak için tasarlanan yol yani çözümdür.
+        </p>
+        <p>
+          Bir programın nasıl çalıştığını ve hangi işlemlerden geçtiğini görsel olarak göstermek için akış şemalarını kullanırız. Akış şemaları sayesinde hiç programlama bilmeyen birisi bile programın nasıl çalıştığını anlayabilir. Ayrıca programlama mantığı ve algoritma bütün programlama dillerinde aynı olduğu için, bir programlama diliyle yazılmış olan programı başka bir dile dönüştürmeye de olanak sağlar.
+        </p>
+        <p>
+          <b>Akış şeması nasıl oluşturulur?</b> Akış şeması oluşturmak için öncelikle yazacağımız programın sırasıyla hangi işlemlerden geçtiğini belirlemek gerekiyor. Sonra bu belirlediğimiz işlemleri, aşşağıda gösterilen şekiller ile birlikte kullanarak akış şemamızı oluşturuyoruz.
+        </p>
+        <img src="fc_objects.png"/>
+        <p>
+          Örnek olarak, bir hesap makinesinde hesap yaptığınızı düşünün. Girdiğiniz sayılar bir girdi, elde edilen sonuç ise çıktıdır. Sırasıyla hangi işlemleri gerçekleştiriyoruz yazalım.
+        <ul>
+          <li>
+            Bir sayı girdiniz (Girdi)
+          </li>
+          <li>
+            Yapıcağınız matematiksel işlemi belirttiniz (Girdi)
+          </li>
+          <li>
+            İkinci sayıyı girdiniz (Girdi)
+          </li>
+          <li>
+            Hesap makinesi bu girdiğiniz değerleri işledi ve sonucu ekrana yazdırdı (Çıktı)
+          </li>
+        </ul>
+        <p>Akış şeması karşılığı:</p>
+        <img src="fc_hesapmakinesi.png"/>
+      </article>
+    </section>
+    <section id="compilerVeIDE">
+      <header>Programın Derlenme Süreci ve IDE'ler</header>
+      <article>
+        <p>
+          Daha önce de söylediğimiz gibi bir kod yazdığınızda direkt olarak bilgisayar anlayamaz, anlayabilmesi için bir takım süreçten geçmesi gerekiyor.
+        </p>
+        <img src="compiler.png"/>
+        <p>
+          Yazdığınız kod ilk önce derleyiciye gider ve burada bilgisayarın anlayabileceği makine koduna dönüştürülür. Sonra bu makine kodunu bilgisayar işler ve istediğiniz çıktıyı önünüze getirir.
+        </p>
+        <p>
+          <b>IDE (Kod Geliştirme Ortamı) Nedir?</b> IDE, kod yazmak ve test etmek için gerekli araçlardan oluşan bir yazılım paketidir. Genellikle bir kod editörü, derleyici veya bir hata ayıklayıcıdan oluşur. İşlevlerine göre paralı ve ücretsiz IDE'ler bulunmaktadır.
+        </p>
+      </article>
+    </section>
+    <section id="merhabaDunya">
+      <header>Programlamaya Giriş: Merhaba Dünya</header>
+      <article>
+        <p>
+          Öncelikle bahsettiğimiz gibi programlama dilleri kullanım alanlarına göre değişir bu yüzden bunları sadece bir araç olarak görmek önemlidir.
+        </p>
+        <p>
+          Başlangıç için <a href="https://www.python.org" target="_blank">Python</a> programlama dili hem yazılış ve öğreniş bakımından kolay hemde çok işlevli bir dildir. Kullanabilmeniz için ilk önce bilgisayarınıza <a href="https://www.python.org/downloads/" target="_blank">şu bağlantıdan</a> Python'u indirip kurmanız gerekiyor. Python'u kurduktan sonra IDLE adında bir programın bilgisayarınıza kurulduğunu göreceksiniz bu program Python'nun resmi IDE'sidir (Kod Geliştirme Ortamı). Kod yazmak için şimdilik bu programı kullanacağız.
+        </p>
+        <p>
+          IDLE'ı açtıktan sonra karşınıza şöyle bir ekran gelecek.
+        </p>
+        <img src="python1.png"/>
+        <p>
+          Bu ekran, komut pencerisidir. Yazdığınız kodları çalıştırdığınızda bu pencerede gösterilecektir. Şimdi sol üstteki <b>Dosya</b> seçeneğinden <b>Yeni Dosya</b> butonuna tıklayın. Karşınıza boş bir sayfa çıkacak, buraya kodlarımızı yazacağız. 
+        </p>
+        <p>
+          Aşşağıdaki kodu, kod yazma pencerisine yazın ve dosyanızı <b>.py</b> uzantısı olacak şekilde kayıt edin.
+        </p>
+        <code>print("Merhaba, Dünya!")</code>
+        <p>
+          Kayıt ettikten sonra <kbd>F5</kbd> tuşuna basın yada üstteki <b>Çalıştır</b> seçeneğine tıklayın.
+        </p>
+        <img src="python2.png"/>
+        <p>
+          Ve ilk programınızı yazmış bulunuyorsunuz. <b>print</b> komutu, ekrana istediğimiz şeyi yazdırmamızı sağlıyor.
+        </p>
+      </article>
+    </section>
+    <section id="degiskenler">
+      <header>Değişkenler (String, İnteger, Float, Bool)</header>
+      <article>
+      <p>
+        Değişkenleri bilgisayarın hafızasında tutulan bir tür geçici depolama aracı olarak tanımlayabiliriz, içine yazdığımız kelimeleri, sayıları vb. saklamaya ve kullanmamıza yararlar.<br/>
+      </p>
+      <p>Değişkenler genel olarak 4 gruba ayrılabilir;</p>
+      <ul>
+        <li>Harfler ve kelimeler (String)</li>
+        <li>Tam sayılar (İnteger)</li>
+        <li>Rasyonel sayılar (Float)</li>
+        <li>Doğru ve yanlış (Boolean): Bu değişken tipi mantıksal işlemler için kullanılır, yukarıda anlattığımız binary'ye benzer. Doğruya karşılık (1), yanlışa karşılık ise (0) gelir.</li>
+      </ul>
+      <p>
+        <b>Not:</b> Değişken tanımlarken, değişkenin isminde Türkçe karakter kullanmamaya dikkat edin. Sadece veri olarak girdiğiniz değer Türkçe karakter içerebilir.
+      </p>
+      <code>x = 18
+      y = 5.5
+      isim = "Atilla"
+      dogru = True
+      yanlis = bool(0)</code>
+      <p>
+        Eğer iki veya daha fazla değişkeni birleştirip kullanmak istiyorsak, string'ler için "<b>+</b>", integer ve float'lar için ise "<b>,</b>" işareti kullanırız.
+      </p>
+      <code>ad = "Alper"
+      soyad = "Derman"
+      adsoyad = ad + " " + soyad
+      numara = 256
+      print("Tam isminiz: "+ adsoyad)
+      print("Numaranız: ", numara)</code>
+      </article>
+    </section>
+    <section id="ifElse">
+      <header>Mantıksal İşlemler (if, elif, else)</header>
+      <article>
+        <p>
+          Akış şeması kısmında anlattığımız gibi mantıksal işlemler yapmamıza yararlar. Sonuç her zaman boolean olacak şekildedir, ya doğru yada yanlış.
+        </p>
+        <p>
+          <b>Not:</b> if'den sonraki satırda boşluk bırakmayı unutmayın, Python bu boşlukları kullarak if'in içinde olan kodu görebilir.
+        </p>
+        <code>x = 10
+          y = 5
+          if x > y:
+          &nbsp;&nbsp;print("x, y'den büyük")
+          elif x == y:
+          &nbsp;&nbsp;print("x, y'ye eşit")
+          else:
+          &nbsp;&nbsp;print("x, y'den küçük")
+        </code>
+        <article id="ifElseOperator">
+          <header>Mantıksal İşlem Operatörleri</header>
+          <p>
+            Mantıksal işlem operatörlerini kullanarak koşullu ifadeler yazabiliriz.
+          </p>
+          <ul>
+            <li><b>==</b> Eşitse <b>Örnek:</b> <code>x == 10</code></li>
+            <li><b>!=</b> Eşit değilse <b>Örnek:</b> <code>x != 5</code></li>
+            <li><b>&gt;</b> Büyükse <b>Örnek:</b> <code>x > 5</code></li>
+            <li><b>&lt;</b> Küçükse <b>Örnek:</b> <code>x < 15</code></li>
+            <li><b>&gt;=</b> Büyük eşitse <b>Örnek:</b> <code>x >= 10</code></li>
+            <li><b>&lt;=</b> Küçük eşitse <b>Örnek:</b> <code>x <= 12</code></li>
+            <li><b>and</b> Sadece tüm mantıksal işlemlerde doğruysa, doğru döndürür <b>Örnek:</b> <code>x == 10 and y == 5</code></li>
+            <li><b>or</b> En az bir mantıksal işlem doğruysa, doğru döndürür <b>Örnek:</b> <code>x == 11 or y == 5</code></li>
+            <li><b>not</b> Mantıksal işlemin tersini döndürür, doğruysa yanlış, yanlışsa doğru <b>Örnek:</b> <code>not(y == 8)</code></li>
+          </ul>
+        </article>
+      </article>
+    </section>
+    <section id="veriGirisi">
+      <header>Veri Girişi (İnput)</header>
+      <article>
+        <p>
+          Akış şemasında gösterdiğimiz gibi, girdi almamıza yarar. Alınan girdi, bir <b>değişken</b> olarak kaydedilir.
+        </p>
+        <p>
+          <b>Not:</b> İnput varsayılan olarak kelime (string) tipinde veri girişi alır, eğer sayı girişinde veri almak istiyorsak ayrıyetten parantez içinde veri tipini de belirtmemiz gerekiyor.
+        </p>
+        <code>ad = input("Adınızı giriniz: ")
+          numara = int(input("Numaranızı giriniz: "))
+          sayi = float(input("Sayı giriniz: "))
+        </code>
+      </article>
+    </section>
+    <section id="hesapMakinesi">
+      <header>Örnek: Hesap Makinesi</header>
+      <article>
+        <p>
+          Şimdi öğrendiğiniz bilgiler ile yukarıdaki hesap makinesi akış şemasının, program halini yazalım.
+        </p>
+        <p>
+            İlk önce 3 tane input oluşturucağız ve if else ile koşulları belirteceğiz sonra if'in içine karşılık gelen işlemleri yazacağız. En sonunda işlemin sonucunu ekrana yazdırıcağız.
+        </p>
+        <code>sayi1 = float(input("1. Sayıyı giriniz: "))
+          islem = input("İşlemi giriniz: ")
+          sayi2 = float(input("2. Sayıyı giriniz: "))
+          if islem == "+":
+          &nbsp;&nbsp;sonuc = sayi1 + sayi2
+          elif islem == "-":
+          &nbsp;&nbsp;sonuc = sayi1 - sayi2
+          elif islem == "*":
+          &nbsp;&nbsp;sonuc = sayi1 * sayi2
+          else:
+          &nbsp;&nbsp;sonuc = sayi1 / sayi2
+          print("Cevap: ", sonuc)
+        </code>
+      </article>
+    </section>
+    <section id="donguler">
+      <header>Döngüler (For, While)</header>
+      <article>
+        <p>
+          Döngüler, yazdığımız kodları belirlediğimiz kadar tekrardan çalıştırmamızı sağlar bu sayede bizi büyük yüklerin altından kurtarır.
+        </p>
+        <p>
+          Örneğin 5 kez "Merhaba Dünya!" yazdığımızı düşünelim.
+        </p>
+        <code>print("Merhaba, Dünya!")
+          print("Merhaba, Dünya!")
+          print("Merhaba, Dünya!")
+          print("Merhaba, Dünya!")
+          print("Merhaba, Dünya!")
+        </code>
+        <p>
+           Normalde tek tek "Merhaba, Dünya!" yazmamız gerekir ama döngüler sayesinde sadece 1 kez yazarak bu işlemi yapabiliriz.
+        </p>
+        <code>for i in range(5)
+          &nbsp;&nbsp;print("Merhaba, Dünya!")
+        </code>
+        <p>
+          Yukarıdaki döngünün çalışma mantığı şu şekildedir:
+        </p>
+        <img src="fc_dongu.png"/>
+        <p>
+          Döngüler 2'ye ayrılır, bunlar:
+        </p>
+        <article id="dongulerFor">
+          <header>For Döngüsü</header>
+          <p>
+            Yukarıda yazdığımız döngü bir for döngüsüdür, for döngülerinde yazdığımız <code>i</code> aslında bir değişkendir ve kaçıncı döngüde olduğumuzu temsil eder, ayrıca "i" sadece bir değişken adıdır yerine istediğimiz değişken adını tanımlayabiliriz.
+          </p>
+          <p>
+            For döngüleri varsayılan olarak 0'dan başlar ve en son değerin bir eksiği kadar döndürürler, peki eğer 0'dan değilde 1'den veya başka bir sayıdan başlatmak istiyorsak ne yaparız? Şimdi 1'den 100'e kadar olan sayıları yazdırmayı deniyelim.
+          </p>
+          <code>for i in range(1, 101)
+            &nbsp;&nbsp;print(i)
+          </code>
+          <p>
+            Birer birer yerine ikişer ikişer gitmesini istiyorsak da şu şekilde yapabiliriz.
+          </p>
+          <code>for i in range(1, 101, 2)
+            &nbsp;&nbsp;print(i)
+          </code>
+          <p>
+            100'den 1'e doğru yazdırmak için
+          </p>
+          <code>for i in range(101, 1, 1)
+            &nbsp;&nbsp;print(i)
+          </code>
+        </article>
+        <article id="dongulerWhile">
+          <header>While Döngüsü</header>
+          <p>
+            While döngülerinin amacı, for döngüleriyle aynıdır. Tek farkı ise sayı belirlemek yerine if, else'deki gibi koşul belirtiriz ve o koşul doğru olduğu sürece döner.
+          </p>
+          <p>
+            Yukarıdaki örnekleri while döngüsüyle yapalım.
+          </p>
+          <code>i = 0
+            while(i < 5)
+            &nbsp;&nbsp;print("Merhaba, Dünya!")
+            &nbsp;&nbsp;i++
+            
+          </code>
+          <p>
+            <b>Not:</b> <code>i++</code>'nın karşılığı <code>i = i + 1</code> ile aynıdır, değişkene 1 ekler.
+          </p>
+          <p>
+            While döngüsü kullanırken başlangıç değişkeni tanımlamamız gerekir. Bu değişken aynı zamanda başlangıç sayımız olabilir.
+          </p>
+          <code>i = 1
+            while(i <= 100)
+            &nbsp;&nbsp;print(i)
+            &nbsp;&nbsp;i=i+2
+          </code>
+          <p>
+            Eğer 100'den 1'e doğru yazdırmak istiyorsak
+          </p>
+          <code>i = 100
+            while(i >= 1)
+            &nbsp;&nbsp;print(i)
+            &nbsp;&nbsp;i--
+          </code>
+        </article>
+        
+      </article>
+    </section>
+    <section id="diziler">
+      <header>Diziler (List, Tuple, Set, Dictionary)</header>
+      <article>
+        <p>
+          Diziler birden fazla değeri bir arada tutmamızı sağlayan özel değişkenlerdir.
+        </p>
+        <p>
+          Dizileri basitçe şu şekilde tanımlayıp kullanabiliriz:
+        </p>
+        <code>isimler = ["Alper", "Atilla", "Önder"]
+        print(isimler[0])
+        print(isimler[1])
+        print(isimler[2])</code>
+        <p>
+          Sıralı olan dizilerde indis (index) yani sıra numarası bulunur, sıra numaraları aynı for döngüsünde olduğu gibi 0'dan başlarlar. Sırasız dizilerde ise sıra numarası bulunmaz ve belirli bir değere erişebilmek için ya değere karşılık gelen anahtar kelimeyi yada döngüler ile beraber kullanırız.
+        </p>
+        
+        <p>Python'da dizi çeşitleri 4'e ayrılır, bunlar:</p>
+
+        <article id="dizilerList">
+          <header>List</header>
+          <p>
+            Sıralı (yani tek tek erişilebilir), sonradan değiştirilebilir ve veri tekrarına izin verilir.
+          </p>
+          <code>isimler = ["Alper", "Atilla", "Önder"]
+          </code>
+        </article>
+
+        <article id="dizilerTuple">
+          <header>Tuple</header>
+          <p>
+            Sıralı, sonradan veri değiştirilemez ve tekrara izin verilir.
+          </p>
+          <code>isimler = ("Alper", "Atilla", "Önder")
+          </code>
+        </article>
+
+        <article id="dizilerSet">
+          <header>Set</header>
+          <p>
+            Sırasız, sonradan değiştirilebilir ve tekrara izin verilmez.
+          </p>
+          <code>isimler = {"Alper", "Atilla", "Önder"}
+          </code>
+        </article>
+
+        <article id="dizilerDictionary">
+          <header>Dictionary</header>
+          <p>
+            Diğer dizilerden farklı olarak veri erişimi için ayrıyetten bir anahtar kelime tanımlamamız gerekiyor bu yüzden sırasızlardır, sonradan değiştirilemezler ve anahtar kelimeleri aynı olamaz.
+          </p>
+          <code>kisi = ["isim":"Alper", "soyad": "Derman", "numara":"256"]
+            print(kisi["isim"])
+            print(kisi["soyad"])
+            print(kisi["numara"])
+          </code>
+        </article>
+
+        <article id="dizilerDonguler">
+          <header>Diziler ve Döngüler</header>
+          <p>
+            Diziler ve döngüler genellikle bir arada kullanılır.
+          </p>
+          <p>
+            Örnek olarak yüzlerce öğrencinin adlarının bulunduğu bir öğrenci listesini yazdırdığımızı düşünelim. Tek tek değişken tanımlamak yerine bir dizinin içine adları tanımlayıp döngü ile beraber yazdırmak hem daha kolay hem de daha verimli bir yöntemdir.
+          </p>
+          <p>
+            Dizileri, döngüler ile birlikte kullanmanın 2 yolu vardır:
+          </p>
+          <p>1. yöntem indis numarasını kullanarak (bu yöntem sadece sıralı dizilerde kullanılabilir).</p>
+          <code>isimler = ["Alper", "Atilla", "Önder"]
+            for i in range(0, len(isimler))
+            &nbsp;&nbsp;print(isimler[i])
+          </code>
+          <p>
+            <b>Not:</b> <code>len(isimler)</code> işlemi, isimler dizisinin içindeki toplam elemanların sayısını temsil eder.
+          </p>
+          <p>2. yöntem ise for değişkenini dizinin içinde tanımlayarak (bu yöntem hem sıralı hemde sırasız döngüler için kullanılabilir).</p>
+          <code>isimler = ["Alper", "Atilla", "Önder"]
+            for x in isimler
+            &nbsp;&nbsp;print(x)
+          </code>
+        </article>
+        
+        <article id="dizilerIslem">
+          <header>Dizi İşlemleri</header>
+          <p>Dizileri kullanırken işimize yarayan yardımcı işlemler:</p>
+          <ul>
+            <li><b>Dizideki toplam eleman sayısını gösterme:</b> <code>len(isimler)</code></li>
+            <li><b>Belirli bir indise eleman ekleme:</b> <code>isimler.insert(1, "Mehmet")</code></li>
+            <li><b>İndis numarasına göre eleman silme:</b> <code>isimler.pop(2)</code></li>
+            <li><b>İki diziyi birleştirme:</b> <code>isimler.extend(numaralar)</code></li>
+          </ul>
+        </article>
+        
+        <article id="diziler2Boyut">
+          <header>2 Boyutlu Diziler (Matrisler)</header>
+          <p>
+            2 Boyutlu diziler kısaca bir dizinin içindeki başka bir diziden ibarettir. Matematikteki matrislere benzerler. 2 Boyutlu diziler sayesinde daha kapsamlı veriler saklayabiliriz.
+          </p>
+          <p>
+            Örnek olarak 3 elemanlı bir dizi oluşturalım ve herbir elemanı 2 elemanlı başka bir dizi olsun.
+          </p>
+          <code>dizi = [["0.0","0.1"], ["1.0","1.1"], ["2.0","2.1"]]
+            print(dizi[0][0])
+            print(dizi[0][1])
+            print(dizi[1][0])
+            print(dizi[1][1])
+            ...
+          </code>
+          <p>
+            2 boyutlu dizinin tüm elemanlarını döngü kullanarak yazdırmak için, 2 tane döngüyü iç içe yazmak gerekir.
+          </p>
+          <code>dizi = [["0.0","0.1"], ["1.0","1.1"], ["2.0","2.1"]]
+            for i in range(0, len(dizi))
+            &nbsp;&nbsp;for u in range(0, len(dizi[i]))
+            &nbsp;&nbsp;&nbsp;&nbsp;print(dizi[i][u])
+          </code>
+          <p>
+            <b>Not:</b> <code>len()</code> işlemi sadece o dizinin elemanlarını sayar, dizinin içindeki başka dizilerin elemanlarını hesaba katmaz.
+          </p>
+          <p>
+            Başka bir örnek olarak yukarıdaki öğrenci listesinin geliştirilmiş halini yapalım. Bu örnekte hem 'list' tipi diziyi hem de 'dictionary' türündeki diziyi bir arada kullanacağız ve ekrana tüm öğrencilerin bilgilerini yazdıracağız.
+          </p>
+          <code>ogrenciler = [["isim":"Alper", "soyad": "Derman", "numara":"256"], ["isim":"Atilla", "soyad": "Erdinç", "numara":"367"], ["isim":"Önder", "soyad": "Konuk", "numara":"478"]]
+            for i in range(0, len(ogrenciler))
+            &nbsp;&nbsp;print(ogrenciler[i]["isim"])
+            &nbsp;&nbsp;print(ogrenciler[i]["soyad"])
+            &nbsp;&nbsp;print(ogrenciler[i]["numara"])
+          </code>
+        </article>
+
+      </article>
+    </section>
+    <section id="fonksiyonlar">
+      <header>Fonksiyonlar, Metodlar, Prosedürler</header>
+      <article>
+        <p>
+          Fonksiyonlar (metodlar yada prosedürler olarakta bilinir), içine yazdığımız kodları, istediğimiz zaman tekrardan çalıştırmamızı sağlarlar. Fonksiyonların amacı kodların dinamikleştirilmesi (yani değişen verilere ayak uydurabilmesi) ve kod tekrarını ortadan kaldırmaktır.
+        </p>
+        <p>
+          Fonksiyonları şu şekilde tanımlayıp kullanabiliriz:
+        </p>
+        <code>def merhaba():
+          &nbsp;&nbsp;print("Merhaba, Dünya!")
+
+          merhaba()
+        </code>
+        <p>
+          Fonksiyonları dinamik yapan şey, parametre dediğimiz veri tanımlama işlemidir. Parametreler ile fonksiyonun içinde işlem yapılmak istenen verileri dışardan tanımlayabiliriz. Parametreler fonksiyonun içinde kullanılan değişkenlerdir ve istediğimiz her tipte (integer, string, dizi) parametre atayabiliriz.
+        </p>
+        <p>
+          Parametre tanımlamak için parantezin içine değişken adını yazarız. Eğer birden fazla parametre göndermek istiyorsak virgül ile ayırıp başka bir değişken adı yazabiliriz.
+        </p>
+        <code>def topla(a,b):
+          &nbsp;&nbsp;print(a+b)
+
+          topla(3,2)
+        </code>
+        <p>
+          Fonksiyonlar verileri geri döndürebiliriler. Yani işlenen veriyi yukarıda yaptığımız gibi direkt yazdırmak yerine bir değişkene aktarabiliriz ve tekrardan işleyebiliriz.
+        </p>
+        <code>def topla(a,b):
+          &nbsp;&nbsp;return a+b
+
+          x = topla(3,2)
+          y = topla(6,4)
+          z = topla(x,y)
+          print(z)
+        </code>
+        
+        <article id="fonksiyonlarScope">
+          <header>Değişkenlerin Kapsam Alanı (Scope) ve Evrensel Değişkenler (Global)</header>
+          <p>
+            Fonksiyonun içinde tanımladığımız parametreler de dahil bütün değişkenler sadece o fonksiyonun içinde kullanılır, fonksiyonun dışında veya başka bir fonksiyonun içinde kullanılamazlar. Buyüzden aşşağıdaki örnek hata verecektir.
+          </p>
+          <code>def topla(a,b):
+            &nbsp;&nbsp;sonuc = a+b
+
+            topla(3,7)
+            print(sonuc)
+          </code>
+          <p>
+            Eğer fonksiyonların içinde tanımladığımız bir değişkeni heryerde kullanmak istiyorsak evrensel (global) olarak tanımlamamız gerekir.
+          </p>
+          <code>def topla(a,b):
+            &nbsp;&nbsp;sonuc = a+b
+            &nbsp;&nbsp;global sonuc
+
+            topla(3,7)
+            print(sonuc)
+          </code>
+        </article>
+
+      </article>
+    </section>
+    <section id="classlar">
+      <header>Sınıflar, Nesneler ve Özellikler (Class, Object, Attribute)</header>
+      <article>
+        <p>
+          <b>Sınıflar</b>, bir veya birden çok ortak <b>özellikleri</b> olan <b>nesneleri</b> tanımlamaya yarayan bir kümedir. Sınıflar aynı zamanda programlarımızı özelliklerine göre parçalara ayırmaya ve karmaşıklığı azaltmaya yararlar.
+        </p>
+        <p>
+          Mesela bir okuldaki öğrencileri düşünelim, okulun içinde öğrenciler vardır ve öğrencilerin ise kendine ait bilgileri vardır. Okulu bir class olarak düşünürsek, öğrenciler, bu classın bir nesnesi, öğrencilerin bilgileri ise özellikleri olur.
+        </p>
+        <p>
+          <b>Sınıflar nerede kullanılır?</b> Sınıflar, daha çok birden fazla kişinin üstünde çalıştığı büyük ve karmaşık projelerde kullanılır.
+        </p>
+        <article id="classlarTanim">
+          <header>Sınıfların Tanımı ve Kullanımı</header>
+          <p>
+            Tek nesneli basit bir classın tanımı:
+          </p>
+          <code>
+            class ogrenci: // SINIF
+            &nbsp;&nbsp;isim = "Alper" // ÖZELLİK
+            &nbsp;&nbsp;soyad = "Derman" // ÖZELLİK
+            &nbsp;&nbsp;vize = 65 // ÖZELLİK
+            &nbsp;&nbsp;final = 75 // ÖZELLİK
+            &nbsp;&nbsp;def hesapla(self):
+            &nbsp;&nbsp;&nbsp;&nbsp;return (self.vize * 0.4) + (self.final * 0.6)
+
+            alper = ogrenci() // NESNE
+            print(alper.isim+" "+alper.soyad+": ",alper.hesapla())
+          </code>
+          <p>
+            <b>Not:</b> Classlarda tanımladığımız fonksiyonların 1. parametresi <code>self</code>, classın kendisini temsil eden bir referans parametresidir ve "self" adını taşımak zorunda değildir, yerine istediğimiz adı yazabiliriz.
+          </p>
+          <p>
+            Birden fazla nesne tanımlamak için özel bir fonksiyon olan <code>__init__()</code> fonksiyonunu kullanacağız. <code>__init__()</code> fonksiyonunu özel yapan şey, class tanımlandığı anda otomatik olarak çalıştırılmasıdır. Her classın kendine ait bir <code>__init__()</code> fonksiyonu vardır. <code>__init__()</code> fonksiyonu, <b>oluşturucu (constructor)</b> olarak da bilinir.
+          </p>
+          <p>
+            Öğrenci sınıfından türemiş nesneler oluşturarak, vize ve final puanlarını hesaplayan bir programı yazalım.
+          </p>
+          <code>class ogrenci: // SINIF
+            &nbsp;&nbsp;def __init__(self, isim, soyad, vize, final): // OLUŞTURUCU (CUNSTRUCTOR)
+            &nbsp;&nbsp;&nbsp;&nbsp;self.isim = isim // ÖZELLİK
+            &nbsp;&nbsp;&nbsp;&nbsp;self.soyad = soyad // ÖZELLİK
+            &nbsp;&nbsp;&nbsp;&nbsp;self.vize = vize // ÖZELLİK
+            &nbsp;&nbsp;&nbsp;&nbsp;self.final = final // ÖZELLİK
+            &nbsp;&nbsp;def hesapla(self):
+            &nbsp;&nbsp;&nbsp;&nbsp;return (self.vize * 0.4) + (self.final * 0.6)
+
+            alper = ogrenci("Alper", "Derman", 65, 75) // NESNE
+            atilla = ogrenci("Atilla", "Erdinç", 68, 82) // NESNE
+            print(alper.isim+" "+alper.soyad+": ",alper.hesapla())
+            print(atilla.isim+" "+atilla.soyad+": ",atilla.hesapla())
+          </code>
+        </article>
+        <article id="classlarErisim">
+          <header>Erişim Belirleyicileri (Public, Private, Protected)</header>
+          <p>
+            Erişim belirleyicileri, bir sınıfın içinde olan değişkenleri, fonksiyonları vb. dışarıdan veya içeriden erişilip erişilemeyeceğini belirten özelliklerdir.
+          </p>
+          <p>
+            <b>Erişim belirleyicileri Python'da kullanabirlik bakımında 2'ye, ama diğer programlama dillerinde 3'e ayrılır</b>, bunlar: 
+          </p>
+          <ul>
+            <li><b>Public:</b> Sınıf dışından erişilebileceğini temsil eder. Classın içinde normal olarak tanımladığınız bütün değişkenler ve fonksiyonlar public özelliğine sahiptir.</li>
+            <li><b>Private:</b> Sınıf dışından erişilemeyeceğini temsil eder. Tanımlamak için değişkenlerin veya fonksiyonların adının başına 2 tane alttan çizgi <code>__</code> koyulur.</li>
+            <li><b>Protected:</b> Python'da karşılığı olmamasına rağmen diğer programlama dillerinde rastlayacağınız başka bir erişim belirleyicisi olan protected, sadece tanımlanan sınıfın içinden ve miras alınan alt sınıfın içinden erişebileceğini temsil eder.</li>
+          </ul>
+        </article>
+
+        <article id="classlarMiras">
+          <header>Miras Alma (İnheritance)</header>
+          <p>
+            Miras alma işlemi, tanımladığımız bir ana sınıfın bütün özelliklerini (constructor dahil) taşıyan başka bir alt sınıf oluşturmamızı sağlar. Kod tekrarını azaltmak için kullanılır.
+          </p>
+          <p>
+            Mesela bir şirketin çalışanlarını düşünelim. Her çalışanın pozisyonu aynı değildir ve maaşı aynı şekilde hesaplanmaz. Bu sorunu çözmek için her çalışanda olması gereken özellikleri (adı, soyadı vb.) ana sınıfta, haftalık maaş alan çalışanları alt sınıfta, saatlik maaş alan çalışanları ise başka bir alt sınıfta toplayabiliriz.
+          </p>
+          <img src="uml_calisanlar.png"/>
+          <code>class calisan:
+          &nbsp;&nbsp;def __init__(self, isim, soyad):
+          &nbsp;&nbsp;&nbsp;&nbsp;self.isim = isim
+          &nbsp;&nbsp;&nbsp;&nbsp;self.soyad = soyad
+
+          class saatlik(calisan):
+          &nbsp;&nbsp;def __init__(self, isim, soyad, calistigiSaat, saatlikMiktar):
+          &nbsp;&nbsp;&nbsp;&nbsp;super().__init__(isim, soyad)
+          &nbsp;&nbsp;&nbsp;&nbsp;self.calistigiSaat = calistigiSaat
+          &nbsp;&nbsp;&nbsp;&nbsp;self.saatlikMiktar = saatlikMiktar
+          &nbsp;&nbsp;def maashesapla(self):
+          &nbsp;&nbsp;&nbsp;&nbsp;return self.calistigiSaat * self.saatlikMiktar
+
+          class haftalik(calisan):
+          &nbsp;&nbsp;def __init__(self, isim, soyad, haftalikMaas):
+          &nbsp;&nbsp;&nbsp;&nbsp;super().__init__(isim, soyad)
+          &nbsp;&nbsp;&nbsp;&nbsp;self.haftalikMaas = haftalikMaas
+          &nbsp;&nbsp;def maasHesapla(self):
+          &nbsp;&nbsp;&nbsp;&nbsp;return self.haftalikMaas
+
+          alper = saatlik("Alper", "Derman", 8, 38)
+          atilla = haftalik("Atilla", "Erdinç", 1500)
+          </code>
+          <p>
+            <b>Not:</b> <code>super()</code>, ana sınıfta tanımladığımız fonksiyonları, alt sınıftan erişebilmemizi sağlar.
+          </p>
+          <p>
+            Şimdi üstteki örnekte birkaç açıklama yapmamız gerekiyor. Söylediğimiz gibi miras alan alt sınıflar, ana sınıfın oluşturucusu (constructor) dahil herşeyi barındırıyordu. Peki neden alt sınıflar için ayrıyetten bir constructor oluşturduk?
+          </p>
+          <p>
+            Bunun sebebi alt sınıflara özel tanımladığımız özellikler (<code>calistigiSaat</code>, <code>calistigiMiktar</code>, <code>haftalikMaas</code>) yüzünden dolayı. Bu özellikleri eklemek için alt sınıfa özel oluşturucu tanımlamamız gerekti. Ana sınıfta tanımladığımız bilgileri (<code>isim</code>, <code>soyad</code>) almak için ise <code>super()</code> fonksiyonunu kullandık.
+          </p>
+        </article>
+
+      </article>
+    </section>
+
+  </main>
+  <script  src="script.js"></script>
+</body>
+</html>
