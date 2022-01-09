@@ -452,13 +452,22 @@
     <div dcg-obj="content.screen.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>During the render unmodified content elements are the first thing users see and it may look bad even if its only for just a split second. In order to prevent that and show a loading screen, we can use screen block preset option.</p>
-        <p>Default screen block is just a white screen but you can define a custom screen block with <code>dcg-screen</code> attribute.</p>
+        <p>During the render unmodified content elements are the first thing users see and it may look bad even if its only for just a split second. In order to prevent that and show a loading screen, we can use <code>screenBlock</code> preset option.</p>
+        <p>Default screen block is just a white screen and it is dynamically loaded. If you want a custom screen block, you can define it with <code>dcg-screen</code> attribute like in the below.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
             <pre><code class="language-html">
-              &lt;div class="loading-screen" dcg-screen>Loading...&lt;/div>
+              &lt;div class="loading-screen" dcg-screen>Custom Loading...&lt;/div>
+
+              &lt;script>
+                dcg.render({
+                  designSrc: "path/to/design.html",
+                  options: {
+                    screenBlock: true
+                  }
+                });
+              &lt;/script>
             </code></pre>
           </div>
         </div>
