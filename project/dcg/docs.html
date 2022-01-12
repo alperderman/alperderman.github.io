@@ -95,10 +95,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td><b>content</b></td><td>Parameter for defining content, you can set the content as string or an HTML element, if isn't defined then DCG checks for the <b>contentSrc</b> parameter for external content</td></tr>
+            <tr><td><b>content</b></td><td>Parameter for defining content, you can set the content as string or an HTML element, if isn't defined then DCG checks for the <code>contentSrc</code> parameter for external content</td></tr>
             <tr><td><b>contentSrc</b></td><td>Parameter for defining external content, if it is not defined then sets the content as the current document</td></tr>
-            <tr><td><b>design</b></td><td>Parameter for defining design, you can set the design as string, if isn't defined then DCG checks for the <b>designSrc</b> parameter for external design</td></tr>
-            <tr><td><b>designSrc</b></td><td>Parameter for defining external design, if it is not defined then sets the content as the current design and render occures on the same page. Read the <b>One Page Renders</b> section for more details</td></tr>
+            <tr><td><b>design</b></td><td>Parameter for defining design, you can set the design as string, if isn't defined then DCG checks for the <code>designSrc</code> parameter for external design</td></tr>
+            <tr><td><b>designSrc</b></td><td>Parameter for defining external design, if it is not defined then sets the content as the current design and render occurs on the same page. Read the <b>One Page Renders</b> section for more details</td></tr>
             <tr><td><b>before()</b></td><td>Function parameter for defining a function that will ran before the render, usually not needed but included for the sake of the consistency</td></tr>
             <tr><td><b>after()</b></td><td>Function parameter for defining a function that will ran after the render</td></tr>
             <tr><td><b>options</b></td><td>Parameter for preferences, explained on the <b>Preset Options</b> section</td></tr>
@@ -512,7 +512,7 @@
     <div dcg-obj="content.onepage.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>One page renders are used if you don't want to mess with a design page. on these renders, render occures on the same page but instead of defining other script files with the script tag (like normally you would do) you have to define them with the <code>scripts</code> preset option. You can also use the <code>after()</code> function to execute scripts.</p>
+        <p>One page renders are used if you don't want to mess with a design page. on these renders, render occurs on the same page but instead of defining other script files with the script tag (like normally you would do) you have to define them with the <code>scripts</code> preset option. You can also use the <code>after()</code> function to execute scripts.</p>
         <p>The reason for that change is, since DCG acts like a preprocessor, it breaks the execution flow with async XHR calls and DOM modifications. In this situation there are only 2 ways to satisfy the execution flow, either you have to modify the other scripts to be compatible with the DCG (which is not possible for every script or library) or all of the scripts are manually executed after the render (which is more viable).</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
