@@ -128,28 +128,13 @@
             <tr><td><b>onload</b></td><td>For defining custom onload events that will be dispatched after imitating window onload event</td><td>[]</td><td>Array of objects</td></tr>
           </tbody>
         </table>
-        <p>Preset options are stored in <code>dcg.profile</code> object. You can use the <code>dcg.config()</code> function or the 'options' object inside the render function for changing the options and <code>dcg.reset()</code> function for resetting to their default value. (If you use options object inside the render function, options are automatically resetted to their default value after the render)</p>
+        <p>Preset options are stored in <code>dcg.profile</code> object and you can use the 'options' parameter inside the render function for changing the options.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
             <pre><code class="language-html">
               &lt;script src="path/to/dcg.js">&lt;/script>
               &lt;script>
-                dcg.config({
-                  showLogs: true,
-                  cacheRender: false,
-                  screenBlock: false,
-                  replaceHead: true,
-                  scripts: ["script1.js", "../script2.js"],
-                  onload: [{node: window, name: "customevent1"}, {node: document, name: "customevent2"}]
-                });
-                dcg.render({
-                  designSrc: "path/to/design.html"
-                });
-                dcg.reset();
-
-                // OR
-
                 dcg.render({
                   designSrc: "path/to/design.html",
                   options: {
@@ -487,7 +472,7 @@
     <div dcg-obj="content.screen.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>During the render unmodified content elements are the first thing users see and it may look bad even if its only for just a split second. In order to prevent that and show a loading screen, we can use <code>screenBlock</code> preset option.</p>
+        <p>During the render, unmodified content elements are the first thing users see and it may look bad even if its only for just a split second. In order to prevent that and show a loading screen, we can use <code>screenBlock</code> preset option.</p>
         <p>Default screen block is just a white screen and it is dynamically loaded. If you want a custom screen block, you can define it with <code>dcg-screen</code> attribute like in the below.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
