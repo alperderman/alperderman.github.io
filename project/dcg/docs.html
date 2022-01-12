@@ -23,6 +23,7 @@
       {
         "introduction": {"title": "Introduction"},
         "start": {"title": "Getting Started"},
+        "parameters": {"title": "Render Parameters"},
         "presets": {"title": "Preset Options"},
         "dynamic": {"title": "Dynamic Contents"},
         "keywords": {"title": "Token Keywords"},
@@ -34,6 +35,7 @@
         "eval": {"title": "Eval Expressions"},
         "conditional": {"title": "Conditional Rendering"},
         "screen": {"title": "Screen Block"},
+        "onepage": {"title": "One Page Renders"},
         "support": {"title": "Browser Support"}
       }
     </div>
@@ -49,8 +51,8 @@
     <div dcg-obj="content.start.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>In order to use DCG, just download it from <a target="_blank" href="https://raw.githubusercontent.com/alperderman/dcg/main/dist/dcg.js">Github</a> and create two HTML files, one for the contents and one for the design like in the below.</p>
-        <p>And run it on your local web server.</p>
+        <p>In order to use DCG, just download it from <a target="_blank" href="https://raw.githubusercontent.com/alperderman/dcg/main/dist/dcg.js">Github</a> and create two HTML files, one for the contents and one for the design like in the below and run it on your local web server. </p>
+        <p>You can also check out the example inside GitHub repository.</p>
         <p>If you want to test the DCG without downloading anything, you can check out the <a href="{{header.btn.sandbox}}">Sandbox</a>.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
@@ -81,6 +83,29 @@
         <p><code>designSrc</code> indicates the path of the <code>design.html</code>.</p>
       </section>
     </div>
+    <div dcg-obj="content.parameters.desc" dcg-html>
+      <section id="{{_this._key}}">
+        <h1>{{_this.title}}</h1>
+        <p>Parameters of the <code>render()</code> function and their explanations.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Parameter Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><b>content</b></td><td>Parameter for defining content, you can set the content as string or an HTML element, if isn't defined then DCG checks for the <b>contentSrc</b> parameter for external content</td></tr>
+            <tr><td><b>contentSrc</b></td><td>Parameter for defining external content, if it is not defined then sets the content as the current document</td></tr>
+            <tr><td><b>design</b></td><td>Parameter for defining design, you can set the design as string, if isn't defined then DCG checks for the <b>designSrc</b> parameter for external design</td></tr>
+            <tr><td><b>designSrc</b></td><td>Parameter for defining external design, if it is not defined then sets the content as the current design and render occures on the same page. Read the <b>One Page Renders</b> section for more details</td></tr>
+            <tr><td><b>before()</b></td><td>Function parameter for defining a function that will ran before the render, usually not needed but included for the sake of the consistency</td></tr>
+            <tr><td><b>after()</b></td><td>Function parameter for defining a function that will ran after the render</td></tr>
+            <tr><td><b>options</b></td><td>Parameter for preferences, explained on the <b>Preset Options</b> section</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
     <div dcg-obj="content.presets.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
@@ -98,6 +123,9 @@
             <tr><td><b>cacheRender</b></td><td>For caching the render, changing it <code>true</code> is highly recommended for production</td><td>false</td><td>Boolean</td></tr>
             <tr><td><b>showLogs</b></td><td>For showing the render logs</td><td>false</td><td>Boolean</td></tr>
             <tr><td><b>screenBlock</b></td><td>For blocking the screen during the render</td><td>true</td><td>Boolean</td></tr>
+            <tr><td><b>replaceHead</b></td><td>for whether if head of the content is appended or replaced completely by the design's head</td><td>false</td><td>Boolean</td></tr>
+            <tr><td><b>scripts</b></td><td>For defining external scripts</td><td>[]</td><td>Array of strings / string</td></tr>
+            <tr><td><b>onload</b></td><td>For defining custom onload events that will be dispatched after imitating window onload event</td><td>[]</td><td>Array of objects</td></tr>
           </tbody>
         </table>
         <p>Preset options are stored in <code>dcg.profile</code> object. You can use the <code>dcg.config()</code> function or the 'options' object inside the render function for changing the options and <code>dcg.reset()</code> function for resetting to their default value. (If you use options object inside the render function, options are automatically resetted to their default value after the render)</p>
@@ -109,7 +137,11 @@
               &lt;script>
                 dcg.config({
                   showLogs: true,
-                  cacheRender: false
+                  cacheRender: false,
+                  screenBlock: false,
+                  replaceHead: true,
+                  scripts: ["script1.js", "../script2.js"],
+                  onload: [{node: window, name: "customevent1"}, {node: document, name: "customevent2"}]
                 });
                 dcg.render({
                   designSrc: "path/to/design.html"
@@ -122,7 +154,11 @@
                   designSrc: "path/to/design.html",
                   options: {
                     showLogs: true,
-                    cacheRender: false
+                    cacheRender: false,
+                    screenBlock: false,
+                    replaceHead: true,
+                    scripts: ["script1.js", "../script2.js"],
+                    onload: [{node: window, name: "customevent1"}, {node: document, name: "customevent2"}]
                   }
                 });
               &lt;/script>
@@ -471,6 +507,31 @@
           </div>
         </div>
         <p><b>Note:</b> If you use default screen block, you may still see the unmodified content for couple of miliseconds. Thats because it is defined dynamically with JavaScript and since scripts are executed after all of the document is loaded, it takes a small but noticible amount of time to screen block to takes effect. Thats just how browsers work, so manually defining custom screen blocks are the best way to be sure especially if you are a perfectionist.</p>
+      </section>
+    </div>
+    <div dcg-obj="content.onepage.desc" dcg-html>
+      <section id="{{_this._key}}">
+        <h1>{{_this.title}}</h1>
+        <p>One page renders are used if you don't want to mess with a design page. on these renders, render occures on the same page but instead of defining other script files with the script tag (like normally you would do) you have to define them with the <code>scripts</code> preset option. You can also use the <code>after()</code> function to execute scripts.</p>
+        <p>The reason for that change is, since DCG acts like a preprocessor, it breaks the execution flow with async XHR calls and DOM modifications. In this situation there are only 2 ways to satisfy the execution flow, either you have to modify the other scripts to be compatible with the DCG (which is not possible for every script or library) or all of the scripts are manually executed after the render (which is more viable).</p>
+        <div class="row lg:gutter-2 mb-6">
+          <div class="column col-12 lg:col-6">
+            <h3 class="mt-0">content.html</h3>
+            <pre><code class="language-html">
+              &lt;script src="dcg.js">&lt;/script>
+              &lt;script>
+                dcg.render({
+                  options: {
+                    scripts: ["scriptfile.js", "otherscriptfile.js"] //external script files
+                  },
+                  after: function() {
+                    //your script goes here
+                  }
+                });
+              &lt;/script>
+            </code></pre>
+          </div>
+        </div>
       </section>
     </div>
     <div dcg-obj="content.support.desc" dcg-html>
