@@ -367,7 +367,10 @@
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <pre><code class="language-js">
-              var cardTemplate = dcg.loadTemplate({id:"cardTemplate", data:{"title":"This is the title", "desc":"And this is the description"}});
+              var cardTemplate = dcg.loadTemplate({
+                id: "cardTemplate",
+                data: {"title":"This is the title", "desc":"And this is the description"}
+              });
               document.body.innerHTML += cardTemplate.innerHTML;
             </code></pre>
           </div>
