@@ -128,7 +128,7 @@
             <tr><td><b>onload</b></td><td>For defining custom onload events that will be dispatched after imitating window onload event</td><td>[]</td><td>Array of objects</td></tr>
           </tbody>
         </table>
-        <p>Preset options are stored in <code>dcg.profile</code> object and you can use the 'options' parameter inside the render function for changing the options.</p>
+        <p>Preset options are stored in <code>dcg.profile</code> object and you can use the <code>options</code> parameter inside the render function to change the options.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
@@ -155,10 +155,8 @@
     <div dcg-obj="content.dynamic.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>Dynamic contents are nestable objects that can be used as tokens (one-way variables). Dynamic contents are seperated into 3 categories; JSON, HTML and raw text.</p>
-        <p>You can use other tokens inside HTML tokens.</p>
-        <p>Also since JSON tokens are basically objects, you can nest them with other tokens.</p>
-        <p>In order to use tokens you have to make a definition on the <b>content.html</b> like in the below.</p>
+        <p>Dynamic contents are simple objects that can be used as tokens (it is called that because they are not reactive). Dynamic contents are seperated into 3 categories; JSON, HTML and raw text.</p>
+        <p>You can use other tokens inside HTML tokens and you can nest JSON tokens.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
@@ -209,7 +207,7 @@
             </code></pre>
           </div>
         </div>
-        <p>And for iterating a certain object or array you can define <code>dcg-repeat</code> attribute on <b>design.html</b>.</p>
+        <p>And for iterating a certain object or array you can define <code>dcg-repeat</code> attribute.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
@@ -280,7 +278,7 @@
     <div dcg-obj="content.roots.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>Root tokens are special kind of tokens that for returning premade values. Root tokens have both the highest priority and the lowest priority among other tokens. Reason for that is they are rendered couple of times during the rendering process, so you can use them anywhere you like, even inside the external contents or templates.</p>
+        <p>Root tokens are special kind of tokens that for returning premade values.</p>
         <table>
           <tr><td>$host</td><td>Returns the host name with protocol: <b>"http://example.com"</b></td></tr>
           <tr><td>$path</td><td>Returns the full directory path of the current file: <b>"/folder/pics"</b></td></tr>
@@ -328,8 +326,8 @@
     <div dcg-obj="content.templates.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>Templates are used for minimizing code duplication and for making pages more dynamic. They can take input data either by raw JSON or by indicating a token object, templates are defined on <code>design.html</code>.</p>
-        <p>In order to use templates, first you have to reference it with <code>dcg-tref</code> attribute, after that you can render them with <code>dcg-tren</code> attribute. You can also use <code>dcg-data</code> to pass an object to be used as tokens inside the template.</p>
+        <p>Templates are used for minimizing code duplication and for making pages more dynamic. They can take input data either by raw JSON or by indicating a token object.</p>
+        <p>In order to use templates, first you have to reference it with <code>dcg-tref</code> attribute, after that you can render them with <code>dcg-tren</code>. You can also use <code>dcg-data</code> to pass an object to be used as tokens inside the template.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
@@ -365,12 +363,21 @@
             </code></pre>
           </div>
         </div>
+        <p>Templates can be used after the render with <code>dcg.loadTemplate()</code> function. It will return the template as a HTML element.</p>
+        <div class="row lg:gutter-2 mb-6">
+          <div class="column col-12 lg:col-6">
+            <pre><code class="language-js">
+              var cardTemplate = dcg.loadTemplate({id:"cardTemplate", data:{"title":"This is the title", "desc":"And this is the description"}});
+              document.body.innerHTML += cardTemplate.innerHTML;
+            </code></pre>
+          </div>
+        </div>
       </section>
     </div>
     <div dcg-obj="content.external.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>External contents are self-explanatory, with the <code>dcg-src</code> attribute you can fetch contents, API's or templates from other pages or sites. It can be used on both <b>content.html</b> and <b>design.html</b>.</p>
+        <p>External contents are self-explanatory, with the <code>dcg-src</code> attribute you can fetch contents, API's or templates from other pages or sites.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
@@ -472,13 +479,13 @@
     <div dcg-obj="content.screen.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>During the render, unmodified content elements are the first thing users see and it may look bad even if its only for just a split second. In order to prevent that and show a loading screen, we can use <code>screenBlock</code> preset option.</p>
+        <p>During the render, unmodified content elements are the first thing the users see and it may look bad even if its only for just a split second. In order to prevent that, we use <code>screenBlock</code> preset option.</p>
         <p>Default screen block is just a white screen and it is dynamically loaded. If you want a custom screen block, you can define it with <code>dcg-screen</code> attribute like in the below.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
             <pre><code class="language-html">
-              &lt;div class="loading-screen" dcg-screen>Custom Loading...&lt;/div>
+              &lt;div class="loading-screen" dcg-screen>Custom Loading Screen&lt;/div>
 
               &lt;script>
                 dcg.render({
@@ -491,14 +498,14 @@
             </code></pre>
           </div>
         </div>
-        <p><b>Note:</b> If you use default screen block, you may still see the unmodified content for couple of miliseconds. Thats because it is defined dynamically with JavaScript and since scripts are executed after all of the document is loaded, it takes a small but noticible amount of time to screen block to takes effect. Thats just how browsers work, so manually defining custom screen blocks are the best way to be sure especially if you are a perfectionist.</p>
+        <p><b>Note:</b> If you use the default screen block, you may still see the unmodified content for couple of miliseconds. Thats because it is defined dynamically with JavaScript and since scripts are has to be executed after all of the document is loaded, it takes a small but noticible amount of time to screen block to takes effect. So manually defining custom screen blocks are the best way to be sure.</p>
       </section>
     </div>
     <div dcg-obj="content.onepage.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
         <p>One page renders are used if you don't want to mess with a design page. on these renders, render occurs on the same page but instead of defining other script files with the script tag (like normally you would do) you have to define them with the <code>scripts</code> preset option. You can also use the <code>after()</code> function to execute scripts.</p>
-        <p>The reason for that change is, since DCG acts like a preprocessor, it breaks the execution flow with async XHR calls and DOM modifications. In this situation there are only 2 ways to satisfy the execution flow, either you have to modify the other scripts to be compatible with the DCG (which is not possible for every script or library) or all of the scripts are manually executed after the render (which is more viable).</p>
+        <p>The reason for that change is, since DCG acts like a preprocessor, it breaks the execution flow with async XHR calls and DOM modifications. In this situation there are only 2 ways to satisfy the execution flow, either you have to modify the other scripts to be compatible with the DCG (which is not possible for every script or library) or all of the scripts are manually executed after the render (which thats what we are trying to accomplish here).</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
