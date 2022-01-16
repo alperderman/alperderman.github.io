@@ -9,40 +9,30 @@
   </head>
   <body>
 
-    <div dcg-obj="header" dcg-json>
+    <div dcg-obj="ui" dcg-json>
       {
-        "title": "Dynamic Content Generation",
-        "sub": "sandbox",
-        "btn": {
-          "github": "https://github.com/alperderman/dcg",
-          "documentation": "{{$host}}{{$path}}/docs"
-        }
+        "header":"Sandbox",
+        "btn":{"clear":"Clear", "render":"Render"},
+        "title":{"content":"Content", "design":"Design", "preview":"Preview"}
       }
     </div>
+
     <div dcg-obj="content">
       &lt;div dcg-obj="foobar" dcg-json>
         {"foo": "bars"}
       &lt;/div>
     </div>
+
     <div dcg-obj="design">
       &lt;body>
         &lt;h1>{{foobar.foo}}&lt;/h1>
       &lt;/body>
     </div>
-    <div dcg-obj="presets">
-      {
-        cacheRender: false
-      }
-    </div>
 
     <script src="assets/js/dcg.js"></script>
     <script>
       dcg.render({
-        designSrc: "layouts/project/dcg/sandbox.html",
-        options: {
-          removeCss: true,
-          cacheRender: true
-        }
+        designSrc: "layouts/project/dcg/sandbox.html"
       });
     </script>
   </body>

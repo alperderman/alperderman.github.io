@@ -1,15 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DCG | Design</title>
     <link rel="stylesheet" href="assets/css/markdown.css">
     <link rel="stylesheet" href="assets/css/prism.css">
   </head>
   <body class="bg-gray-light">
-    <div class="col-12 p-6 bg-gray-dark text-white text-center md:text-left">
+    <div id="header" class="col-12 p-6 bg-gray-dark text-white text-center md:text-left">
       <h1>{{header.title}}</h1>
       <h3 class="text-gray-light text-uppercase">{{header.sub}}</h3>
       <br>
@@ -45,34 +41,21 @@
         </div>
       </div>
     </div>
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/jquery-visibility.js"></script>
+    <script src="assets/js/jquery/jquery.js"></script>
+    <script src="assets/js/jquery/visibility.js"></script>
     <script src="assets/js/prism.js"></script>
     <script>
       $(function() {
-        $('#nav').visibility({
+        $('#header').visibility({
           continuous: true,
-          onTopPassed: function(calculations) {
+          onOffScreen: function(calculations) {
             $("#nav").addClass("position-fixed top-0 start-0");
             $("#nav-holder").removeClass("hide");
           },
-          onTopPassedReverse: function(calculations) {
+          onBottomVisible: function(calculations) {
             $("#nav").removeClass("position-fixed top-0 start-0");
             $("#nav").removeClass("flex-self-end");
             $("#nav-holder").addClass("hide");
-          }
-        });
-        $('#footer').visibility({
-          continuous: true,
-          onOnScreen: function(calculations) {
-            $("#nav").removeClass("position-fixed top-0 start-0");
-            $("#nav").addClass("flex-self-end");
-            $("#nav-holder").addClass("hide");
-          },
-          onTopPassedReverse: function(calculations) {
-            $("#nav").addClass("position-fixed top-0 start-0");
-            $("#nav").removeClass("flex-self-end");
-            $("#nav-holder").removeClass("hide");
           }
         });
         $("pre code").each(function(){

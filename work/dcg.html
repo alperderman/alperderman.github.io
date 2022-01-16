@@ -11,7 +11,7 @@
   </head>
   <body>
 
-    <div class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
+    <div dcg-screen class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
       <noscript>
         <div class="position-absolute top-50 start-50 translate-middle text-center">
           <i class="huge icons">
@@ -37,7 +37,7 @@
             <p>Dynamic Content Generation (DCG) is a front-end solution for content management. This solution is the reason how you can read this right now. Main point of the solution is splitting the content from the interface.</p>
             <br>
             <p>GitHub: <a href="https://github.com/alperderman/dcg">Source <i class="linkify icon"></i></a></p>
-            <p><a href="project/dcg/docs">Documentation <i class="linkify icon"></i></a></p>
+            <p><a href="project/dcg/docs.html">Documentation <i class="linkify icon"></i></a></p>
             <br>
             <p>In before I've tried to make this solution with <span class="text-muted">Vue</span>, it did kinda work but it had flaws and it was so complex to be actually useful. After that I have decided that I should make this from scratch.</p>
             <hr>
@@ -76,8 +76,15 @@
       dcg.render({
         designSrc: "layouts/project.html",
         options: {
-          removeCss: true,
-          cacheRender: true
+          cacheRender: true,
+          screen: {
+            mode: 2,
+            custom: function(el) {
+              $(el).fadeOut("normal", function() {
+                $(el).remove();
+              });
+            }
+          }
         }
       });
     </script>

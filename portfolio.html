@@ -11,7 +11,7 @@
   </head>
   <body>
 
-    <div class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
+    <div dcg-screen class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
       <noscript>
         <div class="position-absolute top-50 start-50 translate-middle text-center">
           <i class="huge icons">
@@ -35,27 +35,27 @@
         "title" : "Portfolio", "subtitle" : "Projects, Works, Concepts",
         "projects":[
           {"title":"Statix", "desc":"An ongoing project for analyzing web traffic.",
-           "tags":["PHP", "Back-end"], "source":"https://github.com/alperderman/statix", "details":"work/statix"},
+           "tags":["PHP", "Back-end"], "source":"https://github.com/alperderman/statix", "details":"work/statix.html"},
           {"title":"Dynamic Content Generation", "desc":"Dynamic Content Generation (DCG) is a front-end solution for content management.",
-           "tags":["JS", "Front-end", "Solution"], "source":"https://github.com/alperderman/dcg", "details":"work/dcg"},
+           "tags":["JS", "Front-end", "Solution"], "source":"https://github.com/alperderman/dcg", "details":"work/dcg.html"},
           {"title":"Unified Account System", "desc":"Standalone account management and authorization project.",
-           "tags":["PHP", "Back-end"], "source":"https://github.com/alperderman/uas", "details":"work/uas"},
+           "tags":["PHP", "Back-end"], "source":"https://github.com/alperderman/uas", "details":"work/uas.html"},
           {"title":"Chat Room", "desc":"A basic chat room made with long polling technique.",
-           "tags":["PHP", "Back-end"], "source":"https://github.com/alperderman/chatroom", "details":"work/chatroom"},
+           "tags":["PHP", "Back-end"], "source":"https://github.com/alperderman/chatroom", "details":"work/chatroom.html"},
           {"title":"Halfmoon Dashboard", "desc":"Proof of concept dashboard made with UAS, DCG and Halfmoon framework.", "img":"assets/media/w-hmdashboard.jpg",
-           "tags":["Front-end", "Back-end", "POC"], "source":"https://github.com/alperderman/halfmoon-dashboard", "details":"work/hmdashboard"},
+           "tags":["Front-end", "Back-end", "POC"], "source":"https://github.com/alperderman/halfmoon-dashboard", "details":"work/hmdashboard.html"},
           {"title":"Stock Management System", "desc":"Stock management software made with C#.", "img":"assets/media/w-stock.jpg",
-           "tags":["C#", "Application", "School Project"], "source":"https://github.com/alperderman/stock-management", "details":"work/stock"},
+           "tags":["C#", "Application", "School Project"], "source":"https://github.com/alperderman/stock-management", "details":"work/stock.html"},
           {"title":"Hotel Reservation System", "desc":"Hotel reservation system made with B4X.", "img":"assets/media/w-hotel.jpg",
-           "tags":["B4X", "Application", "School Project"], "source":"https://github.com/alperderman/hotel-reservation", "details":"work/hotel"},
+           "tags":["B4X", "Application", "School Project"], "source":"https://github.com/alperderman/hotel-reservation", "details":"work/hotel.html"},
           {"title":"Beneath the Mountains", "desc":"The initial design of the website.", "img":"assets/media/w-btm.jpg",
-           "tags":["JS", "CSS", "Front-end", "Design"], "details":"work/btm"},
+           "tags":["JS", "CSS", "Front-end", "Design"], "details":"work/btm.html"},
           {"title":"Endless Whirlpool", "desc":"The unreleased second design of the website.", "img":"assets/media/w-ew.jpg",
-           "tags":["JS", "CSS", "Front-end", "Design"], "details":"work/ew"},
+           "tags":["JS", "CSS", "Front-end", "Design"], "details":"work/ew.html"},
           {"title":"Emboss'd | Foundation", "desc":"Website design made with Foundation framework.", "img":"assets/media/w-embossd.jpg",
-           "tags":["JS", "CSS", "Front-end", "Design"], "details":"work/embossd"},
+           "tags":["JS", "CSS", "Front-end", "Design"], "details":"work/embossd.html"},
           {"title":"Cloudy | Grayshift", "desc":"The latest design of the website that I made with Grayshift framework.", "img":"assets/media/w-cloudy.jpg",
-           "tags":["JS", "CSS", "Front-end", "Design"], "details":"work/cloudy"}
+           "tags":["JS", "CSS", "Front-end", "Design"], "details":"work/cloudy.html"}
         ],
         "btn":{"source":"Source", "details":"Details"}
       }
@@ -66,8 +66,15 @@
       dcg.render({
         designSrc: "layouts/portfolio.html",
         options: {
-          removeCss: true,
-          cacheRender: true
+          cacheRender: true,
+          screen: {
+            mode: 2,
+            custom: function(el) {
+              $(el).fadeOut("normal", function() {
+                $(el).remove();
+              });
+            }
+          }
         }
       });
     </script>

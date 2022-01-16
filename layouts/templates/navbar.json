@@ -4,7 +4,7 @@
   "home": {"name": "Home", "class": "", "href": "{{$host}}"},
   "about": {"name": "About", "class": "", "href": "{{$host}}#about"},
   "services": {"name": "Services", "class": "", "href": "{{$host}}#services"},
-  "portfolio": {"name": "Portfolio", "class": "", "href": "{{$host}}/portfolio"},
+  "portfolio": {"name": "Portfolio", "class": "", "href": "{{$host}}/portfolio.html"},
   "contact": {"name": "Contact", "class": "", "href": "{{$host}}#contact"}
   }
 }
