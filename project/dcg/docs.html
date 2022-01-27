@@ -51,9 +51,9 @@
     <div dcg-obj="content.start.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>In order to use DCG, just download it from <a target="_blank" href="https://raw.githubusercontent.com/alperderman/dcg/main/dist/dcg.js">Github</a> and create two HTML files, one for the contents and one for the design like in the below and run it on your local web server. </p>
-        <p>You can also check out the example inside GitHub repository.</p>
-        <p>If you want to test the DCG without downloading anything, you can check out the <a href="{{header.btn.sandbox}}">Sandbox</a>.</p>
+        <p>In order to use DCG, just download it from <a target="_blank" href="https://raw.githubusercontent.com/alperderman/dcg/main/dist/dcg.js">Github</a> and create two HTML files, one for the contents and one for the design like in the below and run it on your local web server.</p>
+        <p>You can also check out the example inside the GitHub repository.</p>
+        <p>If you want to test the DCG without downloading anything, you can take a look at the <a href="{{header.btn.sandbox}}">Sandbox</a>.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html (the main page)</h3>
@@ -101,7 +101,7 @@
             <tr><td><b>designSrc</b></td><td>Parameter for defining external design, if it is not defined then sets the content as the current design and render occurs on the same page. Read the <b>Single Page Renders</b> section for more details</td></tr>
             <tr><td><b>before()</b></td><td>Function parameter for defining a function that will ran before the render, usually not needed but included for the sake of the consistency</td></tr>
             <tr><td><b>after()</b></td><td>Function parameter for defining a function that will ran after the render</td></tr>
-            <tr><td><b>options</b></td><td>Parameter for preferences, explained on the <b>Preset Options</b> section</td></tr>
+            <tr><td><b>options</b></td><td>Parameter for the preferences, explained on the <b>Preset Options</b> section</td></tr>
           </tbody>
         </table>
       </section>
@@ -109,7 +109,7 @@
     <div dcg-obj="content.presets.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>Preset options are preferences that will be used while rendering.</p>
+        <p>Preset options are a set of preferences that will be used while rendering.</p>
         <table>
           <thead>
             <tr>
@@ -122,7 +122,7 @@
           <tbody>
             <tr><td><b>cacheRender</b></td><td>For caching the render, changing it <code>true</code> is highly recommended for production</td><td>false</td><td>Boolean</td></tr>
             <tr><td><b>showLogs</b></td><td>For showing the render logs</td><td>false</td><td>Boolean</td></tr>
-            <tr><td><b>screenBlock</b></td><td>For blocking the screen during the render</td><td>true</td><td>Boolean</td></tr>
+            <tr><td><b>screenBlock</b></td><td>For blocking the screen during the render, check out the <b>Screen Block</b> section for more details</td><td>true</td><td>Boolean</td></tr>
             <tr><td><b>replaceHead</b></td><td>for whether if head of the content is appended or replaced completely by the design's head</td><td>false</td><td>Boolean</td></tr>
             <tr><td><b>scripts</b></td><td>For defining external scripts</td><td>[]</td><td>Array of strings / string</td></tr>
             <tr><td><b>onload</b></td><td>For defining custom onload events that will be dispatched after imitating window onload event</td><td>[]</td><td>Array of objects</td></tr>
@@ -155,8 +155,8 @@
     <div dcg-obj="content.dynamic.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>Dynamic contents are simple objects that can be used as tokens (it is called that because they are not reactive). Dynamic contents are seperated into 3 categories; JSON, HTML and raw text.</p>
-        <p>You can use other tokens inside HTML tokens and you can nest JSON tokens.</p>
+        <p>Dynamic contents are simple objects that can be used as tokens (static in a way that you cannot change it after the render, also known as non-reactive variables). Dynamic contents are seperated into 3 categories; JSON, HTML and raw text.</p>
+        <p>You can use other tokens inside HTML tokens and in addition to that you can nest JSON tokens, this enables us to do complicated processes with ease.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
@@ -207,7 +207,7 @@
             </code></pre>
           </div>
         </div>
-        <p>And for iterating a certain object or array you can define <code>dcg-repeat</code> attribute.</p>
+        <p>And for iterating a certain object or array, you can use the <code>dcg-repeat</code> attribute.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
@@ -247,7 +247,7 @@
                 {
                   "name":"The Name of the Wind",
                   "author":"Patrick Rothfuss",
-                  "genre":"Fantasy"
+                  "genre":"Fiction"
                 }
               &lt;/div>
 
@@ -264,7 +264,7 @@
             <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
               {{##book._length}} // Returns 3
-              {{##book._this}} // Returns {"name":"The Name of the Wind", "author":"Patrick Rothfuss", "genre": "Fantasy"}
+              {{##book._this}} // Returns the object
               {{##book.author._key}} // Returns author
 
               &lt;dcg dcg-repeat="actors as actor">
@@ -306,8 +306,8 @@
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
         <p>Escape prefix is used for bypassing invalid HTML errors by escaping tags and attributes.</p>
-        <p>Browsers, processes and changes couple of special tags and attributes, for example inline <code>style</code> attribute and <code>table</code>, <code>tr</code>, <code>td</code> tags. When you use tokens inside for instance <code>style</code> attribute, since the browsers sees the unprocessed token with its delimeters, it will assume this is a wrong definition and deletes the whole definition with the token.</p>
-        <p>But with the escape prefix, browsers will assume this is not an element that should be processed and skips it. After the render, we replace the escaped elements to their original state and elements will be processed automatically by the browsers.</p>
+        <p>Browsers, process and change couple of special tags and attributes, for example inline <code>style</code> attribute and <code>table</code>, <code>tr</code>, <code>td</code> tags. When you use tokens inside for instance a <code>style</code> attribute, since this browser process, occur before the DCG's render, the browsers will see the unprocessed form of the token and will assume this is a wrong definition and deletes the whole style attribute with the token.</p>
+        <p>But with the escape prefix, browsers will assume this is not an element that should be processed and skips it entirely. After the render, we replace the escaped elements to their original state and elements will be processed automatically with the correct values.</p>
         <p>In order to escape an element you can define <code>dcg:</code> in front of the tag or the attribute.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
@@ -453,7 +453,7 @@
             </code></pre>
           </div>
         </div>
-        <p><b>Warning:</b> Be careful while using eval expressions. Eval expressions are basically an encapsulated function in a string form and they are not sanitized in anyway, if you write an unsanitized user inputted data inside the eval expressions, it can be compromised so use only the tokens and data that you are absolutely sure that is safe to run on client-side.</p>
+        <p><b>Warning:</b> Be careful while using eval expressions. Eval expressions are basically an encapsulated function in a string form and they cannot be sanitized in anyway, if you write an unsanitized user inputted data inside the eval expressions, it can be compromised so use only the tokens and data that you are absolutely sure that is safe to run on client-side.</p>
       </section>
     </div>
     <div dcg-obj="content.conditional.desc" dcg-html>
@@ -488,7 +488,7 @@
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
             <pre><code class="language-html">
-              &lt;div class="loading-screen" dcg-screen>Custom Loading Screen&lt;/div>
+              &lt;div class="loading-screen" dcg-screen>Custom Screen Block&lt;/div>
 
               &lt;script>
                 dcg.render({
@@ -501,8 +501,8 @@
             </code></pre>
           </div>
         </div>
-        <p>With that said, you can also choose the way how screen block is hided. There are 3 modes of hiding: first one is entirely removes the screen block element, second one adds a display none style to the element and the last one is for custom hiding method where you define an additional function to hide the screen block.</p>
-        <p>Modes are defined with an integer and it starts from 0. Default hiding method removes the entire element (mode 0). Here is an example further explaining the custom screen blocks.</p>
+        <p>With that said, you can also choose the way how screen block is removed. There are 3 modes of hiding: first one is entirely removes the screen block element, second one adds a display none style to the element and the last one is for custom hiding method where you define an additional function to hide the screen block.</p>
+        <p>Modes are defined with an integer and starts from 0. Default hiding method removes the entire element (mode 0). Here is an example further demonstrating the custom screen blocks.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
@@ -534,8 +534,8 @@
     <div dcg-obj="content.singlepage.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>Single page renders are used if you don't want to mess with a design page. on these renders, render occurs on the same page but instead of defining other script files with the script tag (like normally you would do) you have to define them with the <code>scripts</code> preset option. You can also use the <code>after()</code> function to execute scripts.</p>
-        <p>The reason for that change is, since DCG acts like a preprocessor, it breaks the execution flow with async XHR calls and DOM modifications. In this situation there are only 2 ways to satisfy the execution flow, either you have to modify the other scripts to be compatible with the DCG (which is not possible for every script or library) or all of the scripts are manually executed after the render (which thats what we are trying to accomplish here).</p>
+        <p>Single page renders are used if you don't want to mess with a design page. On these renders, render occurs on the same page but instead of defining other script files with the script tag (like normally you would do), you have to define them with the <code>scripts</code> preset option. You can also use the <code>after()</code> function to execute scripts.</p>
+        <p>The reason for that change is, since DCG acts like a preprocessor, it breaks the execution flow with async XHR calls and DOM modifications. In this situation, there are only 2 ways to satisfy the execution flow, either you have to modify the other scripts to be compatible with the DCG (which is not possible for every script or library) or all of the scripts are manually executed after the render (which thats what we are trying to accomplish here).</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
