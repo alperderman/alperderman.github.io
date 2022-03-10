@@ -99,8 +99,8 @@
             <tr><td><b>contentSrc</b></td><td>Parameter for defining external content, if it is not defined then sets the content as the current document</td></tr>
             <tr><td><b>design</b></td><td>Parameter for defining design, you can set the design as string, if isn't defined then DCG checks for the <code>designSrc</code> parameter for external design</td></tr>
             <tr><td><b>designSrc</b></td><td>Parameter for defining external design, if it is not defined then sets the content as the current design and render occurs on the same page. Read the <b>Single Page Renders</b> section for more details</td></tr>
-            <tr><td><b>before()</b></td><td>Function parameter for defining a function that will ran before the render, usually not needed but included for the sake of the consistency</td></tr>
-            <tr><td><b>after()</b></td><td>Function parameter for defining a function that will ran after the render</td></tr>
+            <tr><td><b>before()</b></td><td>Function parameter for defining a function that will run before the render, usually not needed but included for the sake of the consistency</td></tr>
+            <tr><td><b>after()</b></td><td>Function parameter for defining a function that will run after the render</td></tr>
             <tr><td><b>options</b></td><td>Parameter for the preferences, explained on the <b>Preset Options</b> section</td></tr>
           </tbody>
         </table>
@@ -120,7 +120,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td><b>cacheRender</b></td><td>For caching the render, changing it <code>true</code> is highly recommended for production</td><td>false</td><td>Boolean</td></tr>
+            <tr><td><b>cacheRender</b></td><td>For caching the render, changing it to <code>true</code> is highly recommended for production</td><td>false</td><td>Boolean</td></tr>
             <tr><td><b>showLogs</b></td><td>For showing the render logs</td><td>false</td><td>Boolean</td></tr>
             <tr><td><b>screenBlock</b></td><td>For blocking the screen during the render, check out the <b>Screen Block</b> section for more details</td><td>true</td><td>Boolean</td></tr>
             <tr><td><b>replaceHead</b></td><td>for whether if head of the content is appended or replaced completely by the design's head</td><td>false</td><td>Boolean</td></tr>
@@ -155,7 +155,7 @@
     <div dcg-obj="content.dynamic.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>Dynamic contents are simple objects that can be used as tokens (static in a way that you cannot change it after the render, also known as non-reactive variables). Dynamic contents are seperated into 3 categories; JSON, HTML and raw text.</p>
+        <p>Dynamic contents are simple objects that can be used as tokens (in a way that you cannot change it after the render, kinda like a non-reactive version of Vue's data object). Dynamic contents are seperated into 3 categories; JSON, HTML and raw text.</p>
         <p>You can use other tokens inside HTML tokens and in addition to that you can nest JSON tokens, this enables us to do complicated processes with ease.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
@@ -247,7 +247,7 @@
                 {
                   "name":"The Name of the Wind",
                   "author":"Patrick Rothfuss",
-                  "genre":"Fiction"
+                  "genre":"Heroic fantasy"
                 }
               &lt;/div>
 
@@ -264,7 +264,7 @@
             <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
               {{##book._length}} // Returns 3
-              {{##book._this}} // Returns the object
+              {{##book._this}} // Returns {"name":"The Name of the Wind", "author":"Patrick Rothfuss", "genre":"Heroic fantasy"}
               {{##book.author._key}} // Returns author
 
               &lt;dcg dcg-repeat="actors as actor">
@@ -306,8 +306,8 @@
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
         <p>Escape prefix is used for bypassing invalid HTML errors by escaping tags and attributes.</p>
-        <p>Browsers, process and change couple of special tags and attributes, for example inline <code>style</code> attribute and <code>table</code>, <code>tr</code>, <code>td</code> tags. When you use tokens inside for instance a <code>style</code> attribute, since this browser process, occur before the DCG's render, the browsers will see the unprocessed form of the token and will assume this is a wrong definition and deletes the whole style attribute with the token.</p>
-        <p>But with the escape prefix, browsers will assume this is not an element that should be processed and skips it entirely. After the render, we replace the escaped elements to their original state and elements will be processed automatically with the correct values.</p>
+        <p>Browsers, process and change couple of special tags and attributes, for example inline <code>style</code> attribute and <code>table</code>, <code>tr</code>, <code>td</code> tags. When you use tokens inside for instance a <code>style</code> attribute, the browsers will only see the unprocessed form of the token and will assume this is a wrong definition and deletes the whole style attribute with the token.</p>
+        <p>But with the escape prefix, browsers will assume this is not an element that should be processed and skips it entirely. After the render, DCG replaces the escaped elements to their original state and elements will be processed automatically by the browsers with the correct values.</p>
         <p>In order to escape an element you can define <code>dcg:</code> in front of the tag or the attribute.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
@@ -363,7 +363,7 @@
             </code></pre>
           </div>
         </div>
-        <p>Templates can be used after the render with <code>dcg.loadTemplate()</code> function. It will return the template as a HTML element.</p>
+        <p>Templates can even be used after the render with <code>dcg.loadTemplate()</code> function. It will return the template as a HTML element.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <pre><code class="language-js">
