@@ -28,8 +28,9 @@
     <div dcg-obj="landing" dcg-json>{"subtitle" : "Web Developer & Junior Programmer"}</div>
 
     <div dcg-obj="navbar" dcg-json>
-      <div dcg-src="layouts/templates/navbar.json"></div>
+      <div dcg-src="data/navbar.json" dcg-spre></div>
     </div>
+
     <div dcg-obj="navbar.menus.home.class">active</div>
     
     <div dcg-obj="about" dcg-json>{"title" : "About Me", "subtitle" : "introduction"}</div>
@@ -40,36 +41,38 @@
       <br>
       <p>I do my work for pure passion but I'm still on a learning phase and trying to get some stuff done, so hope you consider that while looking through my works.</p>
     </div>
+
     <div dcg-obj="services" dcg-json>{"title" : "Services", "subtitle" : "what can i do?"}</div>
+
     <div dcg-obj="services.card.front">
       <h5 class="text-muted">Front End Web Designs</h5>
       <hr class="my-3">
       <p>Develop front end designs with latest standards using <span class="text-muted">HTML</span>, <span class="text-muted">CSS</span> and <span class="text-muted">JavaScript</span> alongside with <span class="text-muted">Vue</span>, <span class="text-muted">JQuery</span> and handful of CSS frameworks.</p>
     </div>
+
     <div dcg-obj="services.card.back">
       <h5 class="text-muted">Back End Web Projects</h5>
       <hr class="my-3">
       <p>Develop back end projects using <span class="text-muted">PHP</span> with <span class="text-muted">CodeIgniter</span>, <span class="text-muted">Fat-Free</span> frameworks and database management systems such as <span class="text-muted">MySQL</span> and <span class="text-muted">SQLite</span>.</p>
     </div>
+
     <div dcg-obj="services.card.cross">
       <h5 class="text-muted">Cross Platform GUI Applications</h5>
       <hr class="my-3">
       <p>Develop cross platform applications using <span class="text-muted">C#</span>, <span class="text-muted">B4X</span> and <span class="text-muted">Delphi</span></p>
     </div>
+
     <div dcg-obj="portfolio" dcg-json>
       {
         "title" : "Portfolio", "subtitle" : "works",
-        "projects":[
-        {"title":"Statix", "desc":"An ongoing project for analyzing web traffic.",
-        "tags":["PHP", "Back-end"], "source":"https://github.com/alperderman/statix", "details":"work/statix.html"},
-       {"title":"Dynamic Content Generation", "desc":"Dynamic Content Generation (DCG) is a front-end solution for content management.",
-        "tags":["JS", "Front-end", "Solution"], "source":"https://github.com/alperderman/dcg", "details":"work/dcg.html"},
-       {"title":"Unified Account System", "desc":"Standalone account management and authorization project.",
-        "tags":["PHP", "Back-end"], "source":"https://github.com/alperderman/uas", "details":"work/uas.html"}
-        ],
         "btn":{"more":{"href":"portfolio.html", "title":"See More Works"}, "source":"Source", "details":"Details"}
       }
     </div>
+
+    <div dcg-obj="portfolio.projects" dcg-json>
+      <div dcg-src="data/projects.json" dcg-spre></div>
+    </div>
+
     <div dcg-obj="contact" dcg-json>
       {
         "title" : "Contact", "subtitle" : "get in touch",
@@ -86,6 +89,8 @@
         designSrc: "layouts/index.html",
         options: {
           cacheRender: true,
+          screenBlock: true,
+          showLogs: false,
           screen: {
             mode: 2,
             custom: function(el) {

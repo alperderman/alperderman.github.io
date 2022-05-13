@@ -7,11 +7,11 @@
 <body>
 
   <dcg dcg-temp="navbar" dcg-tref>
-    <dcg dcg-src="layouts/templates/navbar.html"></dcg>
+    <dcg dcg-src="layouts/templates/navbar.html" dcg-spre></dcg>
   </dcg>
 
   <dcg dcg-temp="projectCard" dcg-tref>
-    <dcg dcg-src="layouts/templates/project-card.html"></dcg>
+    <dcg dcg-src="layouts/templates/project-card.html" dcg-spre></dcg>
   </dcg>
 
   <div class="container-fluid position-relative" id="landing-base" style="height:35rem;">
@@ -73,9 +73,13 @@
         <h3>{{portfolio.title}}</h3>
         <h6 class="text-muted text-uppercase">{{portfolio.subtitle}}</h6>
       </div>
-      
-      <dcg dcg-temp="projectCard" dcg-tren></dcg>
-      
+      <div class="row">
+        <dcg dcg-repeat="portfolio.projects as card">
+          <dcg dcg-if="'{{card._index}}' < 3">
+            <dcg dcg-temp="projectCard" dcg-tobj="{{card}}" dcg-tren></dcg>
+          </dcg>
+        </dcg>
+      </div>
       <div class="row">
         <div class="col-12 md:col-4 m-auto">
           <a class="btn btn-secondary w-100" dcg:href="{{portfolio.btn.more.href}}">{{portfolio.btn.more.title}}</a>

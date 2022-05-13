@@ -124,8 +124,8 @@
             <tr><td><b>showLogs</b></td><td>For showing the render logs</td><td>false</td><td>Boolean</td></tr>
             <tr><td><b>screenBlock</b></td><td>For blocking the screen during the render, check out the <b>Screen Block</b> section for more details</td><td>true</td><td>Boolean</td></tr>
             <tr><td><b>replaceHead</b></td><td>for whether if head of the content is appended or replaced completely by the design's head</td><td>false</td><td>Boolean</td></tr>
-            <tr><td><b>scripts</b></td><td>For defining external scripts</td><td>[]</td><td>Array of strings / string</td></tr>
-            <tr><td><b>onload</b></td><td>For defining custom onload events that will be dispatched after imitating window onload event</td><td>[]</td><td>Array of objects</td></tr>
+            <tr><td><b>injectScripts</b></td><td>For injecting external scripts</td><td>[]</td><td>Array of strings / string</td></tr>
+            <tr><td><b>onloadEvents</b></td><td>For defining custom onload events that will be dispatched after imitating window onload event</td><td>[]</td><td>Array of objects</td></tr>
           </tbody>
         </table>
         <p>Preset options are stored in <code>dcg.profile</code> object and you can use the <code>options</code> parameter inside the render function to change the options.</p>
@@ -142,8 +142,8 @@
                     cacheRender: false,
                     screenBlock: false,
                     replaceHead: true,
-                    scripts: ["script1.js", "../script2.js"],
-                    onload: [{node: window, name: "customevent1"}, {node: document, name: "customevent2"}]
+                    injectScripts: ["script1.js", "../script2.js"],
+                    onloadEvents: [{node: window, name: "customevent1"}, {node: document, name: "customevent2"}]
                   }
                 });
               &lt;/script>
@@ -156,7 +156,8 @@
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
         <p>Dynamic contents are simple objects that can be used as tokens (in a way that you cannot change it after the render, kinda like a non-reactive version of Vue's data object). Dynamic contents are seperated into 3 categories; JSON, HTML and raw text.</p>
-        <p>You can use other tokens inside HTML tokens and in addition to that you can nest JSON tokens, this enables us to do complicated processes with ease.</p>
+        <p>You can use other tokens inside raw and HTML dynamic contents and in addition to that you can nest JSON and raw tokens, this enables us to do complicated processes with ease.</p>
+        <p>There is only a slight difference between raw and HTML types; you can't nest other tokens inside HTML tokens, but in return you can use <b>token keywords</b> (explained right after this section) of the object that encapsulates the HTML token.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <h3 class="mt-0">content.html</h3>
@@ -311,7 +312,6 @@
         <p>In order to escape an element you can define <code>dcg:</code> in front of the tag or the attribute.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
-            <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
               &lt;dcg:table dcg:style="color:{{##color}}">
                 &lt;dcg:tr>
@@ -350,8 +350,8 @@
                   &lt;dcg dcg-repeat="_this as actor">
 
                     &lt;dcg:tr>
-                      &lt;dcg:td>{{##name}}&lt;/dcg:td>
-                      &lt;dcg:td>{{##surname}}&lt;/dcg:td>
+                      &lt;dcg:td>{{##actor.name}}&lt;/dcg:td>
+                      &lt;dcg:td>{{##actor.surname}}&lt;/dcg:td>
                     &lt;/dcg:tr>
                     
                   &lt;/dcg>
@@ -359,7 +359,15 @@
                 &lt;/dcg:table>
               &lt;/dcg>
 
-              &lt;dcg dcg-temp="temp" dcg-data="actors" dcg-tren>&lt;/dcg>
+              &lt;dcg dcg-temp="temp" dcg-tobj="actors" dcg-tren>&lt;/dcg>
+            </code></pre>
+          </div>
+        </div>
+        <p>Templates normally rendered after the dynamic contents, so you may not be able to use tokens inside templates. In that case, you can use <code>dcg-tpre</code> attribute to load them before dynamic contents.</p>
+        <div class="row lg:gutter-2 mb-6">
+          <div class="column col-12 lg:col-6">
+            <pre><code class="language-html">
+              &lt;dcg dcg-temp="temp" dcg-tpre dcg-tren>&lt;/dcg>
             </code></pre>
           </div>
         </div>
@@ -369,7 +377,7 @@
             <pre><code class="language-js">
               var cardTemplate = dcg.loadTemplate({
                 id: "cardTemplate",
-                data: {"title":"This is the title", "desc":"And this is the description"}
+                obj: {"title":"This is the title", "desc":"And this is the description"}
               });
               document.body.innerHTML += cardTemplate.innerHTML;
             </code></pre>
@@ -383,30 +391,29 @@
         <p>External contents are self-explanatory, with the <code>dcg-src</code> attribute you can fetch contents, API's or templates from other pages or sites.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
-            <h3 class="mt-0">content.html</h3>
             <pre><code class="language-html">
-              &lt;div dcg-obj="exchange" dcg-json>
-                &lt;div dcg-src="https://api.exchangerate.host/latest">&lt;/div>
-              &lt;/div>
-            </code></pre>
-          </div>
-          <div class="column col-12 lg:col-6">
-            <h3 class="mt-0">design.html</h3>
-            <pre><code class="language-html">
-              &lt;div>Euro to US Dollar: {{##exchange.rates.USD}}&lt;/div>
+              &lt;div dcg-src="data/content.html" dcg-spre>&lt;/div>
             </code></pre>
           </div>
         </div>
-        <p>An example with external template.</p>
+        <p>For the sake of keeping the consistency among the attributes, external templates are rendered after both dynamic contents and templates. But just like the templates, you can use the corresponding pre attribute <code>dcg-spre</code> to load them before both of them. It is no doublty needed for defining external contents as dynamic contents or as a template. Here is an example.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
-            <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
+              &lt;div dcg-obj="exchange" dcg-json>
+                &lt;div dcg-src="https://api.exchangerate.host/latest" dcg-spre>&lt;/div>
+              &lt;/div>
               &lt;dcg dcg-temp="temp" dcg-tref>
-                &lt;dcg dcg-src="path/to/template.html">&lt;/dcg>
+                &lt;dcg dcg-src="path/to/template.html" dcg-spre>&lt;/dcg>
               &lt;/dcg>
-
-              &lt;dcg dcg-temp="temp" dcg-tren>&lt;/dcg>
+            </code></pre>
+          </div>
+        </div>
+        <p>Additionally you can also define the request method and data object with <code>dcg-smet</code> and <code>dcg-sobj</code>.</p>
+        <div class="row lg:gutter-2 mb-6">
+          <div class="column col-12 lg:col-6">
+            <pre><code class="language-html">
+              &lt;div dcg-src="https://reqbin.com/echo/post/json" dcg-smet="POST" dcg-sobj='{"foo":"bar", "page":"33"}'>&lt;/div>
             </code></pre>
           </div>
         </div>
@@ -538,13 +545,12 @@
         <p>The reason for that change is, since DCG acts like a preprocessor, it breaks the execution flow with async XHR calls and DOM modifications. In this situation, there are only 2 ways to satisfy the execution flow, either you have to modify the other scripts to be compatible with the DCG (which is not possible for every script or library) or all of the scripts are manually executed after the render (which thats what we are trying to accomplish here).</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
-            <h3 class="mt-0">content.html</h3>
             <pre><code class="language-html">
               &lt;script src="dcg.js">&lt;/script>
               &lt;script>
                 dcg.render({
                   options: {
-                    scripts: ["scriptfile.js", "otherscriptfile.js"] //external script files
+                    injectScripts: ["scriptfile.js", "otherscriptfile.js"] //external script files
                   },
                   after: function() {
                     //your script goes here
@@ -568,7 +574,9 @@
       dcg.render({
         designSrc: "layouts/project/dcg/docs.html",
         options: {
-          cacheRender: true
+          cacheRender: true,
+          screenBlock: true,
+          showLogs: false,
         }
       });
     </script>

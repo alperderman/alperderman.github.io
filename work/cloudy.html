@@ -24,10 +24,6 @@
         </div>
       </noscript>
     </div>
-
-    <div dcg-obj="navbar" dcg-json>
-      <div dcg-src="layouts/templates/navbar.json"></div>
-    </div>
     
     <div dcg-obj="project" dcg-json>{"title" : "Cloudy | Grayshift", "subtitle" : "js, css, front-end, design"}</div>
     <div dcg-obj="project.desc">
@@ -62,6 +58,8 @@
         designSrc: "layouts/project.html",
         options: {
           cacheRender: true,
+          screenBlock: true,
+          showLogs: false,
           screen: {
             mode: 2,
             custom: function(el) {

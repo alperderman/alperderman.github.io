@@ -25,24 +25,6 @@
       </noscript>
     </div>
     
-    <div class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
-      <noscript>
-        <div class="position-absolute top-50 start-50 translate-middle text-center">
-          <i class="huge icons">
-            <i class="yellow js icon"></i>
-            <i class="big red dont icon" style="opacity:0.7;"></i>
-          </i>
-          <div class="mt-6 card">
-            <h2 class="text-muted">Please enable the JavaScript!</h2>
-          </div>
-        </div>
-      </noscript>
-    </div>
-
-    <div dcg-obj="navbar" dcg-json>
-      <div dcg-src="layouts/templates/navbar.json"></div>
-    </div>
-    
     <div dcg-obj="project" dcg-json>{"title" : "Chat Room", "subtitle" : "php, back-end"}</div>
     <div dcg-obj="project.desc">
       <div class="row mb-5">
@@ -68,6 +50,8 @@
         designSrc: "layouts/project.html",
         options: {
           cacheRender: true,
+          screenBlock: true,
+          showLogs: false,
           screen: {
             mode: 2,
             custom: function(el) {

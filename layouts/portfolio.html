@@ -7,11 +7,11 @@
 <body>
 
   <dcg dcg-temp="navbar" dcg-tref>
-    <dcg dcg-src="layouts/templates/navbar.html"></dcg>
+    <dcg dcg-src="layouts/templates/navbar.html" dcg-spre></dcg>
   </dcg>
 
   <dcg dcg-temp="projectCard" dcg-tref>
-    <dcg dcg-src="layouts/templates/project-card.html"></dcg>
+    <dcg dcg-src="layouts/templates/project-card.html"dcg-spre></dcg>
   </dcg>
 
   <dcg dcg-temp="navbar" dcg-tren></dcg>
@@ -26,7 +26,11 @@
         <h6 class="text-muted text-uppercase">{{portfolio.subtitle}}</h6>
       </div>
 
-      <dcg dcg-temp="projectCard" dcg-tren></dcg>
+      <div class="row">
+        <dcg dcg-repeat="portfolio.projects as card">
+          <dcg dcg-temp="projectCard" dcg-tobj="{{card}}" dcg-tren></dcg>
+        </dcg>
+      </div>
 
     </section>
   </div>
