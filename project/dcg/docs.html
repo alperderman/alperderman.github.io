@@ -99,7 +99,7 @@
             <tr><td><b>contentSrc</b></td><td>Parameter for defining external content, if it is not defined then sets the content as the current document</td></tr>
             <tr><td><b>design</b></td><td>Parameter for defining design, you can set the design as string, if isn't defined then DCG checks for the <code>designSrc</code> parameter for external design</td></tr>
             <tr><td><b>designSrc</b></td><td>Parameter for defining external design, if it is not defined then sets the content as the current design and render occurs on the same page. Read the <b>Single Page Renders</b> section for more details</td></tr>
-            <tr><td><b>before()</b></td><td>Function parameter for defining a function that will run before the render, usually not needed but included for the sake of the consistency</td></tr>
+            <tr><td><b>before()</b></td><td>Function parameter for defining a function that will run before the render, usually not needed but included for the sake of consistency</td></tr>
             <tr><td><b>after()</b></td><td>Function parameter for defining a function that will run after the render</td></tr>
             <tr><td><b>options</b></td><td>Parameter for the preferences, explained on the <b>Preset Options</b> section</td></tr>
           </tbody>
@@ -120,7 +120,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td><b>cacheRender</b></td><td>For caching the render, changing it to <code>true</code> is highly recommended for production</td><td>false</td><td>Boolean</td></tr>
+            <tr><td><b>cacheRender</b></td><td>For caching the render, changing it to <code>false</code> is highly recommended for development</td><td>true</td><td>Boolean</td></tr>
             <tr><td><b>showLogs</b></td><td>For showing the render logs</td><td>false</td><td>Boolean</td></tr>
             <tr><td><b>screenBlock</b></td><td>For blocking the screen during the render, check out the <b>Screen Block</b> section for more details</td><td>true</td><td>Boolean</td></tr>
             <tr><td><b>replaceHead</b></td><td>for whether if head of the content is appended or replaced completely by the design's head</td><td>false</td><td>Boolean</td></tr>
@@ -535,7 +535,7 @@
             </code></pre>
           </div>
         </div>
-        <p><b>Note:</b> If you use the default screen block, you may still see the unmodified content for couple of miliseconds. Thats because it is defined dynamically with JavaScript and since scripts are has to be executed after all of the document is loaded, it takes a small but noticible amount of time to screen block to takes effect. So manually defining custom screen blocks are the best way to be sure.</p>
+        <p><b>Note:</b> If you use the default screen block, you may still see the unmodified content for couple of miliseconds. Thats because it is defined dynamically with JavaScript and since scripts have to be executed after all of the document is loaded, it takes a small but noticible amount of time to screen block to takes effect. So manually defining custom screen blocks are the best way to be sure.</p>
       </section>
     </div>
     <div dcg-obj="content.singlepage.desc" dcg-html>
