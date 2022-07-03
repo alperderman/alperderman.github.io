@@ -286,6 +286,7 @@
           <tr><td>$file</td><td>Returns the current file name with extension: <b>"index.html"</b></td></tr>
           <tr><td>$query</td><td>Returns the query string: <b>"?page=12&top=all"</b></td></tr>
           <tr><td>$hash</td><td>Returns the hash: <b>"#id"</b></td></tr>
+          <tr><td>$version</td><td>Returns the version of the DCG: <b>"2.0.2"</b></td></tr>
         </table>
       </section>
     </div>
@@ -363,11 +364,20 @@
             </code></pre>
           </div>
         </div>
-        <p>Templates normally rendered after the dynamic contents, so you may not be able to use tokens inside templates. In that case, you can use <code>dcg-tpre</code> attribute to load them before dynamic contents.</p>
+        <p><code>style</code>, <code>link</code> and <code>script</code> tags are allowed inside the templates. This allows us to bundle up everything related to a template into a small package, however there is one quirk, since these tags will be extracted from the reference, you cannot use the dataset tokens of the template inside of these tags.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
+            <h3 class="mt-0">design.html</h3>
             <pre><code class="language-html">
-              &lt;dcg dcg-temp="temp" dcg-tpre dcg-tren>&lt;/dcg>
+              &lt;dcg dcg-temp="temp" dcg-tref>
+                &lt;style>
+                  .demo {
+                    color:#f00;
+                  }
+                &lt;/style>
+                &lt;div class="demo">TEXT&lt;/div>
+                &lt;script>console.log("testing");&lt;/script>
+              &lt;/dcg>
             </code></pre>
           </div>
         </div>
@@ -375,11 +385,12 @@
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <pre><code class="language-js">
-              var cardTemplate = dcg.loadTemplate({
+              dcg.loadTemplate({
                 id: "cardTemplate",
                 obj: {"title":"This is the title", "desc":"And this is the description"}
+              }, function (template) {
+                document.body.innerHTML += template.innerHTML;
               });
-              document.body.innerHTML += cardTemplate.innerHTML;
             </code></pre>
           </div>
         </div>
@@ -388,23 +399,23 @@
     <div dcg-obj="content.external.desc" dcg-html>
       <section id="{{_this._key}}">
         <h1>{{_this.title}}</h1>
-        <p>External contents are self-explanatory, with the <code>dcg-src</code> attribute you can fetch contents, API's or templates from other pages or sites.</p>
+        <p>External contents are self-explanatory, with the <code>dcg-src</code> attribute you can fetch contents, API's or templates from other files or sites.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <pre><code class="language-html">
-              &lt;div dcg-src="data/content.html" dcg-spre>&lt;/div>
+              &lt;div dcg-src="data/content.html">&lt;/div>
             </code></pre>
           </div>
         </div>
-        <p>For the sake of keeping the consistency among the attributes, external templates are rendered after both dynamic contents and templates. But just like the templates, you can use the corresponding pre attribute <code>dcg-spre</code> to load them before both of them. It is no doublty needed for defining external contents as dynamic contents or as a template. Here is an example.</p>
+        <p>Here is an example for defining external contents as dynamic contents and as a template.</p>
         <div class="row lg:gutter-2 mb-6">
           <div class="column col-12 lg:col-6">
             <pre><code class="language-html">
               &lt;div dcg-obj="exchange" dcg-json>
-                &lt;div dcg-src="https://api.exchangerate.host/latest" dcg-spre>&lt;/div>
+                &lt;div dcg-src="https://api.exchangerate.host/latest">&lt;/div>
               &lt;/div>
               &lt;dcg dcg-temp="temp" dcg-tref>
-                &lt;dcg dcg-src="path/to/template.html" dcg-spre>&lt;/dcg>
+                &lt;dcg dcg-src="path/to/template.html">&lt;/dcg>
               &lt;/dcg>
             </code></pre>
           </div>
