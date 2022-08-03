@@ -1,105 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <base href="https://alperderman.com/" />
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="https://alperderman.com/" />
-    <link rel="stylesheet" href="assets/css/grayshift/grayshift-dark.css">
-    <link rel="stylesheet" href="assets/fonts/icons/index.css">
-    <title>Alper Derman | Index</title>
+    <title>Alper Derman | Home</title>
   </head>
   <body>
 
-    <div dcg-screen class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
-      <noscript>
-        <div class="position-absolute top-50 start-50 translate-middle text-center">
-          <i class="huge icons">
-            <i class="yellow js icon"></i>
-            <i class="big red dont icon" style="opacity:0.7;"></i>
-          </i>
-          <div class="mt-6 card">
-            <h2 class="text-muted">Please enable the JavaScript!</h2>
-          </div>
-        </div>
-      </noscript>
+    <div dcg-screen style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
+
+    <dcg dcg-src="layouts/_load.html"></dcg>
+
+    <div dcg-obj="navbar.menus.home.active">true</div>
+
+    <div dcg-obj="section.briefing.title">Introduction</div>
+    <div dcg-obj="section.briefing.content">
+      <p>Hi, my name is Alper. I'm a web developer and a junior programmer. This is my personal website. Here, you can find my works, get <span style="font-size: 0.6rem;"> little</span> information about me or contact to me indirectly.</p>
+      <p>My works consist of front-end designs, back-end projects and cross-platform applications. I'm trying to learn various fields related to programming rather than specializing in a single field.</p>
     </div>
 
-    <div dcg-obj="landing" dcg-json>{"subtitle" : "Web Developer & Junior Programmer"}</div>
-
-    <div dcg-obj="navbar" dcg-json>
-      <div dcg-src="data/navbar.json"></div>
+    <div dcg-obj="section.frequently.title">Frequently Used</div>
+    <div dcg-obj="section.frequently.content">
+      <p>This section contains the things that I can confidently say that I'm advanced.</p>
     </div>
 
-    <div dcg-obj="navbar.menus.home.class">active</div>
-    
-    <div dcg-obj="about" dcg-json>{"title" : "About Me", "subtitle" : "introduction"}</div>
-    <div dcg-obj="about.card">
-      <p class="text-muted fs-3 text-center">Hi I'm Alper. I'm a web developer and a junior programmer.</p>
-      <br>
-      <p>This is my personal website. Here, you can find my work, get <span style="font-size: .6rem;">little</span> information about me or contact to me indirectly.</p>
-      <br>
-      <p>I do my work for pure passion but I'm still on a learning phase and trying to get some stuff done, so hope you consider that while looking through my works.</p>
+    <div dcg-obj="section.familiar.title">Familiar With</div>
+    <div dcg-obj="section.familiar.content">
+      <p>This section contains the things that I'm not as advanced as the other section but made projects with them and have an overall idea about the structure.</p>
     </div>
 
-    <div dcg-obj="services" dcg-json>{"title" : "Services", "subtitle" : "what can i do?"}</div>
-
-    <div dcg-obj="services.card.front">
-      <h5 class="text-muted">Front End Web Designs</h5>
-      <hr class="my-3">
-      <p>Develop front end designs with latest standards using <span class="text-muted">HTML</span>, <span class="text-muted">CSS</span> and <span class="text-muted">JavaScript</span> alongside with <span class="text-muted">Vue</span>, <span class="text-muted">JQuery</span> and handful of CSS frameworks.</p>
+    <div dcg-obj="section.portfolio.title">Portfolio</div>
+    <div dcg-obj="section.portfolio.content">
+      <p>I do my work with pure passion but as I mentioned above, I'm still on a learning phase, so hope you consider that while looking through my works.</p>
     </div>
+    <div dcg-obj="section.portfolio.more" dcg-json>{"href":"{{navbar.menus.portfolio.href}}", "color":"", "title":"See More Works"}</div>
 
-    <div dcg-obj="services.card.back">
-      <h5 class="text-muted">Back End Web Projects</h5>
-      <hr class="my-3">
-      <p>Develop back end projects using <span class="text-muted">PHP</span> with <span class="text-muted">CodeIgniter</span>, <span class="text-muted">Fat-Free</span> frameworks and database management systems such as <span class="text-muted">MySQL</span> and <span class="text-muted">SQLite</span>.</p>
-    </div>
-
-    <div dcg-obj="services.card.cross">
-      <h5 class="text-muted">Cross Platform GUI Applications</h5>
-      <hr class="my-3">
-      <p>Develop cross platform applications using <span class="text-muted">C#</span>, <span class="text-muted">B4X</span> and <span class="text-muted">Delphi</span></p>
-    </div>
-
-    <div dcg-obj="portfolio" dcg-json>
-      {
-        "title" : "Portfolio", "subtitle" : "works",
-        "btn":{"more":{"href":"portfolio.html", "title":"See More Works"}, "source":"Source", "details":"Details"}
-      }
-    </div>
-
-    <div dcg-obj="portfolio.projects" dcg-json>
-      <div dcg-src="data/projects.json"></div>
-    </div>
-
-    <div dcg-obj="contact" dcg-json>
-      {
-        "title" : "Contact", "subtitle" : "get in touch",
-        "social": "Social Platforms",
-        "hrefLinkedin": "https://www.linkedin.com/in/alper-derman",
-        "hrefGithub": "https://github.com/alperderman",
-        "hrefCodepen": "https://codepen.io/alperderman"
-      }
-    </div>
+    <div dcg-obj="section.contact.title">Get In Touch!</div>
 
     <script src="assets/js/dcg.js"></script>
+    <script src="assets/js/dcg-profile.js"></script>
     <script>
       dcg.render({
-        designSrc: "layouts/index.html",
-        options: {
-          cacheRender: true,
-          screenBlock: true,
-          showLogs: true,
-          screen: {
-            mode: 2,
-            custom: function(el) {
-              $(el).fadeOut("normal", function() {
-                $(el).remove();
-              });
-            }
-          }
-        }
+        designSrc: "layouts/index.html"
       });
     </script>
   </body>

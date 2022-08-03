@@ -1,64 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <base href="https://alperderman.com/" />
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="https://alperderman.com/" />
-    <link rel="stylesheet" href="assets/css/grayshift/grayshift-dark.css">
-    <link rel="stylesheet" href="assets/fonts/icons/index.css">
     <title>Alper Derman | Portfolio</title>
   </head>
   <body>
 
-    <div dcg-screen class="w-100 h-100 position-fixed bg-dark" style="z-index:20;">
-      <noscript>
-        <div class="position-absolute top-50 start-50 translate-middle text-center">
-          <i class="huge icons">
-            <i class="yellow js icon"></i>
-            <i class="big red dont icon" style="opacity:0.7;"></i>
-          </i>
-          <div class="mt-6 card">
-            <h2 class="text-muted">Please enable the JavaScript!</h2>
-          </div>
-        </div>
-      </noscript>
-    </div>
+    <div dcg-screen style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
 
-    <div dcg-obj="navbar" dcg-json>
-      <div dcg-src="data/navbar.json"></div>
-    </div>
-    <div dcg-obj="navbar.menus.portfolio.class">active</div>
+    <dcg dcg-src="layouts/_load.html"></dcg>
 
-    <div dcg-obj="portfolio" dcg-json>
-      {
-        "title" : "Portfolio", "subtitle" : "Projects, Works, Concepts",
-        "btn":{"source":"Source", "details":"Details"}
-      }
-    </div>
+    <div dcg-obj="navbar.menus.portfolio.active">true</div>
 
-    <div dcg-obj="portfolio.projects" dcg-json>
-      <div dcg-src="data/projects.json"></div>
-    </div>
-
+    <div dcg-obj="section.portfolio.title">Portfolio</div>
 
     <script src="assets/js/dcg.js"></script>
+    <script src="assets/js/dcg-profile.js"></script>
     <script>
       dcg.render({
-        designSrc: "layouts/portfolio.html",
-        options: {
-          cacheRender: true,
-          screenBlock: true,
-          showLogs: false,
-          screen: {
-            mode: 2,
-            custom: function(el) {
-              $(el).fadeOut("normal", function() {
-                $(el).remove();
-              });
-            }
-          }
-        }
+        designSrc: "layouts/portfolio.html"
       });
     </script>
   </body>
