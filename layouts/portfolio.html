@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <dcg dcg-src="layouts/_styles.html"></dcg>
+  </head>
+  <body class="f6 f5-l">
+    
+    <dcg dcg-temp="navbar" dcg-tren></dcg>
+
+    <div class="bg-dark-gray light-gray min-vh-100">
+      <div class="grid center one pv4">
+        <div class="one four-fifth-700 three-fourth-1000 two-fourth-1500 pa2 mt5">
+          <h1 class="tc ruled">{{section.portfolio.title}}</h1>
+          <div class="grid center one two-500 three-1000 items-center">
+            <dcg dcg-repeat="projects as project">
+                <div class="pa2 pa3-l">
+                  <dcg dcg-temp="card" dcg-tobj="{{project}}" dcg-tren></dcg>
+                </div>
+            </dcg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <dcg dcg-src="layouts/_scripts.html"></dcg>
+  </body>
+</html>

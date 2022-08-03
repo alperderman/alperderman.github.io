@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <dcg dcg-src="layouts/_styles.html"></dcg>
+  </head>
+  <body class="f6 f5-l">
+    
+    <dcg dcg-temp="navbar" dcg-tren></dcg>
+
+    <div class="bg-dark-gray light-gray b-shadow-3">
+      <div class="grid center one pv4 ph2">
+        <div class="full four-fifth-700 three-fourth-1000 two-fourth-1500 pa2 mt5">
+          {{section.about.content}}
+        </div>        
+      </div>
+    </div>
+    <div class="bg-mid-gray light-gray">
+      <div class="grid center one pv4 ph2">
+        <div class="full four-fifth-700 three-fourth-1000 two-fourth-1500 pa2">
+          <h1 id="contact" class="db tc f1 lh-title">{{section.contact.title}}</h1>
+          <div class="full three-fourth-500 ph2 center">
+            {{section.contact.content}}
+          </div>
+          <div class="grid center one pa3">
+            <div class="one two-third-600 half-1100 bg-dark-gray b-shadow-1 br3 pa4">
+              <div class="grid center three">
+                <dcg dcg-repeat="contacts as contact">
+                  <dcg dcg-temp="contact-icon" dcg-tobj="contacts.{{contact._index}}" dcg-tren></dcg>
+                </dcg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <dcg dcg-src="layouts/_scripts.html"></dcg>
+  </body>
+</html>

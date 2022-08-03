@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="https://alperderman.com/" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alper Derman | Statix</title>
+  </head>
+  <body>
+
+    <div dcg-screen style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
+
+    <div dcg-obj="project.title">Statix</div>
+
+    <div dcg-obj="project.details" dcg-json>
+      [
+        {"title":"Project Name","detail":"{{project.title}}"},
+        {"title":"Project Type","detail":"Personal"},
+        {"title":"Made With","detail":"PHP, CodeIgniter, SQLite"},
+        {"title":"Objective","detail":"Web traffic analysis"}
+      ]
+    </div>
+
+    <div dcg-obj="project.misc" dcg-json>
+      [
+        {"title":"Status","detail":"Finished"},
+        {"title":"Source"}
+      ]
+    </div>
+
+    <div dcg-obj="project.misc.1.detail">
+      <dcg dcg-temp="link" dcg-tobj='{"href":"https://github.com/alperderman/statix", "title":"GitHub"}' dcg-tren></dcg>
+    </div>
+
+    <div dcg-obj="project.content">
+        <p>A project for analyzing traffic of a website.</p>
+        <p>Point of this project is not just reporting web traffic but also using the visitor's data on various different internal projects that needs visitor's data, for example a contact form.</p>
+        <hr>
+        <h3>How does it work?</h3>
+        <p>On the client-side of every page there will be AJAX request to a page called "tracker". Tracker gathers the visitor's credentials and generate a visitor ID based on the integrity of the credentials and save it to the database.</p>
+        <p>And after that, with the visitor ID, we can acquire visitor's data where we need it.</p>
+    </div>
+
+    <script src="assets/js/dcg.js"></script>
+    <script src="assets/js/dcg-profile.js"></script>
+    <script>
+      dcg.render({
+        designSrc: "layouts/work.html"
+      });
+    </script>
+  </body>
+</html>

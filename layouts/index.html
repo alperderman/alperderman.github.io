@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <dcg dcg-src="layouts/_styles.html"></dcg>
+  </head>
+  <body class="f6 f5-l">
+
+    <div class="bg-black relative overflow-hidden">
+      <div class="one h5 absolute z-1 w-100 gsap-landing-bg" style="filter: blur(20px);"></div>
+      <div class="grid one four-fifth-700 three-fourth-1000 two-fourth-1500 center z-2 relative">
+        <div class="one h5 br-ns bl-ns bw2-ns b--dark-gray gsap-landing-bg">
+          <div class="white tc absolute position-center">
+            <div class="db f2 f1-ns">
+              <span class="gsap-landing-letter">A</span><span class="gsap-landing-letter">l</span><span class="gsap-landing-letter">p</span><span class="gsap-landing-letter">e</span><span class="gsap-landing-letter">r</span>
+              <span class="gsap-landing-letter">D</span><span class="gsap-landing-letter">e</span><span class="gsap-landing-letter">r</span><span class="gsap-landing-letter">m</span><span class="gsap-landing-letter">a</span><span class="gsap-landing-letter">n</span>
+            </div>
+            <span class="db f4 f3-ns gsap-landing-title">Web Developer & Junior Programmer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <dcg dcg-temp="navbar" dcg-tren></dcg>
+
+    <div class="bg-mid-gray light-gray b-shadow-2">
+      <div class="grid center one pv4">
+        <div class="one four-fifth-700 three-fourth-1000 two-fourth-1500 pa2 mt5">
+          <h1 class="tc ruled">{{section.briefing.title}}</h1>
+          <div class="full three-fourth-500 ph2 center">{{section.briefing.content}}</div>
+          <div class="grid center one two-600">
+            <div class="pa3">
+              <div class="bg-dark-gray b-shadow-1 br3 pa2 pb3">
+                <h3 class="tc">{{section.frequently.title}}</h3>
+                <div class="pa1">{{section.frequently.content}}</div>
+                <div class="grid center four three-600 four-1000">
+                  <dcg dcg-repeat="skills.frequently as logo">
+                    <div class="pa1">
+                      <dcg dcg-temp="skill" dcg-tobj="skills.frequently.{{logo._index}}" dcg-tren></dcg>
+                    </div>
+                  </dcg>
+                </div>
+              </div>
+            </div>
+            <div class="pa3">
+              <div class="bg-dark-gray b-shadow-1 br3 pa2 pb3">
+                <h3 class="tc">{{section.familiar.title}}</h3>
+                <div class="pa1">{{section.familiar.content}}</div>
+                <div class="grid center four three-600 four-1000">
+                  <dcg dcg-repeat="skills.familiar as logo">
+                    <div class="pa1">
+                      <dcg dcg-temp="skill" dcg-tobj="skills.familiar.{{logo._index}}" dcg-tren></dcg>
+                    </div>
+                  </dcg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-dark-gray light-gray b-shadow-3">
+      <div class="grid center one pv4">
+        <div class="one four-fifth-700 three-fourth-1000 two-fourth-1500 pa2">
+          <h1 class="tc ruled">{{section.portfolio.title}}</h1>
+          <div class="full three-fourth-500 ph2 center">{{section.portfolio.content}}</div>
+          <div class="grid center one two-500 three-1000 items-center">
+            <dcg dcg-repeat="projects as project">
+              <dcg dcg-if="{{project._index}} < 3">
+                <div class="pa2 pa3-l">
+                  <dcg dcg-temp="card" dcg-tobj="projects.{{project._index}}" dcg-tren></dcg>
+                </div>
+              </dcg>
+            </dcg>
+          </div>
+          <div class="grid center one mt4">
+            <div class="one half-500 fourth-1000 pa2">
+              <dcg dcg-temp="btn" dcg-tobj="section.portfolio.more" dcg-tren></dcg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-mid-gray light-gray">
+      <div class="grid center one bg-mid-gray pv4">
+        <div class="one four-fifth-700 three-fourth-1000 two-fourth-1500 pa2">
+          <h1 class="tc ruled">{{section.contact.title}}</h1>
+          <div class="grid center one pa3">
+            <div class="one two-third-600 half-1100 bg-dark-gray b-shadow-1 br3 pa4">
+              <div class="grid center three">
+                <dcg dcg-repeat="contacts as contact">
+                  <dcg dcg-temp="contact-icon" dcg-tobj="contacts.{{contact._index}}" dcg-tren></dcg>
+                </dcg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <dcg dcg-src="layouts/_scripts.html"></dcg>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<div class="bg-mid-gray b-shadow-1 br3">
+    <dcg dcg-if="'{{img}}'.indexOf('{{') === -1">
+      <div class="w-100 br3 br--top aspect-ratio aspect-ratio--7x5 overflow-hidden">
+        <div class="db cover bg-center aspect-ratio--object z-1" dcg:style="background-image:url('{{img}}')"></div>
+      </div>
+    </dcg>
+    
+    <div class="pa3">
+      <h3 class="light-gray">{{title}}</h3>
+      <p class="light-silver">{{desc}}</p>
+      <hr>
+      <div class="mt3 cf">
+        <a dcg:href="{{details}}" class="white bg-blue no-underline br2 inline-flex items-center tc ml2 pv2 ph3 fr b-shadow-1 h-shadow-1">Details</a>
+        <dcg dcg-if="'{{source}}'.indexOf('{{') === -1">
+          <a dcg:href="{{source}}" class="white bg-green no-underline br2 inline-flex items-center tc ml2 pv2 ph3 fr b-shadow-1 h-shadow-1">Source</a>
+        </dcg>
+      </div>
+    </div>
+</div>

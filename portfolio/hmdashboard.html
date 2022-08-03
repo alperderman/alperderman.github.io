@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="https://alperderman.com/" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alper Derman | Halfmoon Dashboard</title>
+  </head>
+  <body>
+    
+    <div dcg-screen style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
+
+    <div dcg-obj="project.title">Halfmoon Dashboard</div>
+
+    <div dcg-obj="project.details" dcg-json>
+      [
+        {"title":"Project Name","detail":"{{project.title}}"},
+        {"title":"Project Type","detail":"Personal"},
+        {"title":"Made With","detail":"Halfmoon Framework, DCG, UAS"},
+        {"title":"Objective","detail":"Proof of concept for DCG and UAS"}
+      ]
+    </div>
+
+    <div dcg-obj="project.misc" dcg-json>
+      [
+        {"title":"Status","detail":"Finished"},
+        {"title":"Source"}
+      ]
+    </div>
+
+    <div dcg-obj="project.misc.1.detail">
+      <dcg dcg-temp="link" dcg-tobj='{"href":"https://github.com/alperderman/halfmoon-dashboard", "title":"GitHub"}' dcg-tren></dcg>
+    </div>
+
+    <div dcg-obj="project.imgs" dcg-json>
+      [
+        {"img":"assets/media/portfolio/hmdashboard-1.jpg"},
+        {"img":"assets/media/portfolio/hmdashboard-2.jpg"},
+        {"img":"assets/media/portfolio/hmdashboard-3.jpg"},
+        {"img":"assets/media/portfolio/hmdashboard-4.jpg"}
+      ]
+    </div>
+
+    <div dcg-obj="project.content">
+        <p>Proof of concept dashboard made with UAS, DCG and Halfmoon framework.</p>
+        <p>After I managed to put UAS and DCG in a stable state, I wanted to test both of them in a project. At the same time there was a front-end framework that I really wanted to use, which was <dcg dcg-temp="link" dcg-tobj='{"href":"https://github.com/halfmoonui/halfmoon", "title":"Halfmoon"}' dcg-tren></dcg>.</p>
+        <p>One of the key feature of the Halfmoon that I've mentioned in the past is, that it was made for making dashboards. With that in mind, making a dashboard was the perfect way to test out the capabilities of the projects.</p>
+        <p>In the making of the dashboard, I really liked the agnostic structure of the UAS. I only had to fiddle with a single table for assigning a permission to an user which made everything a breeze.</p>
+        <p>But, I've also realized that the DCG needs a much more polishing than I've previously thought. I've changed the render priority, removed some useless features and changed the way of how templates are stored and rendered while making this proof of concept.</p>
+        <hr>
+        <h3>Screenshots</h3>
+        <dcg dcg-temp="project-gallery" dcg-tren></dcg>
+    </div>
+
+    <script src="assets/js/dcg.js"></script>
+    <script src="assets/js/dcg-profile.js"></script>
+    <script>
+      dcg.render({
+        designSrc: "layouts/work.html"
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="https://alperderman.com/" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alper Derman | DCG</title>
+  </head>
+  <body>
+
+    <div dcg-screen style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
+
+    <div dcg-obj="project.title">Dynamic Content Generation</div>
+
+    <div dcg-obj="project.details" dcg-json>
+      [
+        {"title":"Project Name","detail":"{{project.title}}"},
+        {"title":"Project Type","detail":"Personal"},
+        {"title":"Made With","detail":"JavaScript"},
+        {"title":"Objective","detail":"Framework"}
+      ]
+    </div>
+
+    <div dcg-obj="project.misc" dcg-json>
+      [
+        {"title":"Status","detail":"Released and still being developed"},
+        {"title":"Release Date","detail":"2021/07/19"},
+        {"title":"Source"}
+      ]
+    </div>
+
+    <div dcg-obj="project.misc.2.detail">
+      <dcg dcg-temp="link" dcg-tobj='{"href":"https://github.com/alperderman/dcg", "title":"GitHub"}' dcg-tren></dcg>
+    </div>
+
+    <div dcg-obj="project.content">
+      <p>Dynamic Content Generation (DCG) is a front-end solution for content management. This solution is the reason how you can read this right now. Main point of the solution is splitting the content from the interface.</p>
+      <p>In before I've tried to make this solution with <span class="light-silver">Vue</span>, it did kinda work but it had flaws and it was so complex to be actually useful. After that I have decided that I should make this from scratch.</p>
+      <hr>
+      <h3>The Logic Behind It</h3>
+      <p>In my previous attempt, it was basically requests the content from other page and parses it on a specified place. This approach came with couple of flaws mainly about the <span class="light-silver">Search Engine Optimization (SEO)</span>.</p>
+      <p>On this new version, rather than requesting the content, it is requesting the interface and combines it with the content, since the contents are in the initial page Crawlers can easily index the page thus resolves the <span class="light-silver">SEO</span> problem.</p>
+      <p>But it doesn't stops here, this approach also provides handful of benefits such as being able to use the same interface for multiple pages, for example this page's interface is used for all the other projects only thing that changes is the content.</p>
+      <p>For accessing the documentation and the source code of the project, you can check out the <dcg dcg-temp="link" dcg-tobj='{"href":"https://github.com/alperderman/dcg", "title":"GitHub repository"}' dcg-tren></dcg>.</p>
+    </div>
+
+    <script src="assets/js/dcg.js"></script>
+    <script src="assets/js/dcg-profile.js"></script>
+    <script>
+      dcg.render({
+        designSrc: "layouts/work.html"
+      });
+    </script>
+  </body>
+</html>

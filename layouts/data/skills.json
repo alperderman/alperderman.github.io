@@ -1,0 +1,25 @@
+{
+    "frequently":[
+      {"name":"HTML", "src":"assets/media/logos/html.png", "bg":"bg-orange", "color":"dark-gray"},
+      {"name":"CSS", "src":"assets/media/logos/css.png", "bg":"bg-dark-blue", "color":"near-white"},
+      {"name":"JS", "src":"assets/media/logos/js.png", "bg":"bg-yellow", "color":"dark-gray"},
+      {"name":"PHP", "src":"assets/media/logos/php.png", "bg":"bg-purple", "color":"near-white"},
+      {"name":"JQuery", "src":"assets/media/logos/jquery.png", "bg":"bg-near-white", "color":"dark-gray"},
+      {"name":"SQLite", "src":"assets/media/logos/sqlite.png", "bg":"bg-light-blue", "color":"dark-gray"}
+    ],
+    "familiar":[
+      {"name":"MySQL", "src":"assets/media/logos/mysql.png", "bg":"bg-lightest-blue", "color":"dark-gray"},
+      {"name":"C#", "src":"assets/media/logos/csharp.png", "bg":"bg-purple", "color":"near-white"},
+      {"name":"Python", "src":"assets/media/logos/python.png", "bg":"bg-navy", "color":"near-white"},
+      {"name":"B4X", "src":"assets/media/logos/b4x.png", "bg":"bg-lightest-blue", "color":"dark-gray"},
+      {"name":"Delphi", "src":"assets/media/logos/delphi.png", "bg":"bg-light-red", "color":"dark-gray"},
+      {"name":"CodeIgniter", "src":"assets/media/logos/codeigniter.png", "bg":"bg-near-white", "color":"dark-gray"},
+      {"name":"Fat-Free", "src":"assets/media/logos/fatfree.png", "bg":"bg-near-white", "color":"dark-gray"},
+      {"name":"Foundation", "src":"assets/media/logos/foundation.png", "bg":"bg-light-blue", "color":"dark-gray"},
+      {"name":"Bootstrap", "src":"assets/media/logos/bootstrap.png", "bg":"bg-near-white", "color":"dark-gray"},
+      {"name":"UIkit", "src":"assets/media/logos/uikit.png", "bg":"bg-light-blue", "color":"dark-gray"},
+      {"name":"GSAP", "src":"assets/media/logos/gsap.png", "bg":"bg-near-white", "color":"dark-gray"},
+      {"name":"Vue JS", "src":"assets/media/logos/vuejs.png", "bg":"bg-light-green", "color":"dark-gray"},
+      {"name":"Less", "src":"assets/media/logos/less.png", "bg":"bg-blue", "color":"dark-gray"}
+    ]
+}

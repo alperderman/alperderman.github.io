@@ -1,0 +1,16 @@
+<div class="bg-dark-gray h3 absolute z-4 b-shadow-1 full four-fifth-700 three-fourth-1000 two-fourth-1500 center br3 br--bottom gsap-navbar">
+  <div class="w-auto dn db-ns fl h-100">
+    <div class="grid items-center h-100">
+      <span class="white f4 pl3">Alper Derman</span>
+    </div>
+  </div>
+  <div class="w-100 w-auto-ns fr-ns h-100">
+    <ul class="list pa0 ma0 h-100 tc grid items-center">
+      <dcg dcg-repeat="navbar.menus as menu">
+        <li class="h-100">
+          <a dcg:class="no-underline h-100 pa2 pa3-l dib flex items-center justify-center {!% if('{{menu.active}}' == 'true'){return 'active near-white';}else {return 'silver dim';} %!}" dcg:href="{{menu.href}}">{{menu.title}}</a>
+        </li>
+      </dcg>
+    </ul>
+  </div>
+</div>

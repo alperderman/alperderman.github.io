@@ -1,0 +1,8 @@
+{
+    "menus":{
+      "home":{"title":"Home", "href":"{{$host}}"},
+      "about":{"title":"About", "href":"{{$host}}/about.html"},
+      "portfolio":{"title":"Portfolio", "href":"{{$host}}/portfolio.html"},
+      "contact":{"title":"Contact", "href":"{{$host}}/about.html#contact"}
+    }
+}
