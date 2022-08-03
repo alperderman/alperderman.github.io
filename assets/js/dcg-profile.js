@@ -1,6 +1,6 @@
 dcg.profile = {
-    showLogs: true,
-    cacheRender: false,
+    showLogs: false,
+    cacheRender: true,
     screen: {
       mode: 2,
       custom: function(el) {
