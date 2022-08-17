@@ -1,8 +1,8 @@
 {
   "menus":{
-    "home":{"title":"Home", "href":"/site/index.html"},
-    "about":{"title":"About", "href":"/site/about.html"},
-    "portfolio":{"title":"Portfolio", "href":"/site/portfolio.html"},
-    "contact":{"title":"Contact", "href":"/site/about.html#contact"}
+    "home":{"title":"Home", "href":"/index.html"},
+    "about":{"title":"About", "href":"/about.html"},
+    "portfolio":{"title":"Portfolio", "href":"/portfolio.html"},
+    "contact":{"title":"Contact", "href":"/about.html#contact"}
   }
 }
