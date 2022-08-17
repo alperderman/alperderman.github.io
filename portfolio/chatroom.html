@@ -9,44 +9,54 @@
   </head>
   <body>
 
-    <div dcg-screen style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
+    <div class="gsap-screen" style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
 
-    <div dcg-obj="project.title">Chat Room</div>
+    <div data-set="json:section">{}</div>
+    <div data-set="json:section.project">{}</div>
 
-    <div dcg-obj="project.details" dcg-json>
+    <div data-set="text:section.project.title">Chat Room</div>
+
+    <div data-set="json:section.project.details">
       [
-        {"title":"Project Name","detail":"{{project.title}}"},
+        {"title":"Project Name","detail":""},
         {"title":"Project Type","detail":"Personal"},
         {"title":"Made With","detail":"PHP, CodeIgniter, SQLite"},
         {"title":"Objective","detail":"A chat room project for communicating with other people"}
       ]
     </div>
 
-    <div dcg-obj="project.misc" dcg-json>
+    <div data-set="html:section.project.details[0].detail"><span data-prop="text:'%section.project.title%'"></span></div>
+
+    <div data-set="json:section.project.misc">
       [
         {"title":"Status","detail":"Finished"},
         {"title":"Source"}
       ]
     </div>
 
-    <div dcg-obj="project.misc.1.detail">
-      <dcg dcg-temp="link" dcg-tobj='{"href":"https://github.com/alperderman/chatroom", "title":"GitHub"}' dcg-tren></dcg>
+    <div data-set="json:section.project.links">
+      {
+        "source":{"href":"https://github.com/alperderman/chatroom", "title":"GitHub"},
+        "websocket":{"href":"https://blog.stackpath.com/websocket/", "title":"websocket"}
+      }
     </div>
 
-    <div dcg-obj="project.content">
-        <p>A basic chat room, made with long polling technique.</p>
-        <p>This project was one of my first projects to learn the relation between client-side and server-side. Originally wanted to make it with <dcg dcg-temp="link" dcg-tobj='{"href":"https://blog.stackpath.com/websocket/", "title":"websocket"}' dcg-tren></dcg> but couldn't because of the limitations of shared hosting.</p>
-        <hr>
-        <h3>What is the difference between short and long polling?</h3>
-        <p>Point of the polling in general is getting data from a server continously. Short-polling requests data every pre-determined time while long-polling waits for server to send the data. Since the connection between client and server isn't aborted in long-polling, its clearly a more robust solution than short-polling.</p>
+    <div data-set="html:section.project.misc[1].detail">
+      <span data-prop="temp:'link', data:'section.project.links.source as _link'"></span>
     </div>
 
-    <script src="assets/js/dcg.js"></script>
-    <script src="assets/js/dcg-profile.js"></script>
+    <div data-set="html:section.project.content">
+      <p>A basic chat room, made with long polling technique.</p>
+      <p>This project was one of my first projects to learn the relation between client-side and server-side. Originally wanted to make it with <span data-prop="temp:'link', data:'section.project.links.websocket as _link'"></span> but couldn't because of the limitations of shared hosting.</p>
+      <hr>
+      <h3>What is the difference between short and long polling?</h3>
+      <p>Point of the polling in general is getting data from a server continously. Short-polling requests data every pre-determined time while long-polling waits for server to send the data. Since the connection between client and server isn't aborted in long-polling, its clearly a more robust solution than short-polling.</p>
+    </div>
+
+    <script src="assets/js/cog.js"></script>
+    <script src="assets/js/cog-profile.js"></script>
     <script>
-      dcg.render({
-        designSrc: "layouts/work.html"
-      });
+      cog.render("layouts/work.html");
     </script>
   </body>
 </html>

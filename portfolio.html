@@ -7,22 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alper Derman | Portfolio</title>
   </head>
-  <body>
+  <body class="overflow-hidden">
 
-    <div dcg-screen style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
+    <div class="gsap-screen" style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
 
-    <dcg dcg-src="layouts/_load.html"></dcg>
+    <cog data-src="layouts/_load.html"></cog>
 
-    <div dcg-obj="navbar.menus.portfolio.active">true</div>
+    <div data-set="text:navbar.menus.portfolio.active">active</div>
 
-    <div dcg-obj="section.portfolio.title">Portfolio</div>
+    <div data-set="json:section">{}</div>
+    <div data-set="json:section.portfolio">{}</div>
 
-    <script src="assets/js/dcg.js"></script>
-    <script src="assets/js/dcg-profile.js"></script>
+    <div data-set="text:section.portfolio.title">Portfolio</div>
+
+    <script src="assets/js/cog.js"></script>
+    <script src="assets/js/cog-profile.js"></script>
     <script>
-      dcg.render({
-        designSrc: "layouts/portfolio.html"
-      });
+      cog.render("layouts/portfolio.html");
     </script>
   </body>
 </html>

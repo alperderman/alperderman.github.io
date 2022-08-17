@@ -1,1 +1,1 @@
-<a dcg:href="{{href}}" dcg:class="white {!% if('{{color}}' != ''){return '{{color}}';}else {return 'bg-gray'} %!} no-underline br2 tc ml2 pv2 ph3 fr b-shadow-1 h-shadow-1">{{title}}</a>
+<a data-prop="{attr:'href', data:'%%_btn%.href%'}, {text:'%%_btn%.title%'}, {class:'%%_btn%.color%', if:'%%_btn%.color% != \'\''}, {class:'bg-gray', if:'%%_btn%.color% == \'\''}" class="white no-underline br2 tc ml2 pv2 ph3 fr b-shadow-1 h-shadow-1">{{title}}</a>

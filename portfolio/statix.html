@@ -9,45 +9,54 @@
   </head>
   <body>
 
-    <div dcg-screen style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
+    <div class="gsap-screen" style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
 
-    <div dcg-obj="project.title">Statix</div>
+    <div data-set="json:section">{}</div>
+    <div data-set="json:section.project">{}</div>
 
-    <div dcg-obj="project.details" dcg-json>
+    <div data-set="text:section.project.title">Statix</div>
+
+    <div data-set="json:section.project.details">
       [
-        {"title":"Project Name","detail":"{{project.title}}"},
+        {"title":"Project Name","detail":""},
         {"title":"Project Type","detail":"Personal"},
         {"title":"Made With","detail":"PHP, CodeIgniter, SQLite"},
         {"title":"Objective","detail":"Web traffic analysis"}
       ]
     </div>
 
-    <div dcg-obj="project.misc" dcg-json>
+    <div data-set="html:section.project.details[0].detail"><span data-prop="text:'%section.project.title%'"></span></div>
+
+    <div data-set="json:section.project.misc">
       [
         {"title":"Status","detail":"Finished"},
         {"title":"Source"}
       ]
     </div>
 
-    <div dcg-obj="project.misc.1.detail">
-      <dcg dcg-temp="link" dcg-tobj='{"href":"https://github.com/alperderman/statix", "title":"GitHub"}' dcg-tren></dcg>
+    <div data-set="json:section.project.links">
+      {
+        "source":{"href":"https://github.com/alperderman/statix", "title":"GitHub"}
+      }
     </div>
 
-    <div dcg-obj="project.content">
-        <p>A project for analyzing traffic of a website.</p>
-        <p>Point of this project is not just reporting web traffic but also using the visitor's data on various different internal projects that needs visitor's data, for example a contact form.</p>
-        <hr>
-        <h3>How does it work?</h3>
-        <p>On the client-side of every page there will be AJAX request to a page called "tracker". Tracker gathers the visitor's credentials and generate a visitor ID based on the integrity of the credentials and save it to the database.</p>
-        <p>And after that, with the visitor ID, we can acquire visitor's data where we need it.</p>
+    <div data-set="html:section.project.misc[1].detail">
+      <span data-prop="temp:'link', data:'section.project.links.source as _link'"></span>
     </div>
 
-    <script src="assets/js/dcg.js"></script>
-    <script src="assets/js/dcg-profile.js"></script>
+    <div data-set="html:section.project.content">
+      <p>A project for analyzing traffic of a website.</p>
+      <p>Point of this project is not just reporting web traffic but also using the visitor's data on various different internal projects that needs visitor's data, for example a contact form.</p>
+      <hr>
+      <h3>How does it work?</h3>
+      <p>On the client-side of every page there will be AJAX request to a page called "tracker". Tracker gathers the visitor's credentials and generate a visitor ID based on the integrity of the credentials and save it to the database.</p>
+      <p>And after that, with the visitor ID, we can acquire visitor's data where we need it.</p>
+    </div>
+
+    <script src="assets/js/cog.js"></script>
+    <script src="assets/js/cog-profile.js"></script>
     <script>
-      dcg.render({
-        designSrc: "layouts/work.html"
-      });
+      cog.render("layouts/work.html");
     </script>
   </body>
 </html>

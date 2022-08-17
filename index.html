@@ -7,44 +7,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alper Derman | Home</title>
   </head>
-  <body>
+  <body class="overflow-hidden">
 
-    <div dcg-screen style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
+    <div class="gsap-screen" style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
 
-    <dcg dcg-src="layouts/_load.html"></dcg>
+    <cog data-src="layouts/_load.html"></cog>
 
-    <div dcg-obj="navbar.menus.home.active">true</div>
+    <div data-set="text:navbar.menus.home.active">active</div>
 
-    <div dcg-obj="section.briefing.title">Introduction</div>
-    <div dcg-obj="section.briefing.content">
+    <div data-set="json:section">{}</div>
+    <div data-set="json:section.briefing">{}</div>
+    <div data-set="json:section.frequently">{}</div>
+    <div data-set="json:section.familiar">{}</div>
+    <div data-set="json:section.portfolio">{}</div>
+    <div data-set="json:section.contact">{}</div>
+
+    <div data-set="text:section.briefing.title">Introduction</div>
+    <div data-set="html:section.briefing.content">
       <p>Hi, my name is Alper. I'm a web developer and a junior programmer. This is my personal website. Here, you can find my works, get <span style="font-size: 0.6rem;"> little</span> information about me or contact to me indirectly.</p>
       <p>My works consist of front-end designs, back-end projects and cross-platform applications. I'm trying to learn various fields related to programming rather than specializing in a single field.</p>
     </div>
 
-    <div dcg-obj="section.frequently.title">Frequently Used</div>
-    <div dcg-obj="section.frequently.content">
+    <div data-set="text:section.frequently.title">Frequently Used</div>
+    <div data-set="html:section.frequently.content">
       <p>This section contains the things that I can confidently say that I'm advanced.</p>
     </div>
 
-    <div dcg-obj="section.familiar.title">Familiar With</div>
-    <div dcg-obj="section.familiar.content">
+    <div data-set="text:section.familiar.title">Familiar With</div>
+    <div data-set="html:section.familiar.content">
       <p>This section contains the things that I'm not as advanced as the other section but made projects with them and have an overall idea about the structure.</p>
     </div>
 
-    <div dcg-obj="section.portfolio.title">Portfolio</div>
-    <div dcg-obj="section.portfolio.content">
+    <div data-set="text:section.portfolio.title">Portfolio</div>
+    <div data-set="html:section.portfolio.content">
       <p>I do my work with pure passion but as I mentioned above, I'm still on a learning phase, so hope you consider that while looking through my works.</p>
     </div>
-    <div dcg-obj="section.portfolio.more" dcg-json>{"href":"{{navbar.menus.portfolio.href}}", "color":"", "title":"See More Works"}</div>
+    <div data-set="json:section.portfolio.btn">{"href":"%navbar.menus.portfolio.href%", "color":"", "title":"See More Works"}</div>
 
-    <div dcg-obj="section.contact.title">Get In Touch!</div>
+    <div data-set="text:section.contact.title">Get In Touch!</div>
 
-    <script src="assets/js/dcg.js"></script>
-    <script src="assets/js/dcg-profile.js"></script>
+    <script src="assets/js/cog.js"></script>
+    <script src="assets/js/cog-profile.js"></script>
     <script>
-      dcg.render({
-        designSrc: "layouts/index.html"
-      });
+      cog.render("layouts/index.html");
     </script>
   </body>
 </html>

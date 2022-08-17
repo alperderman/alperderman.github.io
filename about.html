@@ -7,27 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alper Derman | About</title>
   </head>
-  <body>
+  <body class="overflow-hidden">
 
-    <div dcg-screen style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
+    <div class="gsap-screen" style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
 
-    <dcg dcg-src="layouts/_load.html"></dcg>
+    <cog data-src="layouts/_load.html"></cog>
 
-    <div dcg-obj="navbar.menus.about.active">true</div>
+    <div data-set="text:navbar.menus.about.active">active</div>
 
-    <div dcg-obj="section.about.content">
+    <div data-set="json:section">{}</div>
+    <div data-set="json:section.about">{}</div>
+    <div data-set="json:section.contact">{}</div>
+
+    <div data-set="html:section.about.content">
       <h1 class="tc f1 lh-title mb0">Hello there!</h1>
       <h1 class="tc f3 lh-title mt0">I'm Alper Derman</h1>
       <div class="w-75 w-50-m w-33-l center pa4 pa3-ns gsap-avatar">
         <div class="w-100 br-100 b-shadow-1 aspect-ratio aspect-ratio--1x1 overflow-hidden">
-          <div class="db cover bg-center aspect-ratio--object z-1" dcg:style="background-image:url('assets/media/avatar.jpg')"></div>
+          <div class="db cover bg-center aspect-ratio--object z-1" style="background-image:url('assets/media/avatar.jpg')"></div>
         </div>
       </div>
       <p>I'm a full stack web developer and a junior programmer. I'm trying to learn various fields related to programming rather than specializing in a single field. You might say I'm a sort of "jack of all trades, master of none".</p>
       <p>As for my personality, I'm very flexible and can adapt to new environments and situations with ease, <span class="silver">like a cat taking the shape of a container</span>.</p>
       <div class="w-75 w-50-m w-33-l fr-ns center pa3 gsap-img">
         <div class="w-100 br3 b-shadow-1 aspect-ratio aspect-ratio--1x1 overflow-hidden">
-          <div class="db cover bg-center aspect-ratio--object z-1" dcg:style="background-image:url('assets/media/liquid-cat.jpg')"></div>
+          <div class="db cover bg-center aspect-ratio--object z-1" style="background-image:url('assets/media/liquid-cat.jpg')"></div>
         </div>
       </div>
       <p>When I encounter a problem, I always land on my feet and I don't give up that easily.</p>
@@ -36,17 +40,15 @@
       <p>Things that I don't appreciate are: ambiguity and taking risks. When I'm doing something, I want to be exactly sure about the outcome, I don't like taking chances.</p>
     </div>
 
-    <div dcg-obj="section.contact.title">Contact</div>
-    <div dcg-obj="section.contact.content">
+    <div data-set="text:section.contact.title">Contact</div>
+    <div data-set="html:section.contact.content">
       <p>I mainly post my works to either GitHub or CodePen, for formal stuff I use LinkedIn. I also have accounts on Instagram and Twitter but I don't use them actively, so putting them on this section would be useless.</p>
     </div>
 
-    <script src="assets/js/dcg.js"></script>
-    <script src="assets/js/dcg-profile.js"></script>
+    <script src="assets/js/cog.js"></script>
+    <script src="assets/js/cog-profile.js"></script>
     <script>
-      dcg.render({
-        designSrc: "layouts/about.html"
-      });
+      cog.render("layouts/about.html");
     </script>
   </body>
 </html>

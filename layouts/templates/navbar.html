@@ -5,12 +5,10 @@
     </div>
   </div>
   <div class="w-100 w-auto-ns fr-ns h-100">
-    <ul class="list pa0 ma0 h-100 tc grid items-center">
-      <dcg dcg-repeat="navbar.menus as menu">
+    <ul class="list pa0 ma0 h-100 tc grid items-center" data-prop='repeat:"%_navbar%.menus as menu", temp:"navbarMenu"'>
         <li class="h-100">
-          <a dcg:class="no-underline h-100 pa2 pa3-l dib flex items-center justify-center {!% if('{{menu.active}}' == 'true'){return 'active near-white';}else {return 'silver dim';} %!}" dcg:href="{{menu.href}}">{{menu.title}}</a>
+          <a class="no-underline h-100 pa2 pa3-l dib flex items-center justify-center" data-bind="%menu%" data-prop="{class:'active near-white', if:'%%menu%.active% == \'active\''}, {class:'silver dim', if:'%%menu%.active% != \'active\''}, {attr:'href', data:'%%menu%.href%'}, {text:'%%menu%.title%'}">{{menu.title}}</a>
         </li>
-      </dcg>
     </ul>
   </div>
 </div>

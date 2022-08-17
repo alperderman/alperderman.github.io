@@ -9,31 +9,42 @@
   </head>
   <body>
 
-    <div dcg-screen style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
+    <div class="gsap-screen" style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
 
-    <div dcg-obj="project.title">Stock Management System</div>
+    <div data-set="json:section">{}</div>
+    <div data-set="json:section.project">{}</div>
 
-    <div dcg-obj="project.details" dcg-json>
+    <div data-set="text:section.project.title">Stock Management System</div>
+
+    <div data-set="json:section.project.details">
       [
-        {"title":"Project Name","detail":"{{project.title}}"},
+        {"title":"Project Name","detail":""},
         {"title":"Project Type","detail":"Personal"},
         {"title":"Made With","detail":"C#, Access DB"},
         {"title":"Objective","detail":"Managing items on the stock"}
       ]
     </div>
 
-    <div dcg-obj="project.misc" dcg-json>
+    <div data-set="html:section.project.details[0].detail"><span data-prop="text:'%section.project.title%'"></span></div>
+
+    <div data-set="json:section.project.misc">
       [
         {"title":"Status","detail":"Finished"},
         {"title":"Source"}
       ]
     </div>
 
-    <div dcg-obj="project.misc.1.detail">
-      <dcg dcg-temp="link" dcg-tobj='{"href":"https://github.com/alperderman/stock-management", "title":"GitHub"}' dcg-tren></dcg>
+    <div data-set="json:section.project.links">
+      {
+        "source":{"href":"https://github.com/alperderman/stock-management", "title":"GitHub"}
+      }
     </div>
 
-    <div dcg-obj="project.imgs" dcg-json>
+    <div data-set="html:section.project.misc[1].detail">
+      <span data-prop="temp:'link', data:'section.project.links.source as _link'"></span>
+    </div>
+
+    <div data-set="json:section.project.imgs">
       [
         {"img":"assets/media/portfolio/stock-1.jpg"},
         {"img":"assets/media/portfolio/stock-2.jpg"},
@@ -42,21 +53,19 @@
       ]
     </div>
 
-    <div dcg-obj="project.content">
-        <p>Stock management software made with C#. Pretty straight forward project for adding and deleting items, tracking sales and so on.</p>
-        <p>Apart from the usual features, I have also added a permission system so that only certain type of users control the certain parts of the system. For instance if you are a salesman on the system you can only sell products, you cannot do anything else like buying or changing the price of a product.</p>
-        <p>There are total of 5 job titles and each has it's own unique role on the system.</p>
-        <hr>
-        <h3>Screenshots</h3>
-        <dcg dcg-temp="project-gallery" dcg-tren></dcg>
+    <div data-set="html:section.project.content">
+      <p>Stock management software made with C#. Pretty straight forward project for adding and deleting items, tracking sales and so on.</p>
+      <p>Apart from the usual features, I have also added a permission system so that only certain type of users control the certain parts of the system. For instance if you are a salesman on the system you can only sell products, you cannot do anything else like buying or changing the price of a product.</p>
+      <p>There are total of 5 job titles and each has it's own unique role on the system.</p>
+      <hr>
+      <h3>Screenshots</h3>
+      <span data-prop="temp:'projectGallery'"></span>
     </div>
 
-    <script src="assets/js/dcg.js"></script>
-    <script src="assets/js/dcg-profile.js"></script>
+    <script src="assets/js/cog.js"></script>
+    <script src="assets/js/cog-profile.js"></script>
     <script>
-      dcg.render({
-        designSrc: "layouts/work.html"
-      });
+      cog.render("layouts/work.html");
     </script>
   </body>
 </html>

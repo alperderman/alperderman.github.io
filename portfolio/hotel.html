@@ -9,31 +9,43 @@
   </head>
   <body>
 
-    <div dcg-screen style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
+    <div class="gsap-screen" style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
 
-    <div dcg-obj="project.title">Hotel Reservation System</div>
+    <div data-set="json:section">{}</div>
+    <div data-set="json:section.project">{}</div>
 
-    <div dcg-obj="project.details" dcg-json>
+    <div data-set="text:section.project.title">Hotel Reservation System</div>
+
+    <div data-set="json:section.project.details">
       [
-        {"title":"Project Name","detail":"{{project.title}}"},
+        {"title":"Project Name","detail":""},
         {"title":"Project Type","detail":"Personal"},
         {"title":"Made With","detail":"B4X, SQLite"},
         {"title":"Objective","detail":"Managing reservations and other features of a hotel"}
       ]
     </div>
 
-    <div dcg-obj="project.misc" dcg-json>
+    <div data-set="html:section.project.details[0].detail"><span data-prop="text:'%section.project.title%'"></span></div>
+
+    <div data-set="json:section.project.misc">
       [
         {"title":"Status","detail":"Finished"},
         {"title":"Source"}
       ]
     </div>
 
-    <div dcg-obj="project.misc.1.detail">
-      <dcg dcg-temp="link" dcg-tobj='{"href":"https://github.com/alperderman/hotel-reservation", "title":"GitHub"}' dcg-tren></dcg>
+    <div data-set="json:section.project.links">
+      {
+        "source":{"href":"https://github.com/alperderman/hotel-reservation", "title":"GitHub"},
+        "b4x":{"href":"https://www.b4x.com/", "title":"B4X"}
+      }
     </div>
 
-    <div dcg-obj="project.imgs" dcg-json>
+    <div data-set="html:section.project.misc[1].detail">
+      <span data-prop="temp:'link', data:'section.project.links.source as _link'"></span>
+    </div>
+
+    <div data-set="json:section.project.imgs">
       [
         {"img":"assets/media/portfolio/hotel-1.jpg"},
         {"img":"assets/media/portfolio/hotel-2.jpg"},
@@ -42,28 +54,26 @@
       ]
     </div>
 
-    <div dcg-obj="project.content">
-        <p>Hotel reservation system made with B4X. Done it in only 2 weeks including the learning phase of the language.</p>
-        <p>This is the first project that I've done with <dcg dcg-temp="link" dcg-tobj='{"href":"https://www.b4x.com/", "title":"B4X"}' dcg-tren></dcg>. The reason why I didn't make this project with a more common language like C# is purely because of the need of learning a new language.</p>
-        <p>And even though I had relatively a short time using this language, I'm glad I have done this project with B4X because it is way better than it looks, a bit different than C# but it is simply awesome. Let me quickly explain the features that I like;</p>
-        <ul>
-            <li>B4X, more specifically the desktop version called B4J is Java based so it can compile to every platform that supports Java.</li>
-            <li>The syntax is based on BASIC, if you are familiar with Visual Basic you'll feel right at home.</li>
-            <li>Design system is different than C#, on C# each form layout has its own corresponding code module. But on B4X, the layouts and code modules are completely seperate entities meaning that you can use the same layout for multiple code modules or the other way around.</li>
-            <li>IDE of the B4X is lightweight (especially compared to VS) and simple.</li>
-        </ul>
-        <p>I'm looking forward to use B4X for my future projects.</p>
-        <hr>
-        <h3>Screenshots</h3>
-        <dcg dcg-temp="project-gallery" dcg-tren></dcg>
+    <div data-set="html:section.project.content">
+      <p>Hotel reservation system made with B4X. Done it in only 2 weeks including the learning phase of the language.</p>
+      <p>This is the first project that I've done with <span data-prop="temp:'link', data:'section.project.links.b4x as _link'"></span>. The reason why I didn't make this project with a more common language like C# is purely because of the need of learning a new language.</p>
+      <p>And even though I had relatively a short time using this language, I'm glad I have done this project with B4X because it is way better than it looks, a bit different than C# but it is simply awesome. Let me quickly explain the features that I like;</p>
+      <ul>
+        <li>B4X, more specifically the desktop version called B4J is Java based so it can be compiled to every platform that supports Java.</li>
+        <li>The syntax is based on BASIC, if you are familiar with Visual Basic you'll feel right at home.</li>
+        <li>Design system is different than C#, on C# each form layout has its own corresponding code module. But on B4X, the layouts and code modules are completely seperate entities meaning that you can use the same layout for multiple code modules or the other way around.</li>
+        <li>IDE of the B4X is lightweight (especially compared to VS) and simple.</li>
+      </ul>
+      <p>I'm looking forward to use B4X for my future projects.</p>
+      <hr>
+      <h3>Screenshots</h3>
+      <span data-prop="temp:'projectGallery'"></span>
     </div>
 
-    <script src="assets/js/dcg.js"></script>
-    <script src="assets/js/dcg-profile.js"></script>
+    <script src="assets/js/cog.js"></script>
+    <script src="assets/js/cog-profile.js"></script>
     <script>
-      dcg.render({
-        designSrc: "layouts/work.html"
-      });
+      cog.render("layouts/work.html");
     </script>
   </body>
 </html>
