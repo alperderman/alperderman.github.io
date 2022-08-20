@@ -268,10 +268,16 @@ cog.replaceToken = function (node, replace) {
     }
 };
 cog.loadTemplate = function (arg, bind) {
-    var template;
+    var template, createEl;
     if (arg.id == null) {return;}
     if (cog.templates[arg.id] == null && arg.el != null) {
-        cog.templates[arg.id] = arg.el.cloneNode(true);
+        if (typeof arg.el === 'string') {
+            createEl = document.createElement("div");
+            createEl.innerHTML = arg.el;
+            cog.templates[arg.id] = createEl.cloneNode(true);
+        } else {
+            cog.templates[arg.id] = arg.el.cloneNode(true);
+        }
     }
     if (cog.templates[arg.id] != null) {
         template = cog.templates[arg.id].cloneNode(true);
@@ -427,6 +433,7 @@ cog.init = function () {
         bind: function (elem, prop, props, propIndex) {
             var propDatas, propData, propDatasIterate, template, repeatVal, i, key, parent = prop.repeat.split(" ")[0], alias = prop.repeat.split(" ")[2];
             propDatas = cog.eval("cog.data."+parent);
+            parent = cog.replaceAll(parent, "'", "\\\'");
             if (propDatas != null) {
                 cog.loadTemplate({id:prop.temp, el:elem});
                 if (typeof propDatas === 'object' && !Array.isArray(propDatas)) {
@@ -448,7 +455,7 @@ cog.init = function () {
                         var result = null;
                         if (pure == alias) {
                             if (typeof propDatas === 'object' && !Array.isArray(propDatas)) {
-                                result = parent+"[\\'"+key+"\\']";
+                                result = parent+"[\\\'"+key+"\\\']";
                             } else {
                                 result = parent+"["+i+"]";
                             }
