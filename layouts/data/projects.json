@@ -1,9 +1,10 @@
 [
     {"title":"Statix", "desc":"A project for analyzing traffic of the website.", "source":"https://github.com/alperderman/statix", "details":"portfolio/statix.html"},
-    {"title":"Dynamic Content Generation", "desc":"Dynamic Content Generation (DCG) is a front-end solution for content management.", "source":"https://github.com/alperderman/dcg", "details":"portfolio/dcg.html"},
+    {"title":"CognitiveJS", "desc":"CognitiveJS (previously called DCG) is a front-end framework/library", "source":"https://github.com/alperderman/CognitiveJS", "details":"portfolio/cognitive.html"},
     {"title":"Unified Account System", "desc":"Standalone account management and authorization project.", "source":"https://github.com/alperderman/uas", "details":"portfolio/uas.html"},
     {"title":"Chat Room", "desc":"A basic chat room made with long polling technique.", "source":"https://github.com/alperderman/chatroom", "details":"portfolio/chatroom.html"},
     {"title":"Halfmoon Dashboard", "desc":"Proof of concept dashboard made with UAS, DCG and Halfmoon framework.", "img":"assets/media/portfolio/hmdashboard.jpg", "source":"https://github.com/alperderman/halfmoon-dashboard", "details":"portfolio/hmdashboard.html"},
     {"title":"Stock Management System", "desc":"Stock management software made with C#.", "img":"assets/media/portfolio/stock.jpg", "source":"https://github.com/alperderman/stock-management", "details":"portfolio/stock.html"},
-    {"title":"Hotel Reservation System", "desc":"Hotel reservation system made with B4X.", "img":"assets/media/portfolio/hotel.jpg", "source":"https://github.com/alperderman/hotel-reservation", "details":"portfolio/hotel.html"}
+    {"title":"Hotel Reservation System", "desc":"Hotel reservation system made with B4X.", "img":"assets/media/portfolio/hotel.jpg", "source":"https://github.com/alperderman/hotel-reservation", "details":"portfolio/hotel.html"},
+    {"title":"Dynamic Content Generation", "desc":"Dynamic Content Generation (predecessor of CognitiveJS) is a front-end solution for content management.", "source":"https://github.com/alperderman/dcg", "details":"portfolio/dcg.html"}
 ]
