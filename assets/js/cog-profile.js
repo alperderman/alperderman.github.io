@@ -1,4 +1,4 @@
-cog.cacheRender = true;
+cog.cache = true;
 document.addEventListener("COGAfterRender", function () {
   document.body.classList.remove("overflow-hidden");
   gsap.to(".gsap-screen", {
