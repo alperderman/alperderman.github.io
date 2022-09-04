@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <cog data-prop='data:"navbar as _navbar", temp:"navbar"'></cog>
+  <cog data-prop='data:"%navbar% as _navbar", temp:"navbar"'></cog>
 
   <div class="bg-mid-gray light-gray b-shadow-2">
     <div class="grid center one pv4">
@@ -27,8 +27,8 @@
             <div class="bg-dark-gray b-shadow-1 br3 pa2 pb3">
               <h3 class="tc" data-prop='text:"%section.frequently.title%"'>{{section.frequently.title}}</h3>
               <div class="pa1" data-prop='html:"%section.frequently.content%"'>{{section.frequently.content}}</div>
-              <div class="grid center three four-1000" data-prop="repeat:'skills.frequently as skill', temp:'_skill'">
-                <div class="pa1" data-prop="temp:'skill', data:'%skill% as _skill'">
+              <div class="grid center three four-1000" data-prop="repeat:'%skills.frequently% as skill', temp:'_skill'">
+                <div class="pa1" data-prop="temp:'skill', data:'%%skill%% as _skill'">
                 </div>
               </div>
             </div>
@@ -37,8 +37,8 @@
             <div class="bg-dark-gray b-shadow-1 br3 pa2 pb3">
               <h3 class="tc" data-prop='text:"%section.familiar.title%"'>{{section.familiar.title}}</h3>
               <div class="pa1" data-prop='html:"%section.familiar.content%"'>{{section.familiar.content}}</div>
-              <div class="grid center three four-1000" data-prop="repeat:'skills.familiar as skill', temp:'_skill'">
-                <div class="pa1" data-prop="temp:'skill', data:'%skill% as _skill'">
+              <div class="grid center three four-1000" data-prop="repeat:'%skills.familiar% as skill', temp:'_skill'">
+                <div class="pa1" data-prop="temp:'skill', data:'%%skill%% as _skill'">
                 </div>
               </div>
             </div>
@@ -52,12 +52,12 @@
       <div class="one four-fifth-700 three-fourth-1000 two-fourth-1500 pa2">
         <h1 class="tc ruled" data-prop='text:"%section.portfolio.title%"'>{{section.portfolio.title}}</h1>
         <div class="full three-fourth-500 ph2 center" data-prop='html:"%section.portfolio.content%"'>{{section.portfolio.content}}</div>
-        <div class="grid center one two-500 three-1000 items-center" data-prop="repeat:'projects as project', temp:'_projectCard'">
-          <div class="pa2 pa3-l" data-prop="{temp:'projectCard', data:'%project% as _project'}, {if:'%project._index% &lt; 3'}">
+        <div class="grid center one two-500 three-1000 items-center" data-prop="repeat:'%projects% as project', temp:'_projectCard'">
+          <div class="pa2 pa3-l" data-prop="{temp:'projectCard', data:'%%project%% as _project'}, {if:'%project._index% &lt; 3'}">
           </div>
         </div>
         <div class="grid center one mt4">
-          <div class="one half-500 fourth-1000 pa2" data-prop="temp:'btn', data:'section.portfolio.btn as _btn'">
+          <div class="one half-500 fourth-1000 pa2" data-prop="temp:'btn', data:'%section.portfolio.btn% as _btn'">
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@
         <h1 class="tc ruled" data-prop="text:'%section.contact.title%'">{{section.contact.title}}</h1>
         <div class="grid center one pa3">
           <div class="one two-third-600 half-1100 bg-dark-gray b-shadow-1 br3 pa4">
-            <div class="grid center three" data-bind="contacts" data-prop="repeat:'contacts as _contact', temp:'contactIcon'">
+            <div class="grid center three" data-bind="contacts" data-prop="repeat:'%contacts% as _contact', temp:'contactIcon'">
             </div>
           </div>
         </div>

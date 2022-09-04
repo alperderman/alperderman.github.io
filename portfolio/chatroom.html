@@ -42,12 +42,12 @@
     </div>
 
     <div data-set="html:section.project.misc[1].detail">
-      <span data-prop="temp:'link', data:'section.project.links.source as _link'"></span>
+      <span data-prop="temp:'link', data:'%section.project.links.source% as _link'"></span>
     </div>
 
     <div data-set="html:section.project.content">
       <p>A basic chat room, made with long polling technique.</p>
-      <p>This project was one of my first projects to learn the relation between client-side and server-side. Originally wanted to make it with <span data-prop="temp:'link', data:'section.project.links.websocket as _link'"></span> but couldn't because of the limitations of shared hosting.</p>
+      <p>This project was one of my first projects to learn the relation between client-side and server-side. Originally wanted to make it with <span data-prop="temp:'link', data:'%section.project.links.websocket% as _link'"></span> but couldn't because of the limitations of shared hosting.</p>
       <hr>
       <h3>What is the difference between short and long polling?</h3>
       <p>Point of the polling in general is getting data from a server continously. Short-polling requests data every pre-determined time while long-polling waits for server to send the data. Since the connection between client and server isn't aborted in long-polling, its clearly a more robust solution than short-polling.</p>

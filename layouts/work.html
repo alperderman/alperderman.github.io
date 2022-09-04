@@ -5,7 +5,7 @@
 
   <cog data-prop='temp:"galleryMask"'></cog>
 
-  <cog data-prop='data:"navbar as _navbar", temp:"navbar"'></cog>
+  <cog data-prop='data:"%navbar% as _navbar", temp:"navbar"'></cog>
 
   <div class="bg-mid-gray light-gray min-vh-100">
     <div class="grid center one pv4">
@@ -14,12 +14,12 @@
         <div class="w-100 pa4 br3 mb3">
           <div class="grid one two-600">
             <div>
-              <ul class="list pa0 ma0" data-prop="repeat:'section.project.details as _item', temp:'_item'">
+              <ul class="list pa0 ma0" data-prop="repeat:'%section.project.details% as _item', temp:'_item'">
                 <li><span class="light-silver ttc" data-prop="html:'%%_item%.title%:'">{{li.title}}:</span> <span data-prop="html:'%%_item%.detail%'">{{li.detail}}</span></li>
               </ul>
             </div>
             <div>
-              <ul class="list pa0 ma0" data-prop="repeat:'section.project.misc as _item', temp:'_item'">
+              <ul class="list pa0 ma0" data-prop="repeat:'%section.project.misc% as _item', temp:'_item'">
                 <li><span class="light-silver ttc" data-prop="html:'%%_item%.title%:'">{{li.title}}:</span> <span data-prop="html:'%%_item%.detail%'">{{li.detail}}</span></li>
               </ul>
             </div>
