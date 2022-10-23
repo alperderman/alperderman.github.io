@@ -1,6 +1,6 @@
 [
     {"title":"Statix", "desc":"A project for analyzing traffic of the website.", "source":"https://github.com/alperderman/statix", "details":"portfolio/statix.html"},
-    {"title":"CognitiveJS", "desc":"CognitiveJS (previously called DCG) is a front-end framework/library", "source":"https://github.com/alperderman/CognitiveJS", "details":"portfolio/cognitive.html"},
+    {"title":"CognitiveJS", "desc":"CognitiveJS (previously called DCG) is a front-end framework/library", "img":"assets/media/portfolio/cog.jpg", "source":"https://github.com/alperderman/CognitiveJS", "details":"portfolio/cognitive.html"},
     {"title":"Unified Account System", "desc":"Standalone account management and authorization project.", "source":"https://github.com/alperderman/uas", "details":"portfolio/uas.html"},
     {"title":"Chat Room", "desc":"A basic chat room made with long polling technique.", "source":"https://github.com/alperderman/chatroom", "details":"portfolio/chatroom.html"},
     {"title":"Halfmoon Dashboard", "desc":"Proof of concept dashboard made with UAS, DCG and Halfmoon framework.", "img":"assets/media/portfolio/hmdashboard.jpg", "source":"https://github.com/alperderman/halfmoon-dashboard", "details":"portfolio/hmdashboard.html"},
