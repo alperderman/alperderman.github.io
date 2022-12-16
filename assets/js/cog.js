@@ -51,15 +51,14 @@ cog.get = function (key, arg) {
     if (arg == null) {arg = {};}
     if (arg.reference == null) {arg.reference = false;}
     if (arg.execute == null) {arg.execute = false;}
-    if (arg.alter == null) {arg.alter = true;}
-    var result, old, changedElems = [], custom = false;
+    var result, old, changedElems = [], alter = false;
     if (typeof arg.replace === 'function') {
-        custom = true;
+        alter = true;
     }
-    if (arg.set !== undefined || custom) {
+    if (typeof arg.set !== 'undefined' || alter) {
         old = cog.getRecursiveValue({str:key, exec:false});
-        if ((old !== arg.set && (old === undefined || arg.alter)) || custom) {
-            if (custom) {
+        if (old !== arg.set || alter) {
+            if (alter) {
                 result = arg.replace({str:key, val:arg.set, ref:arg.reference, exec:arg.execute});
             } else {
                 result = cog.getRecursiveValue({str:key, val:arg.set, ref:arg.reference, exec:arg.execute});
@@ -79,9 +78,9 @@ cog.get = function (key, arg) {
 };
 cog.set = function (key, set, arg) {
     if (arg == null) {arg = {};}
-    if (arg.custom == null) {arg.custom = false;}
-    if (arg.alter == null) {arg.alter = true;}
-    if (key == null && set == null) {
+    if (arg.alter == null) {arg.alter = false;}
+    if (arg.setElems == null) {arg.setElems = false;}
+    if (arg.setElems) {
         cog.loadContents(function () {
             var setElem, setAttr, setType, setKey, bindType, i, links = document.getElementsByTagName("link"), link, heads = document.querySelectorAll("["+cog.label.head+"]"), head;
             while (setElem = document.querySelector("["+cog.label.set+"]:not(["+cog.label.skip+"])")) {
@@ -109,16 +108,15 @@ cog.set = function (key, set, arg) {
                 arg.callback();
             }
         });
-    } else if (arg.custom && typeof set === 'function') {
+    } else if (arg.alter && typeof set === 'function') {
         cog.get(key, {
             set: set,
-            alter: arg.alter,
             callback: arg.callback,
             replace: function (argReplace) {
                 var result = cog.getRecursiveValue({str:argReplace.str, exec:false});
-                var custom = set(result);
-                if (custom !== result) {
-                    argReplace.val = custom;
+                var replace = set(result);
+                if (replace !== result) {
+                    argReplace.val = replace;
                     result = cog.getRecursiveValue(argReplace);
                 }
                 return result;
@@ -127,10 +125,14 @@ cog.set = function (key, set, arg) {
     } else {
         cog.get(key, {
             set: set,
-            alter: arg.alter,
             callback: arg.callback
         });
     }
+};
+cog.alter = function (key, set, arg) {
+    if (arg == null) {arg = {};}
+    arg.alter = true;
+    cog.set(key, set, arg);
 };
 cog.rebind = function (key, changed, i) {
     if (i == null) {i = 0;}
@@ -228,7 +230,7 @@ cog.getRecursiveValue = function (arg) {
     }
     for (i = 0;i < strSplit.length;i++) {
         key = strSplit[i];
-        if (refData[key] !== undefined && i != strSplit.length-1 && i != arg.index) {
+        if (typeof refData !== 'undefined' && typeof refData[key] !== 'undefined' && i != strSplit.length-1 && i != arg.index) {
             refData = refData[key];
             if (typeof refData === 'function') {
                 refData = refData();
@@ -254,11 +256,15 @@ cog.getRecursiveValue = function (arg) {
                     result = refData.length;
                 }
             } else {
-                if (arg.val !== undefined && refData[key] !== arg.val) {
+                if (typeof arg.val !== 'undefined' && refData[key] !== arg.val) {
                     document.dispatchEvent(new CustomEvent(cog.event.beforeData, {detail:{key:arg.str, old:refData[key], new:arg.val}}));
                     refData[key] = arg.val;
                 }
-                result = refData[key];
+                if (typeof refData === 'undefined' || typeof refData[key] === 'undefined') {
+                    result = undefined;
+                } else {
+                    result = refData[key];
+                }
                 break;
             }
         }
@@ -393,7 +399,7 @@ cog.bind = function (node, arg) {
             return cog.get(node, arg);
         };
     } else {
-        if (arg.prop !== undefined) {
+        if (typeof arg.prop !== 'undefined') {
             if (!arg.keep) {
                 remove_current();
             }
@@ -417,7 +423,7 @@ cog.bind = function (node, arg) {
         } else {
             nodeProp = nodePropData;
         }
-        if (arg.bind !== undefined) {
+        if (typeof arg.bind !== 'undefined') {
             if (typeof arg.bind === 'string') {
                 if (arg.bind != "") {
                     node.setAttribute(cog.label.bind, arg.bind);
@@ -504,6 +510,7 @@ cog.bindAll = function (arg) {
     if (arg.set == null) {arg.set = true;}
     if (arg.set) {
         cog.set(null, null, {
+            setElems: true,
             callback: function () {
                 bind();
             }
@@ -893,7 +900,7 @@ cog.init = function () {
                         propCurrent[propEvent] = propData;
                     }
                 });
-                if (prop[cog.keyword.prevent] !== undefined) {
+                if (typeof prop[cog.keyword.prevent] !== 'undefined') {
                     propCurrent[cog.keyword.prevent] = prop[cog.keyword.prevent];
                 }
                 if (propCurrent != null) {
@@ -932,8 +939,8 @@ cog.init = function () {
                 }
                 propToken = cog.normalizeKeys(propToken);
                 if (propToken != null) {
-                    propCurrent[propEvent] = "cog.set('"+propToken+"', "+propData+", {custom:true})";
-                    if (prop[cog.keyword.prevent] !== undefined) {
+                    propCurrent[propEvent] = "cog.alter('"+propToken+"', "+propData+")";
+                    if (typeof prop[cog.keyword.prevent] !== 'undefined') {
                         propCurrent[cog.keyword.prevent] = prop[cog.keyword.prevent];
                     }
                 }
@@ -1108,6 +1115,7 @@ cog.render = function (layoutSrc) {
         }
         setTimeout(function () {
             cog.set(null, null, {
+                setElems: true,
                 callback: function () {
                     step_bind();
                 }
