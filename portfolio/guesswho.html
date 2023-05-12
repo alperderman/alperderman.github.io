@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="https://alperderman.com/" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alper Derman | Guess Who?</title>
+  </head>
+  <body>
+    
+    <div class="gsap-screen" style='position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;background-color:#333;'></div>
+
+    <div data-set="json:section">{}</div>
+    <div data-set="json:section.project">{}</div>
+
+    <div data-set="text:section.project.title">Guess Who?</div>
+
+    <div data-set="json:section.project.details">
+      [
+        {"title":"Project Name","detail":""},
+        {"title":"Project Type","detail":"Personal"},
+        {"title":"Made With","detail":"CognitiveJS, UIkit, SQL.js"},
+        {"title":"Objective","detail":"Guess Who game made with CognitiveJS"}
+      ]
+    </div>
+
+    <div data-set="html:section.project.details[0].detail"><span data-prop="text:'%section.project.title%'"></span></div>
+
+    <div data-set="json:section.project.misc">
+      [
+        {"title":"Status","detail":"Finished"},
+        {"title":"Source"}
+      ]
+    </div>
+
+    <div data-set="json:section.project.links">
+      {
+        "source":{"href":"https://github.com/alperderman/guesswho", "title":"GitHub"},
+        "play":{"href":"https://alperderman.com/guesswho/", "title":"Play"},
+        "cog":{"href":"https://github.com/alperderman/CognitiveJS", "title":"CognitiveJS"},
+        "uikit":{"href":"https://getuikit.com/", "title":"UIkit"},
+        "sqljs":{"href":"https://github.com/sql-js/sql.js/", "title":"SQL.js"},
+        "format":{"href":"https://github.com/samsonjs/format", "title":"Format"},
+        "akinator":{"href":"https://en.akinator.com/", "title":"Akinator"}
+      }
+    </div>
+
+    <div data-set="html:section.project.misc[1].detail">
+      <span data-prop="temp:'link', data:'%section.project.links.source% as _link'"></span>
+    </div>
+
+    <div data-set="json:section.project.imgs">
+      [
+        {"img":"assets/media/portfolio/guesswho-1.jpg"},
+        {"img":"assets/media/portfolio/guesswho-2.jpg"},
+        {"img":"assets/media/portfolio/guesswho-3.jpg"}
+      ]
+    </div>
+
+    <div data-set="html:section.project.content">
+        <p>Guess Who game made with CognitiveJS.</p>
+        <p>Before making this project, I wanted to replicate <span data-prop="temp:'link', data:'%section.project.links.akinator% as _link'"></span> game where you would answer questions to find your desired characters.</p>
+        <p>But because of the immense amount of data input needed for that, instead of making an Akinator copy, I've made a Guess Who game using the same algorithm that I've built for the Akinator copy.</p>
+        <p>For those who don't know, Guess Who is a game in which you try to find the opponent's character before the opponent finds your character by asking questions related to the set of 24 characters. All of the characters have distinctive features that could be identified, so you should ask questions and eleminate the ones who doesn't satisfy the criteria of your opponent's character.</p>
+        <p>I've made this project using <span data-prop="temp:'link', data:'%section.project.links.cog% as _link'"></span> alongside with <span data-prop="temp:'link', data:'%section.project.links.uikit% as _link'"></span>, <span data-prop="temp:'link', data:'%section.project.links.sqljs% as _link'"></span> and <span data-prop="temp:'link', data:'%section.project.links.format% as _link'"></span></p>
+        <p>The project itself is actually very extendable and could've added a lot of features, for example I've used a spritesheet to display the characters but it could've been done it dynamically, in which the name and the appearance of the characters generated procedurally. But I didn't bother adding these features mainly because it would take a lot of time and I'm not capable of illustrating or drawing in general.</p>
+        <p>The project is front-end only, so you can play the game directly inside your browser. Click the link in order to <span data-prop="temp:'link', data:'%section.project.links.play% as _link'"></span> the game.</p>
+        <hr>
+        <h3>Screenshots</h3>
+        <span data-prop="temp:'projectGallery'"></span>
+    </div>
+
+    <script src="assets/js/cog.js"></script>
+    <script src="assets/js/cog-profile.js"></script>
+    <script>
+      cog.render("layouts/work.html");
+    </script>
+  </body>
+</html>
