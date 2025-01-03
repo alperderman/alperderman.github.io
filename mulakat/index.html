@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mülakat | Görev Yönetimi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha384-SOnAn/m2fVJCwnbEYgD4xzrPtvsXdElhOVvR8ND1YjB5nhGNwwf7nBQlhfAwHAZC" crossorigin="anonymous">
+</head>
+
+<body style="display: none;">
+    <!--DÜZENLEME MODALI-->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editModalLabel">Düzenle</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="editInput" class="form-label">Görev Tanımı:</label>
+                    <!--Burda input ile düzenlenicek veriyi 2 yönlü bağlıyoruz (two-way binding tekniği) 
+                    ve aynı zamanda enter tuşuna basıldığında değiştirilmesi için keypress eventini kullanıyoruz
+                    CognitiveJS, bu tür karmaşık tanımlamaları çok basit bir şekilde bir yapmamızı olanak sağlıyor
+                    -->
+                    <input class="form-control" id="editInput" 
+                        item-id="{{todo.editIndex}}"
+                        cog-prop="context:{value:{{todo.editInput}}}" 
+                        cog-live="live:'todo.editInput', event:'input'"
+                        cog-event="keypress:'editConfirm()'">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    <!--Butona basıldığında fonksiyonun çalışması için click eventi tanımlıyoruz-->
+                    <button type="button" class="btn btn-primary" 
+                        item-id="{{todo.editIndex}}"
+                        cog-event="click:'editConfirm()'">Değiştir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="mb-5 text-center">CognitiveJS ile Görev Yönetimi</h1>
+        <p><strong>CognitiveJS</strong>, tamamiyle kendi yazmış olduğum, interaktifliği ve DOM manipulasyonunu kolaylaştıran, veri odaklı, basit
+            bir
+            JavaScript kütüphanesidir, daha fazla bilgi için <a target="_blank"
+                href="https://alperderman.com/CognitiveJS/docs/">dökümantasyon</a> sayfasına göz atabilirsiniz.</p>
+                <p>Tasarım kısmı için ise Bootstrap kütüphanesi kullanılmıştır.</p>
+        <!--INPUT GÖREV TANIMI-->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 col-xl-4 px-4 mb-3">
+                <label for="todoInput" class="form-label">Görev Tanımı:</label>
+                <div class="input-group">
+                    <!--Burda yine aynı şekilde iki yönlü inputu bağlıyoruz ve butona event ekliyoruz-->
+                    <input id="todoInput" cog-prop="context:{value:{{todo.input}}}" cog-live="live:'todo.input', event:'input'"
+                        cog-event="keypress:'todoAdd()'" class="form-control" type="text">
+                    <button cog-event="click:'todoAdd()'" class="btn btn-primary"><i
+                            class="fa-solid fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 col-xl-4 px-4">
+                <!--TOPLAM görev sayısını dinamik yazdırmamızı sağlayan küçük bir kod parçası ()-->
+                <span>Toplam {{todo.list._length}} görev</span>
+            </div>
+        </div>
+        <!--LISTELEME-->
+        <div cog-repeat="list;item;todo.list">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 col-xl-4 px-4">
+                    <div class="card">
+                        <div class="row g-0 align-center">
+                            <div class="col-auto">
+                                <!--Görev tamamlama butonu, görevin durumuna göre üstünü çizer, Bu özellik aynı şekilde dinamik olarak veriye bağlanmıştır
+                                her ne kadar il bakışta karmaşık gözükse bile, yönetim biçimi JavaScript kısmında işleri çok kolaylaştırır, sadece minicik bir veri düzenlemesi yaparak koşula bağlı olarak element üzerinde stil ve class değişikliği yapmamızı sağlıyor
+                                CognitiveJS'nin dökümantasyonundaki Conditional Renderin kısmından daha fazla bilgi edinebilirsiniz-->
+                                <button
+                                    cog-event="if:[!{{item.complete}}, {click:'todoComplete({{item._index}})'}, {click:'todoRevert({{item._index}})'}]"
+                                    cog-prop="if:[!{{item.complete}}, {class:'btn-success'}, {class:'btn-secondary'}]"
+                                    item-id="{{item._index}}" class="btn">
+                                    <i class="fs-5 fa-solid fa-check"></i>
+                                </button>
+                            </div>
+                            <div cog-prop="if:[{{item.complete}}, {class:'text-decoration-line-through'}]"
+                                class="col px-3 align-self-center">{{item.text}}</div>
+                            <div class="col-auto">
+                                <!--Görev düzenleme ve silme butonları-->
+                                <button cog-event="click:'editItem()'" item-id="{{item._index}}"
+                                    class="btn btn-primary">
+                                    <i class="fs-5 fa-solid fa-edit"></i>
+                                </button>
+                                <button cog-event="click:'todoDel()'" item-id="{{item._index}}" class="btn btn-danger">
+                                    <i class="fs-5 fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="cog.js"></script>
+    <script>
+        // VERİ TANIMLAMALARI
+        cog.data.todo = {};
+        cog.data.todo.input = '';
+        cog.data.todo.editModal = null;
+        cog.data.todo.editInput = '';
+        cog.data.todo.editIndex = null;
+        cog.data.todo.list = [ //DEFAULT olarak tanımlanmış veriler
+            { text: 'Sancaktepe\'ye git ve Alper bey ile görüş', complete: false },
+            { text: 'Marketten süt al', complete: true }
+        ];
+
+        // FONKSİYONLAR
+        function todoAdd() { //Ekleme fonsiyonu veriyi direkt diziye unshift metodunu kullanarak veri ekler, DOM manipulasyon kısmını ise CognitiveJS otomatik olarak işler ve renderlar :)
+            var input = cog.get('todo.input');
+            if (input != '' && (typeof event.code === 'undefined' || event.code == 'Enter')) { //Eğer enter tuşuna basılarak çalıştırıldıysa ve inputun boş olup olmadığını kontrol eden koşul tanımı
+                cog.data.todo.list.unshift({ text: input, complete: false });
+                cog.set('todo.input', '');//Veriyi ekledikten sonra inputun değerini sıfırlar
+            }
+        }
+        function todoDel() {//Veri silme fonksiyonu, butona attribute olarak yerleştirilmiş olan id'yi kullanarak veriyi kaldırır
+            var index = parseInt(event.currentTarget.getAttribute("item-id"));
+            cog.data.todo.list.splice(index, 1);
+        }
+        function todoComplete() {//Veri tamamlama fonksiyonu, aynı şekilde id'yi kullanarak boolean olarak tanımlanmış değeri true olarak değiştirir, diğer üstünü çizme işlemleri, HTML'deki tanımlamalara göre CognitiveJS halleder
+            var index = parseInt(event.currentTarget.getAttribute("item-id"));
+            cog.data.todo.list[index].complete = true;
+        }
+        function todoRevert() {//Veriyi geri tamamlanmamış konumuna geri döndürür
+            var index = parseInt(event.currentTarget.getAttribute("item-id"));
+            cog.data.todo.list[index].complete = false;
+        }
+        function editItem() {//Düzenleme modalını açar ve düzenleme yapmak için değerleri tanımlar
+            var index = parseInt(event.currentTarget.getAttribute("item-id"));
+            cog.set("todo.editIndex", index);
+            cog.set("todo.editInput", cog.data.todo.list[index].text._get);
+            cog.data.todo.editModal._get.show();
+        }
+        function editConfirm() {//Düzenlemeleri onaylama fonksiyonu, listedeki görevi inputtaki değer ile değiştirir, sonrasında inputu temizler ve modalı kapatır
+            var input = cog.get("todo.editInput");
+            if (input != '' && (typeof event.code === 'undefined' || event.code == 'Enter')) {
+                var index = parseInt(event.currentTarget.getAttribute("item-id"));
+                cog.data.todo.list[index].text = input;
+                cog.set("todo.editInput", '');
+                cog.data.todo.editModal._get.hide();
+            }
+        }
+
+        //Render işlemi bittikten sonra çalıştırılan event
+        document.addEventListener(cog.event.afterRender, function () {
+            document.body.style.display = ""; //Body kısmını render bittikten sonra göstermemizin sebebi, Render sırasında gözüken daha işlenmemiş tanımlamaların kullanıcı tarafından görülmesini engellemek içindir
+            cog.data.todo.editModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('editModal')); //Burda ise Bootstrap kullanarak düzenleme modalı tanımlıyoruz
+        });
+
+        //Render fonksiyonu en alta yazılır
+        cog.render();
+    </script>
+</body>
+
+</html>
